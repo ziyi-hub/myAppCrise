@@ -1,0 +1,16 @@
+{
+  "require": {
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.4",
+    "illuminate/database": "8.15.*",
+    "carbon-cli/carbon-cli": "^1.2",
+    "selective/basepath": "^2.1"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "crise\\": "./src",
+      "conf\\": "src/conf"
+    }
+  }
+}
