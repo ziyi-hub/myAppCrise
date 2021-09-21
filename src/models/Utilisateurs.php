@@ -2,9 +2,9 @@
 
 
 namespace crise\models;
-use \Illuminate\Database\Eloquent\Model as Modele;
+use Illuminate\Database\Eloquent\Model;
 
-class Utilisateurs extends Modele
+class Utilisateurs extends Model
 {
     protected $table = 'utilisateurs';
     protected $primaryKey = 'idUtilisateur';

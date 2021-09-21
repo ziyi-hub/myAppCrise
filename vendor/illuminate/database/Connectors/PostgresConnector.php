@@ -35,7 +35,7 @@ class PostgresConnector extends Connector implements ConnectorInterface
 
         $this->configureEncoding($connection, $config);
 
-        // Next, we will check to see if a timezone has been specified in this conf
+        // Next, we will check to see if a timezone has been specified in this config
         // and if it has we will issue a statement to modify the timezone with the
         // database. Setting this DB timezone is an optional configuration item.
         $this->configureTimezone($connection, $config);

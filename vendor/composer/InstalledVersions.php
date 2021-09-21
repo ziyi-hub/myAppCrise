@@ -25,24 +25,33 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'dfb912bce804a368e9871b4b1d64ba88ee1e9f74',
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'dfb912bce804a368e9871b4b1d64ba88ee1e9f74',
+    ),
+    'carbon-cli/carbon-cli' => 
+    array (
+      'pretty_version' => '1.2.1',
+      'version' => '1.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e325f21406c32a90a4b757f5e852a0298318e8b3',
     ),
     'doctrine/inflector' => 
     array (
@@ -52,6 +61,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
+    ),
+    'fig/http-message-util' => 
+    array (
+      'pretty_version' => '1.1.5',
+      'version' => '1.1.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9d94dc0154230ac39e5bf89398b324a86f63f765',
     ),
     'illuminate/collections' => 
     array (
@@ -125,15 +143,6 @@ private static $installed = array (
       ),
       'reference' => '181d480e08d9476e61381e04a71b34dc0432e812',
     ),
-    'pimple/pimple' => 
-    array (
-      'pretty_version' => 'v3.4.0',
-      'version' => '3.4.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '86406047271859ffc13424a048541f4531f53601',
-    ),
     'psr/container' => 
     array (
       'pretty_version' => '1.1.1',
@@ -144,6 +153,22 @@ private static $installed = array (
       'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
     ),
     'psr/container-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'psr/http-factory' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
+    ),
+    'psr/http-factory-implementation' => 
     array (
       'provided' => 
       array (
@@ -166,6 +191,33 @@ private static $installed = array (
         0 => '1.0',
       ),
     ),
+    'psr/http-server-handler' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'aff2f80e33b7f026ec96bb42f63242dc50ffcae7',
+    ),
+    'psr/http-server-middleware' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2296f45510945530b9dceb8bcedb5cb84d40c5f5',
+    ),
+    'psr/log' => 
+    array (
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
+    ),
     'psr/log-implementation' => 
     array (
       'provided' => 
@@ -182,14 +234,41 @@ private static $installed = array (
       ),
       'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
     ),
-    'slim/slim' => 
+    'ralouphie/getallheaders' => 
     array (
-      'pretty_version' => '3.12.3',
-      'version' => '3.12.3.0',
+      'pretty_version' => '3.0.3',
+      'version' => '3.0.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1c9318a84ffb890900901136d620b4f03a59da38',
+      'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
+    'simple-cli/simple-cli' => 
+    array (
+      'pretty_version' => '1.6.0',
+      'version' => '1.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '47055c9a172ab032e33a498001d2978c9800fd59',
+    ),
+    'slim/psr7' => 
+    array (
+      'pretty_version' => '1.4',
+      'version' => '1.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0dca983ca32a26f4a91fb11173b7b9eaee29e9d6',
+    ),
+    'slim/slim' => 
+    array (
+      'pretty_version' => '4.8.1',
+      'version' => '4.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c8934c35d9d98b1a1df9f99ee69b77a59e0aa820',
     ),
     'symfony/console' => 
     array (

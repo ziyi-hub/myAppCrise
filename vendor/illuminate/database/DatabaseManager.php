@@ -78,7 +78,7 @@ class DatabaseManager implements ConnectionResolverInterface
 
         $name = $name ?: $database;
 
-        // If we haven't created this connection, we'll create it based on the conf
+        // If we haven't created this connection, we'll create it based on the config
         // provided in the application. Once we've created the connections we will
         // set the "fetch mode" for PDO which determines the query return types.
         if (! isset($this->connections[$name])) {
@@ -116,7 +116,7 @@ class DatabaseManager implements ConnectionResolverInterface
 
         // First we will check by the connection name to see if an extension has been
         // registered specifically for that connection. If it has we will call the
-        // Closure and pass it the conf allowing it to resolve the connection.
+        // Closure and pass it the config allowing it to resolve the connection.
         if (isset($this->extensions[$name])) {
             return call_user_func($this->extensions[$name], $config, $name);
         }
@@ -146,7 +146,7 @@ class DatabaseManager implements ConnectionResolverInterface
         // To get the database connection configuration, we will just pull each of the
         // connection configurations and get the configurations for the given name.
         // If the configuration doesn't exist, we'll throw an exception and bail.
-        $connections = $this->app['conf']['database.connections'];
+        $connections = $this->app['config']['database.connections'];
 
         if (is_null($config = Arr::get($connections, $name))) {
             throw new InvalidArgumentException("Database connection [{$name}] not configured.");
@@ -285,7 +285,7 @@ class DatabaseManager implements ConnectionResolverInterface
      */
     public function getDefaultConnection()
     {
-        return $this->app['conf']['database.default'];
+        return $this->app['config']['database.default'];
     }
 
     /**
@@ -296,7 +296,7 @@ class DatabaseManager implements ConnectionResolverInterface
      */
     public function setDefaultConnection($name)
     {
-        $this->app['conf']['database.default'] = $name;
+        $this->app['config']['database.default'] = $name;
     }
 
     /**

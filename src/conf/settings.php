@@ -4,7 +4,7 @@ return [
 
     'settings' => [
         'displayErrorDetails' => true,
-        'dbfile' => 'src/conf/conf.ini'
+        'dbfile' => '../src/conf/conf.ini'
     ]
 
 ];

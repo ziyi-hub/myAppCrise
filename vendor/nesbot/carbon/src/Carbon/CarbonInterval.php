@@ -431,7 +431,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Returns current conf for days per week.
+     * Returns current config for days per week.
      *
      * @return int
      */
@@ -441,7 +441,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Returns current conf for hours per day.
+     * Returns current config for hours per day.
      *
      * @return int
      */
@@ -451,7 +451,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Returns current conf for minutes per hour.
+     * Returns current config for minutes per hour.
      *
      * @return int
      */
@@ -461,7 +461,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Returns current conf for seconds per minute.
+     * Returns current config for seconds per minute.
      *
      * @return int
      */
@@ -471,7 +471,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Returns current conf for microseconds per second.
+     * Returns current config for microseconds per second.
      *
      * @return int
      */
@@ -481,7 +481,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Returns current conf for microseconds per second.
+     * Returns current config for microseconds per second.
      *
      * @return int
      */

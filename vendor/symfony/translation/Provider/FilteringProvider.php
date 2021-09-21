@@ -15,7 +15,7 @@ use Symfony\Component\Translation\TranslatorBag;
 use Symfony\Component\Translation\TranslatorBagInterface;
 
 /**
- * Filters domains and locales between the Translator conf values and those specific to each provider.
+ * Filters domains and locales between the Translator config values and those specific to each provider.
  *
  * @author Mathieu Santostefano <msantostefano@protonmail.com>
  *
