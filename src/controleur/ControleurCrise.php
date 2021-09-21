@@ -2,6 +2,7 @@
 
 
 namespace crise\controleur;
+use crise\models\Messages;
 use crise\models\Utilisateurs;
 use crise\vue\VuePrincipale;
 use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -20,8 +21,17 @@ class ControleurCrise
         if (!is_null($liste)){
             $vue = new VuePrincipale([$liste]);
             $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
-            //$this->htmlvars['basepath'] = $rq->getUri()->getPath();
             $rs->getBody()->write($vue->getVueUser());
+        }
+        return $rs;
+    }
+
+    public function getMessages(Request $rq, Response $rs, array $args ): Response {
+        $liste = Messages::all();
+        if (!is_null($liste)){
+            $vue = new VuePrincipale([$liste]);
+            $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+            $rs->getBody()->write($vue->getVueMes());
         }
         return $rs;
     }

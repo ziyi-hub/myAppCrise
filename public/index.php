@@ -40,4 +40,11 @@ $app->get('/liste', function ($request, $response, array $args) {
     return $response;
 })->setName('liste');
 
+$app->get('/message', function ($request, $response, array $args) {
+
+    $controleur = new ControleurCrise();
+    $response = $controleur->getMessages($request, $response, $args);
+    return $response;
+})->setName('message');
+
 $app->run();
