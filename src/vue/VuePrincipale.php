@@ -7,6 +7,7 @@ namespace crise\vue;
 class VuePrincipale
 {
     private $data;
+    private $htmlvars;
 
     public function __construct(array $d)
     {
@@ -55,5 +56,44 @@ class VuePrincipale
 </p>";
         }
         return $html;
+    }
+
+    public function render($h){
+        $this->htmlvars = $h;
+        return <<< END
+<!DOCTYPE html>
+<html lang=fr>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../webServeur/public/web/css/style.css">
+		<title>myJukeBox</title>
+	</head>
+	<body>
+		<header>
+			<div class="alignement">
+				<div class="logo"></div>
+				<div class="container">
+					<div class="d"><a href="#">Accueil</a></div>
+					<div class="d"><a href="#">Messagerie</a></div>
+					<div class="d"><a href="#">Connexion</a></div>
+					<div class="d"><a href="#">Inscription</a></div>
+				</div>
+			</div>
+			
+			<div class="entete">
+				<h1><div class = "contenu">Welcome to my application</div></h1>
+			</div>
+		</header>
+		
+		<footer>
+			<div class="bas">
+				<div class="contact">Nous contacter</div>
+				<span>©2020 myJukeBox | et autres régimes</span>
+			</div>
+		</footer>
+	</body>
+</html>
+END;
+
     }
 }

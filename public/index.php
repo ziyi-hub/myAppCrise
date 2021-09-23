@@ -15,36 +15,36 @@ $db->bootEloquent();
 $db->setAsGlobal();
 
 $app = AppFactory::create();
-
 $app->addRoutingMiddleware();
 
 // Set the base path to run the app in a subdirectory.
 // This path is used in urlFor().
 $app->add(new BasePathMiddleware($app));
-
 $app->addErrorMiddleware(true, true, true);
-
 $container = $app->getContainer();
 
+
 $app->get('/',
-    function (Request $req, Response $response, $args): Response {
-        $response->getBody()->write("Hello");
+    function (Request $request, Response $response, $args): Response {
+        $controleur = new ControleurCrise();
+        $response = $controleur->getAccueil($request, $response, $args);
         return $response;
     }
 )->setName('accueil');
 
-$app->get('/liste', function ($request, $response, array $args) {
 
+$app->get('/liste', function ($request, $response, array $args) {
     $controleur = new ControleurCrise();
     $response = $controleur->getUtilisateurs($request, $response, $args);
     return $response;
 })->setName('liste');
 
-$app->get('/message', function ($request, $response, array $args) {
 
+$app->get('/message', function ($request, $response, array $args) {
     $controleur = new ControleurCrise();
     $response = $controleur->getMessages($request, $response, $args);
     return $response;
 })->setName('message');
+
 
 $app->run();

@@ -20,7 +20,7 @@ class ControleurCrise
         $liste = Utilisateurs::all();
         if (!is_null($liste)){
             $vue = new VuePrincipale([$liste]);
-            $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+            //$basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
             $rs->getBody()->write($vue->getVueUser());
         }
         return $rs;
@@ -30,9 +30,19 @@ class ControleurCrise
         $liste = Messages::all();
         if (!is_null($liste)){
             $vue = new VuePrincipale([$liste]);
-            $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+            //$basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
             $rs->getBody()->write($vue->getVueMes());
         }
+        return $rs;
+    }
+
+    function getAccueil(Request $rq, Response $rs, array $args ): Response {
+        $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $htmlvars = [
+            'basepath' => $basePath,
+        ];
+        $vue = new VuePrincipale([]);
+        $rs->getBody()->write($vue->render($htmlvars));
         return $rs;
     }
 
