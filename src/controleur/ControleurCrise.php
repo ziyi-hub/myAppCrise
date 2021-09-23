@@ -18,6 +18,7 @@ class ControleurCrise
         $this->container = $container;
     }
 
+/*
     public function getUtilisateurs(Request $rq, Response $rs, array $args ): Response {
         $liste = Utilisateurs::all();
         if (!is_null($liste)){
@@ -27,26 +28,26 @@ class ControleurCrise
         }
         return $rs;
     }
-
-    /*
-    public function getMessages(Request $rq, Response $rs, array $args ): Response {
-        $liste = Messages::all();
-        if (!is_null($liste)){
-            $vue = new VuePrincipale([$liste]);
-            //$basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
-            $rs->getBody()->write($vue->getVueMes());
-        }
-        return $rs;
-    }
-    */
+*/
 
     function getAccueil(Request $rq, Response $rs, array $args ): Response {
         $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
         $htmlvars = [
             'basepath' => $basePath,
         ];
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->render(2, $htmlvars));
+        return $rs;
+    }
+
+
+    function getInscription(Request $rq, Response $rs, array $args ): Response {
+        $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $htmlvars = [
+            'basepath' => $basePath,
+        ];
         $vue = new VuePrincipale([]);
-        $rs->getBody()->write($vue->render($htmlvars));
+        $rs->getBody()->write($vue->render(4, $htmlvars));
         return $rs;
     }
 

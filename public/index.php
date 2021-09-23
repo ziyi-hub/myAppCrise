@@ -28,19 +28,22 @@ $app->get('/',
     }
 )->setName('accueil');
 
-
+/*
 $app->get('/liste', function ($request, $response, array $args) {
     $controleur = new ControleurCrise(AppFactory::create()->getContainer());
     $response = $controleur->getUtilisateurs($request, $response, $args);
     return $response;
 })->setName('liste');
-
-/*
-$app->get('/message', function ($request, $response, array $args) {
-    $controleur = new ControleurCrise(AppFactory::create()->getContainer());
-    $response = $controleur->getMessages($request, $response, $args);
-    return $response;
-})->setName('message');
 */
+
+$app->get('/inscription',
+    function (Request $request, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getInscription($request, $response, $args);
+        return $response;
+    }
+)->setName('inscription');
+
+
 
 $app->run();
