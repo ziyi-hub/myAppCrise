@@ -36,6 +36,7 @@ class VuePrincipale
         return $html;
     }
 
+/*
     public function getVueMes(){
         $html = "";
         $l = $this->data[0];
@@ -57,15 +58,17 @@ class VuePrincipale
         }
         return $html;
     }
+*/
 
     public function render($h){
         $this->htmlvars = $h;
+        $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
         return <<< END
 <!DOCTYPE html>
 <html lang=fr>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../webServeur/public/web/css/style.css">
+		<link rel="stylesheet" href=$liencss>
 		<title>myJukeBox</title>
 	</head>
 	<body>

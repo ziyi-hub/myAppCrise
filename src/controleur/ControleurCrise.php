@@ -11,9 +11,11 @@ use \Psr\Http\Message\ResponseInterface as Response;
 class ControleurCrise
 {
     private $htmlvars;
+    private $container;
 
-    public function __construct()
+    public function __construct($container)
     {
+        $this->container = $container;
     }
 
     public function getUtilisateurs(Request $rq, Response $rs, array $args ): Response {
@@ -26,6 +28,7 @@ class ControleurCrise
         return $rs;
     }
 
+    /*
     public function getMessages(Request $rq, Response $rs, array $args ): Response {
         $liste = Messages::all();
         if (!is_null($liste)){
@@ -35,6 +38,7 @@ class ControleurCrise
         }
         return $rs;
     }
+    */
 
     function getAccueil(Request $rq, Response $rs, array $args ): Response {
         $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();

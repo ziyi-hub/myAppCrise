@@ -13,12 +13,8 @@ $db = new DB();
 $db->addConnection(parse_ini_file($config['settings']['dbfile']));
 $db->bootEloquent();
 $db->setAsGlobal();
-
 $app = AppFactory::create();
 $app->addRoutingMiddleware();
-
-// Set the base path to run the app in a subdirectory.
-// This path is used in urlFor().
 $app->add(new BasePathMiddleware($app));
 $app->addErrorMiddleware(true, true, true);
 $container = $app->getContainer();
@@ -26,7 +22,7 @@ $container = $app->getContainer();
 
 $app->get('/',
     function (Request $request, Response $response, $args): Response {
-        $controleur = new ControleurCrise();
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
         $response = $controleur->getAccueil($request, $response, $args);
         return $response;
     }
@@ -34,17 +30,17 @@ $app->get('/',
 
 
 $app->get('/liste', function ($request, $response, array $args) {
-    $controleur = new ControleurCrise();
+    $controleur = new ControleurCrise(AppFactory::create()->getContainer());
     $response = $controleur->getUtilisateurs($request, $response, $args);
     return $response;
 })->setName('liste');
 
-
+/*
 $app->get('/message', function ($request, $response, array $args) {
-    $controleur = new ControleurCrise();
+    $controleur = new ControleurCrise(AppFactory::create()->getContainer());
     $response = $controleur->getMessages($request, $response, $args);
     return $response;
 })->setName('message');
-
+*/
 
 $app->run();
