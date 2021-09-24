@@ -5,6 +5,7 @@ namespace crise\controleur;
 use crise\models\Messages;
 use crise\models\Utilisateurs;
 use crise\vue\VuePrincipale;
+use Slim\Routing\RouteContext;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -32,8 +33,17 @@ class ControleurCrise
 
     function getAccueil(Request $rq, Response $rs, array $args ): Response {
         $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $routeContext = RouteContext::fromRequest($rq);
+        $routeParser = $routeContext->getRouteParser();
+        //$relativeUrl = $routeParser->relativeUrlFor('inscription');
+        $inscription = $routeParser->urlFor('inscription');
+        $accueil = $routeParser->urlFor('accueil');
+        $connexion = $routeParser->urlFor('connexion');
         $htmlvars = [
             'basepath' => $basePath,
+            'inscription' => $inscription,
+            'accueil' => $accueil,
+            'connexion' => $connexion,
         ];
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(2, $htmlvars));
@@ -43,11 +53,39 @@ class ControleurCrise
 
     function getInscription(Request $rq, Response $rs, array $args ): Response {
         $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $routeContext = RouteContext::fromRequest($rq);
+        $routeParser = $routeContext->getRouteParser();
+        //$relativeUrl = $routeParser->relativeUrlFor('inscription');
+        $inscription = $routeParser->urlFor('inscription');
+        $accueil = $routeParser->urlFor('accueil');
+        $connexion = $routeParser->urlFor('connexion');
         $htmlvars = [
             'basepath' => $basePath,
+            'inscription' => $inscription,
+            'accueil' => $accueil,
+            'connexion' => $connexion,
         ];
-        $vue = new VuePrincipale([]);
+        $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(4, $htmlvars));
+        return $rs;
+    }
+
+    function getConnexion(Request $rq, Response $rs, array $args ): Response {
+        $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $routeContext = RouteContext::fromRequest($rq);
+        $routeParser = $routeContext->getRouteParser();
+        //$relativeUrl = $routeParser->relativeUrlFor('inscription');
+        $inscription = $routeParser->urlFor('inscription');
+        $accueil = $routeParser->urlFor('accueil');
+        $connexion = $routeParser->urlFor('connexion');
+        $htmlvars = [
+            'basepath' => $basePath,
+            'inscription' => $inscription,
+            'accueil' => $accueil,
+            'connexion' => $connexion,
+        ];
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->render(3, $htmlvars));
         return $rs;
     }
 

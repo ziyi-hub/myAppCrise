@@ -44,6 +44,7 @@ class VuePrincipale
     }
 
     public function htmlInscription(){
+        $connexion = $this->htmlvars['connexion'];
         return <<< END
             <div class="entete4">
 				<div id="inscrit">
@@ -61,7 +62,7 @@ class VuePrincipale
                         <button type="submit" class="but" id="submit">Inscription</button>
                          <div id="showmsg" style="display: none"></div>
                     </form>
-                    <h3>Un compte? Connectez-vous <a id = 'ici' href="#">ici</a> !</h3>
+                    <h3>Un compte? Connectez-vous <a id = 'ici' href="$connexion">ici</a> !</h3>
                </div>		
             </div>
 END;
@@ -69,24 +70,24 @@ END;
 
 
     public function htmlConnexion(){
+        $inscription = $this->htmlvars['inscription'];
         return <<<END
 			<div class="entete4">
-			<div class="contenu">
-			    <div id="login">
-			        <h1>Connexion</h1>
-			        <form method="POST" action="#" id="formvalider">
-                        <input type="text" required="required" placeholder="Identifiant" name="user" id="user">
-                        <div class="div-bor">
-                            <input type="password" required="required" placeholder="Mot de passe" name="password" id="password">
-                            <i class="icon-user3" id="icon-user3"></i>
-                        </div>
-                        <button class="but" type="submit">Connexion</button>
-                    </form>
-                    <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="#">ici</a> !</h3>
-                </div>
-            </div>    		
-            </div> 
-        <script type="text/javascript" src="#" defer></script>
+                <div class="contenu">
+                    <div id="login">
+                        <h1>Connexion</h1>
+                        <form method="POST" action="#" id="formvalider">
+                            <input type="text" required="required" placeholder="Identifiant" name="user" id="user">
+                            <div class="div-bor">
+                                <input type="password" required="required" placeholder="Mot de passe" name="password" id="password">
+                                <i class="icon-user3" id="icon-user3"></i>
+                            </div>
+                            <button class="but" type="submit">Connexion</button>
+                        </form>
+                        <h4>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h4>
+                    </div>
+                </div>  		
+            </div>
 END;
     }
 
@@ -104,6 +105,9 @@ END;
         $this->selecteur = $s;
         $this->htmlvars = $h;
         $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
+        $accueil = $this->htmlvars['accueil'];
+        $connexion = $this->htmlvars['connexion'];
+        $inscription = $this->htmlvars['inscription'];
         switch ($this->selecteur) {
             case self::ACCUEIL_VIEW: {
                 $content = $this->htmlAccueil();
@@ -135,10 +139,10 @@ END;
 			<div class="alignement">
 				<div class="logo"></div>
 				<div class="container">
-					<div class="d"><a href="#">Accueil</a></div>
+					<div class="d"><a href=$accueil>Accueil</a></div>
 					<div class="d"><a href="#">Messagerie</a></div>
-					<div class="d"><a href="#">Connexion</a></div>
-					<div class="d"><a href="#">Inscription</a></div>
+					<div class="d"><a href=$connexion>Connexion</a></div>
+					<div class="d"><a href="$inscription">Inscription</a></div>
 				</div>
 			</div>
 			$content

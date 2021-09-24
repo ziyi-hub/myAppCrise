@@ -45,5 +45,14 @@ $app->get('/inscription',
 )->setName('inscription');
 
 
+$app->get('/connexion',
+    function (Request $request, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getConnexion($request, $response, $args);
+        return $response;
+    }
+)->setName('connexion');
+
+
 
 $app->run();

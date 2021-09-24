@@ -27,12 +27,6 @@
         flex-direction:row;
     }
 
-    a{
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-    }
-
     .d {
         font-size: 18px;
         text-align: center;
@@ -96,12 +90,9 @@
         width: 100%;
     }
 
-
     .alignement .drop-down:hover .drop-down-content {
         height: 150px;
     }
-
-
 
     .alignement > div {
         width: 13%;
@@ -120,7 +111,6 @@
     .logo{
         background-image: url(../images/Logo.png);
         background-repeat: no-repeat;
-
     }
 
     h1{
@@ -128,5 +118,112 @@
         color: white;
         text-align: center;
     }
+
+    .entete4{
+        background-image: url(../images/background2.jpg);
+        overflow: scroll;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        display: grid;
+        margin-top:13px;
+        background-color: #000;
+        width: 100%;
+        height: 89%;
+        position: absolute;
+        opacity:10;
+        color: black;
+    }
+
+    #inscrit, #login{
+        position: absolute;
+        top: 40%;
+        left:50%;
+        margin: -150px 0 0 -200px;
+        width: 300px;
+        height: 300px;
+        background: rgba(4, 4, 4, 0.56);
+        padding: 60px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px mistyrose;
+    }
+
+    #inscrit h1, #login h1{
+        color: #fff;
+        text-shadow:0 0 10px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    h1{
+        margin: 0.67em 0;
+        color: white;
+        text-align: center;
+    }
+
+    h2, h3, h4{
+        color: mediumspringgreen;
+        text-shadow:0 0 8px blue;
+        text-align: center;
+    }
+
+    input{
+        width: 278px;
+        height: 18px;
+        margin-bottom: 10px;
+        outline: none;
+        padding: 10px;
+        font-size: 13px;
+        color: black;
+        border-top: 1px solid #312E3D;
+        border-left: 1px solid #312E3D;
+        border-right: 1px solid #312E3D;
+        border-bottom: 1px solid #56536A;
+        border-radius: 4px;
+    }
+
+    .but {
+        width: 100%;
+        color: white;
+        font-size: 18px;
+        display: block;
+        background-color: #21a4ee;
+        border: 1px solid #3762bc;
+        line-height: normal;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .submit {
+        width: 100%;
+        color: white;
+        font-size: 18px;
+        display: block;
+        background-color: #21a4ee;
+        border: 1px solid #3762bc;
+        line-height: normal;
+        border-radius: 5px;
+        margin: 0;
+    }
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: deepskyblue;
+        margin-right: 8px;
+        color: white;
+        border-radius: 50%;
+    }
+
+    .div-bor{
+        position: relative;
+    }
+
+    #ici{
+        text-decoration: underline;
+        color: red;
+    }
+
 }
 
