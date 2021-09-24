@@ -45,11 +45,12 @@ class VuePrincipale
 
     public function htmlInscription(){
         $connexion = $this->htmlvars['connexion'];
+        $action = $this->htmlvars['validerInscription'];
         return <<< END
             <div class="entete4">
 				<div id="inscrit">
                     <h1>Inscription</h1>
-                    <form method="post" action="" id="formvalider">
+                    <form method="post" action="$action" id="formvalider">
                         <input type="text" name="NomUtilisateur" id="NomUtilisateur" placeholder="Nom d'utilisateur" required>  
                         <div class="div-bor">
                             <input type="password" name="MotDePasse" id="MotDePasse" placeholder="Mot de passe" required>
@@ -63,7 +64,7 @@ class VuePrincipale
                          <div id="showmsg" style="display: none"></div>
                     </form>
                     <h3>Un compte? Connectez-vous <a id = 'ici' href="$connexion">ici</a> !</h3>
-               </div>		
+               </div> 		
             </div>
 END;
     }
@@ -73,7 +74,6 @@ END;
         $inscription = $this->htmlvars['inscription'];
         return <<<END
 			<div class="entete4">
-                <div class="contenu">
                     <div id="login">
                         <h1>Connexion</h1>
                         <form method="POST" action="#" id="formvalider">
@@ -84,9 +84,9 @@ END;
                             </div>
                             <button class="but" type="submit">Connexion</button>
                         </form>
-                        <h4>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h4>
+                        <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
                     </div>
-                </div>  		
+                 		
             </div>
 END;
     }
@@ -95,8 +95,21 @@ END;
     public function htmlAccueil(){
         return <<< END
 			<div class="entete">
-				<h1><div class = "contenu">Welcome to my application</div></h1>
+			<h1>
+			<div class = "contenu">
+				<div class="container3 d-flex align-items-center flex-column">
+                    <div class="container3 d-flex align-items-center flex-column">
+                        <h1 class="masthead-heading text-uppercase mb-0">Welcome to myAppCrise</h1>
+                        <div class="divider-custom divider-light">
+                            <div class="divider-custom-line"></div>
+                            <div class="divider-custom-icon">Créé par Ziyi</div>
+                            <div class="divider-custom-line"></div>
+                        </div>
+                        <p class="masthead-subheading font-weight-light mb-0">Offrez-vous le Premium! <br>Profiter de l'essai gratuit</p>
+                    </div>
+				</div>
 			</div>
+            </h1>
 END;
     }
 
@@ -141,6 +154,7 @@ END;
 				<div class="container">
 					<div class="d"><a href=$accueil>Accueil</a></div>
 					<div class="d"><a href="#">Messagerie</a></div>
+					<hr>
 					<div class="d"><a href=$connexion>Connexion</a></div>
 					<div class="d"><a href="$inscription">Inscription</a></div>
 				</div>

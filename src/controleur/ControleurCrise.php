@@ -37,11 +37,13 @@ class ControleurCrise
         $inscription = $routeParser->urlFor('inscription');
         $accueil = $routeParser->urlFor('accueil');
         $connexion = $routeParser->urlFor('connexion');
+        $validerInscription = $routeParser->urlFor('validerInscription');
         $htmlvars = [
             'basepath' => $basePath,
             'inscription' => $inscription,
             'accueil' => $accueil,
             'connexion' => $connexion,
+            'validerInscription' => $validerInscription,
         ];
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(2, $htmlvars));
@@ -56,11 +58,13 @@ class ControleurCrise
         $inscription = $routeParser->urlFor('inscription');
         $accueil = $routeParser->urlFor('accueil');
         $connexion = $routeParser->urlFor('connexion');
+        $validerInscription = $routeParser->urlFor('validerInscription');
         $htmlvars = [
             'basepath' => $basePath,
             'inscription' => $inscription,
             'accueil' => $accueil,
             'connexion' => $connexion,
+            'validerInscription' => $validerInscription,
         ];
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(4, $htmlvars));
@@ -70,7 +74,31 @@ class ControleurCrise
     function getConnexion(Request $rq, Response $rs, array $args ): Response {
         $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
         $routeParser = RouteContext::fromRequest($rq)->getRouteParser();
-        //$relativeUrl = $routeParser->relativeUrlFor('inscription');
+        //$relativeUrl = $routeParser->relativeUrlFor('validerInscription');
+        $inscription = $routeParser->urlFor('inscription');
+        $accueil = $routeParser->urlFor('accueil');
+        $connexion = $routeParser->urlFor('connexion');
+        $validerInscription = $routeParser->urlFor('validerInscription');
+        $htmlvars = [
+            'basepath' => $basePath,
+            'inscription' => $inscription,
+            'accueil' => $accueil,
+            'connexion' => $connexion,
+            'validerInscription' => $validerInscription,
+        ];
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->render(3, $htmlvars));
+        return $rs;
+    }
+
+    public function validerInscription(Request $rq, Response $rs, array $args ):Response{
+        $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $NomUtilisateur = $_POST['NomUtilisateur'];
+        $MotDePasse = $_POST['MotDePasse'];
+        $MotDePasse2 = $_POST['MotDePasse2'];
+
+        $routeParser = RouteContext::fromRequest($rq)->getRouteParser();
+        $validerInscription = $routeParser->urlFor('validerInscription');
         $inscription = $routeParser->urlFor('inscription');
         $accueil = $routeParser->urlFor('accueil');
         $connexion = $routeParser->urlFor('connexion');
@@ -79,9 +107,27 @@ class ControleurCrise
             'inscription' => $inscription,
             'accueil' => $accueil,
             'connexion' => $connexion,
+            'validerInscription' => $validerInscription,
         ];
-        $vue = new VuePrincipale([], $this->container);
-        $rs->getBody()->write($vue->render(3, $htmlvars));
+
+        if (($MotDePasse === $MotDePasse2)&&(strpos($NomUtilisateur, ' ') === false)){
+            $hash = password_hash($MotDePasse, PASSWORD_DEFAULT);
+            $utilisateur = new Utilisateurs();
+            $utilisateur->nomUtilisateur = $NomUtilisateur;
+            $utilisateur->motDePasse = $hash;
+            $utilisateur->roleId = 1;
+            $utilisateur->save();
+            echo "<script>alert('Inscription réussie')</script>";
+            $vue = new VuePrincipale([], $this->container);
+            $rs->getBody()->write($vue->render(3, $htmlvars));
+        }elseif ($MotDePasse !== $MotDePasse2){
+            echo "<script>alert('Les deux mots de passe doivent être identiques')</script>";
+            $vue = new VuePrincipale([], $this->container);
+            $rs->getBody()->write($vue->render(4, $htmlvars));
+        }else{
+            $vue = new VuePrincipale([], $this->container);
+            $rs->getBody()->write($vue->render(4, $htmlvars));
+        }
         return $rs;
     }
 

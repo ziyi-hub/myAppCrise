@@ -54,5 +54,14 @@ $app->get('/connexion',
 )->setName('connexion');
 
 
+$app->post('/validerInscription',
+    function (Request $request, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->validerInscription($request, $response, $args);
+        return $response;
+    }
+)->setName('validerInscription');
+
+
 
 $app->run();

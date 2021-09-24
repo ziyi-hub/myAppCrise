@@ -113,12 +113,6 @@
         background-repeat: no-repeat;
     }
 
-    h1{
-        margin: 0.67em 0;
-        color: white;
-        text-align: center;
-    }
-
     .entete4{
         background-image: url(../images/background2.jpg);
         overflow: scroll;
@@ -149,11 +143,64 @@
         box-shadow: 0 0 10px mistyrose;
     }
 
-    #inscrit h1, #login h1{
+    #login h1{
         color: #fff;
         text-shadow:0 0 10px;
         letter-spacing: 1px;
         text-align: center;
+    }
+
+    #inscrit h1{
+        color: #fff;
+        text-shadow:0 0 10px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .masthead-heading{
+        margin: 0;
+    }
+
+    .container3{
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .masthead-subheading {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .font-weight-light {
+        font-weight: 300 !important;
+    }
+    .divider-custom {
+        margin: 0 0 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .divider-custom .divider-custom-line {
+        width: 100%;
+        max-width: 7rem;
+        height: 0.25rem;
+        background-color: #2c3e50;
+        border-radius: 1rem;
+        border-color: #2c3e50 !important;
+    }
+    .divider-custom .divider-custom-line:first-child {
+        margin-right: 1rem;
+    }
+    .divider-custom .divider-custom-line:last-child {
+        margin-left: 1rem;
+    }
+    .divider-custom .divider-custom-icon {
+        color: #2c3e50 !important;
+        font-size: 2rem;
+    }
+    .divider-custom.divider-light .divider-custom-line {
+        background-color: white;
     }
 
     h1{
@@ -168,19 +215,11 @@
         text-align: center;
     }
 
-    input{
-        width: 278px;
-        height: 18px;
-        margin-bottom: 10px;
-        outline: none;
-        padding: 10px;
-        font-size: 13px;
-        color: black;
-        border-top: 1px solid #312E3D;
-        border-left: 1px solid #312E3D;
-        border-right: 1px solid #312E3D;
-        border-bottom: 1px solid #56536A;
-        border-radius: 4px;
+    hr{
+        width: 0;
+        height: 20px;
+        background-color: white;
+        margin-right: 60px;
     }
 
     .but {
@@ -207,11 +246,25 @@
         margin: 0;
     }
 
+    input{
+        width: 278px;
+        height: 18px;
+        margin-bottom: 10px;
+        outline: none;
+        padding: 10px;
+        font-size: 13px;
+        color: black;
+        border-top: 1px solid #312E3D;
+        border-left: 1px solid #312E3D;
+        border-right: 1px solid #312E3D;
+        border-bottom: 1px solid #56536A;
+        border-radius: 4px;
+    }
+
     button {
         width: 40px;
         height: 40px;
         background-color: deepskyblue;
-        margin-right: 8px;
         color: white;
         border-radius: 50%;
     }
