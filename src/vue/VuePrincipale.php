@@ -90,6 +90,7 @@ END;
 END;
     }
 
+
     public function htmlAccueil(){
         return <<< END
 			<div class="entete">

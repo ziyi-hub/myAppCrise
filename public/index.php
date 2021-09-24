@@ -28,13 +28,13 @@ $app->get('/',
     }
 )->setName('accueil');
 
-/*
+
 $app->get('/liste', function ($request, $response, array $args) {
     $controleur = new ControleurCrise(AppFactory::create()->getContainer());
     $response = $controleur->getUtilisateurs($request, $response, $args);
     return $response;
 })->setName('liste');
-*/
+
 
 $app->get('/inscription',
     function (Request $request, Response $response, $args): Response {

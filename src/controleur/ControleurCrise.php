@@ -18,17 +18,17 @@ class ControleurCrise
         $this->container = $container;
     }
 
-/*
+
     public function getUtilisateurs(Request $rq, Response $rs, array $args ): Response {
         $liste = Utilisateurs::all();
         if (!is_null($liste)){
-            $vue = new VuePrincipale([$liste]);
+            $vue = new VuePrincipale([$liste], $this->container);
             //$basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
             $rs->getBody()->write($vue->getVueUser());
         }
         return $rs;
     }
-*/
+
 
     function getAccueil(Request $rq, Response $rs, array $args ): Response {
         $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
