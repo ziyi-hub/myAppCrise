@@ -85,8 +85,7 @@ END;
                             <button class="but" type="submit">Connexion</button>
                         </form>
                         <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
-                    </div>
-                 		
+                    </div>     		
             </div>
 END;
     }
@@ -95,8 +94,7 @@ END;
     public function htmlAccueil(){
         return <<< END
 			<div class="entete">
-			<h1>
-			<div class = "contenu">
+			<h1><div class = "contenu">
 				<div class="container3 d-flex align-items-center flex-column">
                     <div class="container3 d-flex align-items-center flex-column">
                         <h1 class="masthead-heading text-uppercase mb-0">Welcome to myAppCrise</h1>
@@ -108,8 +106,7 @@ END;
                         <p class="masthead-subheading font-weight-light mb-0">Offrez-vous le Premium! <br>Profiter de l'essai gratuit</p>
                     </div>
 				</div>
-			</div>
-            </h1>
+			</div></h1>
 END;
     }
 
@@ -145,7 +142,7 @@ END;
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href=$liencss>
-		<title>myJukeBox</title>
+		<title>myAppCrise</title>
 	</head>
 	<body>
 		<header>
