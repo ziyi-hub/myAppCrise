@@ -74,18 +74,18 @@ END;
         $inscription = $this->htmlvars['inscription'];
         return <<<END
 			<div class="entete4">
-                    <div id="login">
-                        <h1>Connexion</h1>
-                        <form method="POST" action="#" id="formvalider">
-                            <input type="text" required="required" placeholder="Identifiant" name="user" id="user">
-                            <div class="div-bor">
-                                <input type="password" required="required" placeholder="Mot de passe" name="password" id="password">
-                                <i class="icon-user3" id="icon-user3"></i>
-                            </div>
-                            <button class="but" type="submit">Connexion</button>
-                        </form>
-                        <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
-                    </div>     		
+                <div id="login">
+                    <h1>Connexion</h1>
+                    <form method="POST" action="#" id="formvalider">
+                        <input type="text" required="required" placeholder="Identifiant" name="user" id="user" >
+                        <div class="div-bor">
+                            <input type="password" required="required" placeholder="Mot de passe" name="password" id="password" >
+                            <i class="icon-user3" id="icon-user3"></i>
+                        </div>
+                        <button class="but" type="submit">Connexion</button>
+                    </form>
+                    <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
+                </div>     		
             </div>
 END;
     }
@@ -93,7 +93,7 @@ END;
 
     public function htmlAccueil(){
         return <<< END
-			<div class="entete">
+		<div class="entete">
 			<h1><div class = "contenu">
 				<div class="container3 d-flex align-items-center flex-column">
                     <div class="container3 d-flex align-items-center flex-column">
@@ -106,7 +106,8 @@ END;
                         <p class="masthead-subheading font-weight-light mb-0">Offrez-vous le Premium! <br>Profiter de l'essai gratuit</p>
                     </div>
 				</div>
-			</div></h1>
+		    </div></h1>
+        </div>
 END;
     }
 
