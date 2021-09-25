@@ -3,7 +3,6 @@
 
 namespace crise\vue;
 
-
 class VuePrincipale
 {
     private $data;
@@ -43,6 +42,41 @@ class VuePrincipale
         return $html;
     }
 
+    private function AfficherIden() {
+        $l = $this->data[0];
+        if ($l->RoleID === 2){
+            $html = <<<END
+<div class="infoProfil">PROFIL #N°$l->idProfil<div class="infoProfil_item">$l->nomUtilisateur</div>Administrateur</div>
+END;
+        }else{
+            $html = <<<END
+<div class="infoProfil">PROFIL #N°$l->idProfil<div class="infoProfil_item">$l->nomUtilisateur</div>Utilisateur-inscrit</div>
+END;
+        }
+        return $html;
+    }
+
+    private function VerifAdmi() {
+        $role = $_SESSION["profile"]["role_id"];
+        $monCompte = $this->htmlvars['monCompte'];
+        if ($role === 2){
+            $html = <<<END
+<li><div id="triangle"></div></li>
+<li><a href=$monCompte>Mon Compte</a></li>
+<li><a href="#">Gérer compte</a></li>
+<li><a href="#">Déconnexion</a></li>
+END;
+        }else{
+            $html = <<<END
+<li><div id="triangle"></div></li>
+<li><a href=$monCompte>Mon Compte</a></li>
+<li><a href="#">Déconnexion</a></li>
+END;
+        }
+        return $html;
+    }
+
+
     public function htmlInscription(){
         $connexion = $this->htmlvars['connexion'];
         $action = $this->htmlvars['validerInscription'];
@@ -71,12 +105,13 @@ END;
 
 
     public function htmlConnexion(){
+        $validerConnexion = $this->htmlvars['validerConnexion'];
         $inscription = $this->htmlvars['inscription'];
         return <<<END
 			<div class="entete4">
                 <div id="login">
                     <h1>Connexion</h1>
-                    <form method="POST" action="#" id="formvalider">
+                    <form method="POST" action="$validerConnexion" id="formvalider">
                         <input type="text" required="required" placeholder="Identifiant" name="user" id="user" >
                         <div class="div-bor">
                             <input type="password" required="required" placeholder="Mot de passe" name="password" id="password" >
@@ -109,6 +144,46 @@ END;
 		    </div></h1>
         </div>
 END;
+    }
+
+
+    public function htmlCompte(){
+        $affichageProfil = $this->AfficherIden();
+        return <<< END
+			<div class="entete2">
+                <div class="alignement2">
+                    <div class="d"><a href="#">Filtrer</a></div>
+                    <div class="d"><a href="#">Group</a></div>
+                </div>	
+				<div class="monCompte">
+				    <div id="profil">
+                        <div class="c1" id="c1">
+                             <div id="prompt3">
+                                <span id="imgSpan">Click upload image<br /></span>
+                                <input type="file" id="file" class="filepath" onchange="" accept="image/jpg,image/jpeg,image/png,image/PNG">
+                             </div>
+                             <img src="#" id="img3"/>        
+                        </div>
+                        $affichageProfil
+                    </div>
+                    <div class="c2">
+                        <h2>Changer le mot de passe</h2>
+                        <form method="post" action="#" id="formvalider">
+                            <div class="div-bor">
+                                <input type="password" name="amdp" id="amdp" placeholder="Ancien mot de passe" required><br>
+                                <i class="icon-user4" id="icon-user4"></i>
+                            </div>
+                            <div class="div-bor">
+                                <input type="password" name="mdp" id="mdp" placeholder="Nouveau mot de passe" required><br>
+                                <i class="icon-user5" id="icon-user5"></i>
+                            </div>
+                            <button type="submit" class="but" id="submit">Modifier</button>
+                        </form>                      
+                    </div>
+                </div>	
+            </div>
+END;
+
     }
 
 
@@ -151,7 +226,7 @@ END;
 				<div class="logo"></div>
 				<div class="container">
 					<div class="d"><a href=$accueil>Accueil</a></div>
-					<div class="d"><a href="#">Messagerie</a></div>
+					<div class="d"><a href="#">myAppCrise</a></div>
 					<hr>
 					<div class="d"><a href=$connexion>Connexion</a></div>
 					<div class="d"><a href="$inscription">Inscription</a></div>
@@ -168,6 +243,69 @@ END;
 	</body>
 </html>
 END;
-
     }
+
+
+    public function renderConnecte($s, $h) {
+        $this->selecteur = $s;
+        $this->htmlvars = $h;
+        $accueil = $this->htmlvars['accueil'];
+        $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
+        $img = $this->htmlvars['basepath'].'/public/web/images/tirer.png';
+        $liste = $this->VerifAdmi();
+
+        switch ($this->selecteur) {
+
+            case self::COMPTE_VIEW: {
+                $content = $this->htmlCompte();
+                break;
+            }
+
+            case self::ACCUEIL_VIEW: {
+                $content = $this->htmlAccueil();
+                break;
+            }
+        }
+
+        $html = <<<END
+        <!DOCTYPE html>
+        <html lang=fr>
+            <head>
+                <meta charset="UTF-8">
+                <link rel="stylesheet" href=$liencss>
+                <title>myJukeBox</title>
+            </head>
+            <body>
+                <header>
+                    <div class="alignement">
+                        <div class="logo"></div>
+                        <div class="container">
+                            <div class="d"><a href=$accueil>Accueil</a></div>
+                            <div class="d"><a href="#">myAppCrise</a></div>
+                            <hr>
+                            <div class="d">
+                                <li class="drop-down">
+                                    <a href="#">Profil <img src=$img alt="tirer.png"></a> 
+                                    <ul class="drop-down-content">
+                                        $liste
+                                    </ul>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    $content
+                </header>
+                <footer>
+                    <div class="bas">
+                        <div class="contact">Nous contacter</div>
+                        <span>©2020 myJukeBox | et autres régimes</span>
+                    </div>
+                </footer>
+            </body>
+        </html>
+        END;
+        return $html;
+    }
+
+
 }

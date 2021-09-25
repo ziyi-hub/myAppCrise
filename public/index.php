@@ -8,6 +8,7 @@ use Selective\BasePath\BasePathMiddleware;
 use crise\controleur\ControleurCrise;
 use Slim\Factory\AppFactory;
 
+session_start();
 $config = require_once '../src/conf/settings.php';
 $db = new DB();
 $db->addConnection(parse_ini_file($config['settings']['dbfile']));
@@ -62,6 +63,23 @@ $app->post('/validerInscription',
     }
 )->setName('validerInscription');
 
+
+$app->post('/validerConnexion',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->validerConnexion($req, $response, $args);
+        return $response;
+    }
+)->setName('validerConnexion');
+
+
+$app->get('/monCompte',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getMonCompte($req, $response, $args);
+        return $response;
+    }
+)->setName('monCompte');
 
 
 $app->run();

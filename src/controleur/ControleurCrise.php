@@ -27,13 +27,17 @@ class ControleurCrise
         $inscription = $routeParser->urlFor('inscription');
         $accueil = $routeParser->urlFor('accueil');
         $connexion = $routeParser->urlFor('connexion');
+        $monCompte = $routeParser->urlFor('monCompte');
         $validerInscription = $routeParser->urlFor('validerInscription');
+        $validerConnexion = $routeParser->urlFor('validerConnexion');
         $this->htmlvars = [
             'basepath' => $basePath,
             'inscription' => $inscription,
             'accueil' => $accueil,
             'connexion' => $connexion,
             'validerInscription' => $validerInscription,
+            'monCompte' => $monCompte,
+            'validerConnexion' => $validerConnexion,
         ];
         return $rs;
     }
@@ -64,12 +68,14 @@ class ControleurCrise
         return $rs;
     }
 
+
     function getConnexion(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(3, $this->htmlvars));
         return $rs;
     }
+
 
     public function validerInscription(Request $rq, Response $rs, array $args ):Response{
         $this->initiale($rq, $rs, $args);
@@ -98,8 +104,57 @@ class ControleurCrise
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(4, $this->htmlvars));
         }else{
+            echo "<script>alert('Compte n\'existe pas')</script>";
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(4, $this->htmlvars));
+        }
+        return $rs;
+    }
+
+
+    public function validerConnexion(Request $rq, Response $rs, array $args ):Response{
+        $this->initiale($rq, $rs, $args);
+        $Login = $_POST['user'];
+        $password = $_POST['password'];
+        $eloquentResult = Utilisateurs::query()
+            ->where('nomUtilisateur','=', $Login)
+            ->firstOr();
+
+        if (!is_null($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
+            $user = Utilisateurs::find($eloquentResult->idUtilisateur);
+
+            if(empty($_SESSION['profile'])){
+                $_SESSION['profile'] = array(
+                    'id'         => $user->idUtilisateur,
+                    'username'   => $user->nomUtilisateur,
+                    'role_id'    => $user->roleId,
+                    'mdp'        => $user->motDePasse,
+                );
+            }
+            $vue = new VuePrincipale([$eloquentResult], $this->container);
+            $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
+        }else{
+            echo "<script>alert('Attention! Le mot de passe incorrect! ')</script>";
+            $vue = new VuePrincipale([], $this->container);
+            $rs->getBody()->write($vue->render(3, $this->htmlvars));
+        }
+        return $rs;
+    }
+
+
+    public function getMonCompte(Request $rq, Response $rs, array $args ):Response{
+        $this->initiale($rq, $rs, $args);
+        if ($_SESSION['profile']['id'] ?? ''){
+            $eloquentResult = Utilisateurs::query()
+                ->where('idUtilisateur', '=', $_SESSION['profile']['id'])
+                ->firstOr();
+            if (!is_null($eloquentResult)) {
+                $vue = new VuePrincipale([$eloquentResult], $this->container);
+                $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
+            }
+        }else{
+            $vue = new VuePrincipale([], $this->container);
+            $rs->getBody()->write($vue->render(3, $this->htmlvars));
         }
         return $rs;
     }

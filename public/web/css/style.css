@@ -50,6 +50,15 @@
         color: white;
     }
 
+    .entete2{
+        display: grid;
+        margin-top:13px;
+        width: 100%;
+        height: 85%;
+        position: absolute;
+        grid-template-rows: 8%;
+    }
+
     .contenu {
         width: 100%;
         height: 100%;
@@ -78,6 +87,20 @@
         color: purple;
     }
 
+    ul, li{
+        list-style: none;
+    }
+
+    ul a{
+        text-align: center;
+        line-height: 40px;
+        color: mediumspringgreen;
+        background-color: #3d5afe;
+        display: block;
+        width: 135px;
+        height: 40px;
+    }
+
     footer {
         display: flex;
         flex-direction: column;
@@ -94,6 +117,37 @@
         height: 150px;
     }
 
+    #triangle{
+        border-bottom: 10px solid #3d5afe;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        width: 0;
+        height: 0;
+        margin-left: 52px;
+    }
+
+    .drop-down{
+        position: relative;
+        z-index: 9999;
+        width: 70px;
+    }
+
+    .drop-down-content li:hover a{
+        background-image: repeating-linear-gradient(blueviolet, blue);
+    }
+
+    .drop-down-content{
+        position: absolute;
+        width: 135px;
+        margin: 0;
+        padding-top: 10px;
+        padding-left: 0;
+        display: flow;
+        height: 0;
+        overflow: hidden;
+        transition: all 1s ease;
+    }
+
     .alignement {
         display: flex;
         justify-content: space-between;
@@ -102,6 +156,101 @@
         height: 60px;
         color: white;
     }
+
+    .alignement2{
+        align-self: start;
+        border-top:6px darkred solid;
+        background-color: black;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        height:60px;
+        color: darkred;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .monCompte{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        block-size: auto;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-shadow:0 0 10px;
+        letter-spacing: 1px;
+        text-align: center;
+        background-color: mistyrose;
+        background-image:linear-gradient(to bottom, #9d9b9b 0%, #373737 51%);
+    }
+
+    .c1{
+        width: 200px;
+        height: 200px;
+        background-image: url(../images/profil.png);
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        text-align: center;
+        position: relative;
+        box-shadow: black 0 0 30px;
+    }
+
+    #prompt3 {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    #imgSpan {
+        position: absolute;
+        bottom: 90px;
+        right: 30px;
+        text-align: center;
+        color: darkred;
+        align-content: center;
+        z-index: 100;
+    }
+
+    .filepath {
+        width: 90%;
+        height: 90%;
+        opacity: 0;
+    }
+
+    #img3 {
+        height: 100%;
+        width: 100%;
+        display: none;
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    #profil{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        margin-right: 150px;
+    }
+
+    .infoProfil{
+        display: flex;
+        flex-direction: column;
+        align-items:self-end;
+        text-align: left;
+        justify-content: flex-end;
+        margin-left: 30px;
+    }
+
+    .infoProfil_item{
+        font-size: 6em;
+        font-family: "Times New Roman",Times,serif;
+        padding: 0.08em 0;
+        line-height: 96px;
+    }
+
 
     .alignement > div {
         width: 13%;
