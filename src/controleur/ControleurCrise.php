@@ -2,7 +2,7 @@
 
 
 namespace crise\controleur;
-use crise\models\Messages;
+use crise\models\Profil;
 use crise\models\Utilisateurs;
 use crise\vue\VuePrincipale;
 use Slim\Routing\RouteContext;
@@ -14,6 +14,7 @@ class ControleurCrise
     private $htmlvars;
     private $container;
 
+
     public function __construct($container)
     {
         $this->container = $container;
@@ -21,7 +22,7 @@ class ControleurCrise
 
 
     public function initiale(Request $rq, Response $rs, array $args ): Response {
-        $basePath = \Slim\Routing\RouteContext::fromRequest($rq)->getBasePath();
+        $basePath = RouteContext::fromRequest($rq)->getBasePath();
         $routeParser = RouteContext::fromRequest($rq)->getRouteParser();
         $inscription = $routeParser->urlFor('inscription');
         $accueil = $routeParser->urlFor('accueil');
@@ -79,10 +80,16 @@ class ControleurCrise
         if (($MotDePasse === $MotDePasse2)&&(strpos($NomUtilisateur, ' ') === false)){
             $hash = password_hash($MotDePasse, PASSWORD_DEFAULT);
             $utilisateur = new Utilisateurs();
+            $profil = new Profil();
             $utilisateur->nomUtilisateur = $NomUtilisateur;
             $utilisateur->motDePasse = $hash;
             $utilisateur->roleId = 1;
+            $profil->roleId = 1;
+            $profil->codeProfil = "admin";
+            $profil->save();
+            $utilisateur->idProfil = $profil->idProfil;
             $utilisateur->save();
+
             echo "<script>alert('Inscription réussie')</script>";
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(3, $this->htmlvars));
