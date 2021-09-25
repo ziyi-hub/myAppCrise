@@ -34,7 +34,7 @@
     }
 
     .entete{
-        background-image: url(../images/background.jpg);
+        background-image: url(../images/background3.jpg);
         overflow: scroll;
         background-size: cover;
         background-attachment: fixed;
@@ -86,7 +86,7 @@
         justify-content: center;
         z-index: 9999;
         color: black;
-        background-color: #CCCCCC;
+        background-color: #ebdfee;
         width: 100%;
     }
 
