@@ -60,23 +60,14 @@ END;
     private function VerifAdmi() {
         $html = null;
         if (!empty($_SESSION["profile"])){
-            $role = $_SESSION["profile"]["role_id"];
             $monCompte = $this->htmlvars['monCompte'];
             $deconnexion = $this->htmlvars['deconnexion'];
-            if ($role === 2){
-                $html = <<<END
+            $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$monCompte>Mon Compte</a></li>
 <li><a href="#">Gérer compte</a></li>
 <li><a href=$deconnexion>Déconnexion</a></li>
 END;
-            }else{
-                $html = <<<END
-<li><div id="triangle"></div></li>
-<li><a href=$monCompte>Mon Compte</a></li>
-<li><a href=$deconnexion>Déconnexion</a></li>
-END;
-            }
         }
         return $html;
     }
