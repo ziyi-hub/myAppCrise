@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 23 sep. 2021 à 11:44
+-- Généré le : sam. 25 sep. 2021 à 02:16
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 7.4.12
 
@@ -88,7 +88,8 @@ INSERT INTO `Messages` (`idMessage`, `content`, `tempsEnvoi`) VALUES
 CREATE TABLE `Profil` (
   `idProfil` int(50) NOT NULL,
   `codeProfil` varchar(12) NOT NULL DEFAULT 'Admin',
-  `roleId` int(10) NOT NULL
+  `roleId` int(10) NOT NULL,
+  `statut` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -100,20 +101,10 @@ CREATE TABLE `Profil` (
 CREATE TABLE `Utilisateurs` (
   `idUtilisateur` int(10) NOT NULL,
   `nomUtilisateur` varchar(50) NOT NULL,
-  `motDePasse` int(50) NOT NULL,
-  `statut` varchar(50) NOT NULL,
+  `motDePasse` varchar(100) NOT NULL,
   `roleId` int(11) DEFAULT NULL,
   `idProfil` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `Utilisateurs`
---
-
-INSERT INTO `Utilisateurs` (`idUtilisateur`, `nomUtilisateur`, `motDePasse`, `statut`, `roleId`, `idProfil`) VALUES
-(5, 'Ziyiiiii', 20001027, 'non', NULL, NULL),
-(6, 'Yifan', 20001027, 'non', NULL, NULL),
-(7, 'Yujia', 20001027, 'non', NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -190,13 +181,13 @@ ALTER TABLE `Messages`
 -- AUTO_INCREMENT pour la table `Profil`
 --
 ALTER TABLE `Profil`
-  MODIFY `idProfil` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProfil` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `Utilisateurs`
 --
 ALTER TABLE `Utilisateurs`
-  MODIFY `idUtilisateur` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idUtilisateur` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Contraintes pour les tables déchargées
