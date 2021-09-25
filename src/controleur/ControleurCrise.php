@@ -30,6 +30,9 @@ class ControleurCrise
         $monCompte = $routeParser->urlFor('monCompte');
         $validerInscription = $routeParser->urlFor('validerInscription');
         $validerConnexion = $routeParser->urlFor('validerConnexion');
+        $deconnexion = $routeParser->urlFor('deconnexion');
+        $home = $routeParser->urlFor('home');
+
         $this->htmlvars = [
             'basepath' => $basePath,
             'inscription' => $inscription,
@@ -38,6 +41,8 @@ class ControleurCrise
             'validerInscription' => $validerInscription,
             'monCompte' => $monCompte,
             'validerConnexion' => $validerConnexion,
+            'deconnexion' => $deconnexion,
+            'home' => $home,
         ];
         return $rs;
     }
@@ -56,7 +61,19 @@ class ControleurCrise
     function getAccueil(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
-        $rs->getBody()->write($vue->render(2, $this->htmlvars));
+        if(!empty($_SESSION['profile'])){
+            $rs->getBody()->write($vue->renderConnecte(2, $this->htmlvars));
+        }else{
+            $rs->getBody()->write($vue->render(2, $this->htmlvars));
+        }
+        return $rs;
+    }
+
+
+    function getHome(Request $rq, Response $rs, array $args ): Response {
+        $this->initiale($rq, $rs, $args);
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->renderConnecte(5, $this->htmlvars));
         return $rs;
     }
 
@@ -156,6 +173,16 @@ class ControleurCrise
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(3, $this->htmlvars));
         }
+        return $rs;
+    }
+
+
+    public function deconnexion(Request $rq, Response $rs, array $args ):Response{
+        if($_SESSION['profile']['id'] ?? '')
+        {
+            session_unset();
+        }
+        $this->getConnexion($rq, $rs, $args);
         return $rs;
     }
 

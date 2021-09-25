@@ -13,6 +13,7 @@ class VuePrincipale
     const ACCUEIL_VIEW = 2;
     const CONNEXION_VIEW = 3;
     const INSCRIPTION_VIEW = 4;
+    const HOME_VIEW = 5;
 
     public function __construct(array $d, $container)
     {
@@ -57,21 +58,25 @@ END;
     }
 
     private function VerifAdmi() {
-        $role = $_SESSION["profile"]["role_id"];
-        $monCompte = $this->htmlvars['monCompte'];
-        if ($role === 2){
-            $html = <<<END
+        $html = null;
+        if (!empty($_SESSION["profile"])){
+            $role = $_SESSION["profile"]["role_id"];
+            $monCompte = $this->htmlvars['monCompte'];
+            $deconnexion = $this->htmlvars['deconnexion'];
+            if ($role === 2){
+                $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$monCompte>Mon Compte</a></li>
 <li><a href="#">Gérer compte</a></li>
-<li><a href="#">Déconnexion</a></li>
+<li><a href=$deconnexion>Déconnexion</a></li>
 END;
-        }else{
-            $html = <<<END
+            }else{
+                $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$monCompte>Mon Compte</a></li>
-<li><a href="#">Déconnexion</a></li>
+<li><a href=$deconnexion>Déconnexion</a></li>
 END;
+            }
         }
         return $html;
     }
@@ -139,6 +144,21 @@ END;
                             <div class="divider-custom-line"></div>
                         </div>
                         <p class="masthead-subheading font-weight-light mb-0">Offrez-vous le Premium! <br>Profiter de l'essai gratuit</p>
+                    </div>
+				</div>
+		    </div></h1>
+        </div>
+END;
+    }
+
+
+    public function htmlHome(){
+        return <<< END
+        <div class="entete">
+			<h1><div class = "contenu">
+				<div class="container3 d-flex align-items-center flex-column">
+                    <div class="container3 d-flex align-items-center flex-column">
+                        <h1 class="masthead-heading text-uppercase mb-0">ici est HOME de myAppCrise</h1>
                     </div>
 				</div>
 		    </div></h1>
@@ -249,6 +269,7 @@ END;
     public function renderConnecte($s, $h) {
         $this->selecteur = $s;
         $this->htmlvars = $h;
+        $home = $this->htmlvars['home'];
         $accueil = $this->htmlvars['accueil'];
         $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
         $img = $this->htmlvars['basepath'].'/public/web/images/tirer.png';
@@ -263,6 +284,11 @@ END;
 
             case self::ACCUEIL_VIEW: {
                 $content = $this->htmlAccueil();
+                break;
+            }
+
+            case self::HOME_VIEW: {
+                $content = $this->htmlHome();
                 break;
             }
         }
@@ -281,7 +307,7 @@ END;
                         <div class="logo"></div>
                         <div class="container">
                             <div class="d"><a href=$accueil>Accueil</a></div>
-                            <div class="d"><a href="#">myAppCrise</a></div>
+                            <div class="d"><a href=$home>myAppCrise</a></div>
                             <hr>
                             <div class="d">
                                 <li class="drop-down">

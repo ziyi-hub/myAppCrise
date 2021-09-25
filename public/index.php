@@ -82,4 +82,22 @@ $app->get('/monCompte',
 )->setName('monCompte');
 
 
+$app->get('/deconnexion',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->deconnexion($req, $response, $args);
+        return $response;
+    }
+)->setName('deconnexion');
+
+
+$app->get('/home',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getHome($req, $response, $args);
+        return $response;
+    }
+)->setName('home');
+
+
 $app->run();
