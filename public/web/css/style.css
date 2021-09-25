@@ -33,7 +33,7 @@
         margin-right: 60px;
     }
 
-    .entete{
+    .entete, .entete2{
         background-image: url(../images/background3.jpg);
         overflow: scroll;
         background-size: cover;
@@ -51,9 +51,6 @@
     }
 
     .entete2{
-        display: grid;
-        margin-top:13px;
-        width: 100%;
         height: 85%;
         position: absolute;
         grid-template-rows: 8%;
@@ -182,8 +179,7 @@
         text-shadow:0 0 10px;
         letter-spacing: 1px;
         text-align: center;
-        background-color: mistyrose;
-        background-image:linear-gradient(to bottom, #9d9b9b 0%, #373737 51%);
+
     }
 
     .c1{
