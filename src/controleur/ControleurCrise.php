@@ -121,7 +121,6 @@ class ControleurCrise
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(4, $this->htmlvars));
         }else{
-            echo "<script>alert('Compte n\'existe pas')</script>";
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(4, $this->htmlvars));
         }
@@ -133,11 +132,8 @@ class ControleurCrise
         $this->initiale($rq, $rs, $args);
         $Login = $_POST['user'];
         $password = $_POST['password'];
-        $eloquentResult = Utilisateurs::query()
-            ->where('nomUtilisateur','=', $Login)
-            ->firstOr();
-
-        if (!is_null($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
+        $eloquentResult = Utilisateurs::query()->where('nomUtilisateur','=', $Login)->firstOr();
+        if (!empty($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
             $user = Utilisateurs::find($eloquentResult->idUtilisateur);
 
             if(empty($_SESSION['profile'])){
@@ -155,6 +151,7 @@ class ControleurCrise
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(3, $this->htmlvars));
         }
+        // echo "<script>alert('Compte n\'existe pas')</script>";
         return $rs;
     }
 

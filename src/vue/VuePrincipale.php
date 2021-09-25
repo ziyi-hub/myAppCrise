@@ -155,13 +155,13 @@ END;
     public function htmlHome(){
         return <<< END
         <div class="entete">
-			<h1><div class = "contenu">
-				<div class="container3 d-flex align-items-center flex-column">
-                    <div class="container3 d-flex align-items-center flex-column">
-                        <h1 class="masthead-heading text-uppercase mb-0">ici est HOME de myAppCrise</h1>
-                    </div>
-				</div>
-		    </div></h1>
+            <div class="alignement2">
+                <div class="d"><a href="#">Filtrer</a></div>
+                <div class="d"><a href="#">Group</a></div>
+            </div>	
+			<div class = "catalogue2">
+                <h1 class="masthead-heading text-uppercase mb-0">ici est HOME de myAppCrise</h1>
+		    </div>
         </div>
 END;
     }
@@ -246,7 +246,7 @@ END;
 				<div class="logo"></div>
 				<div class="container">
 					<div class="d"><a href=$accueil>Accueil</a></div>
-					<div class="d"><a href="#">myAppCrise</a></div>
+					<div class="d"><a href=$connexion>myAppCrise</a></div>
 					<hr>
 					<div class="d"><a href=$connexion>Connexion</a></div>
 					<div class="d"><a href="$inscription">Inscription</a></div>
