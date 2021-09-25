@@ -100,4 +100,13 @@ $app->get('/home',
 )->setName('home');
 
 
+$app->post('/modifMotDePasse',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->modifierMotDePasse($req, $response, $args);
+        return $response;
+    }
+)->setName('modifMotDePasse');
+
+
 $app->run();

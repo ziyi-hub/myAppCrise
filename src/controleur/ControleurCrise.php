@@ -32,6 +32,7 @@ class ControleurCrise
         $validerConnexion = $routeParser->urlFor('validerConnexion');
         $deconnexion = $routeParser->urlFor('deconnexion');
         $home = $routeParser->urlFor('home');
+        $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
 
         $this->htmlvars = [
             'basepath' => $basePath,
@@ -43,6 +44,7 @@ class ControleurCrise
             'validerConnexion' => $validerConnexion,
             'deconnexion' => $deconnexion,
             'home' => $home,
+            'modifMotDePasse' => $modifMotDePasse,
         ];
         return $rs;
     }
@@ -169,6 +171,30 @@ class ControleurCrise
         }else{
             $vue = new VuePrincipale([], $this->container);
             $rs->getBody()->write($vue->render(3, $this->htmlvars));
+        }
+        return $rs;
+    }
+
+
+    public function modifierMotDePasse(Request $rq, Response $rs, array $args ):Response{
+        $this->initiale($rq, $rs, $args);
+        $AncienMdp = $_POST['amdp'];
+        $MotDePasse = $_POST['mdp'];
+        if ($_SESSION['profile']['id'] ?? ''){
+            $eloquentResult = Utilisateurs::query()
+                ->where('idUtilisateur', '=', $_SESSION['profile']['id'])
+                ->firstOr();
+            if (password_verify($AncienMdp, $eloquentResult->motDePasse) === true){
+                $eloquentResult->motDePasse = password_hash($MotDePasse, PASSWORD_DEFAULT);
+                $eloquentResult->save();
+                echo "<script>alert('Modification réussie')</script>";
+                session_unset();
+                $vue = new VuePrincipale([], $this->container);
+                $rs->getBody()->write($vue->render(3, $this->htmlvars));
+            }else{
+                echo "<script>alert('Attention! Ancien mot de passe incorrect! ')</script>";
+                $this->getMonCompte($rq, $rs, $args);
+            }
         }
         return $rs;
     }

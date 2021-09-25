@@ -172,6 +172,7 @@ END;
 
 
     public function htmlCompte(){
+        $modifMotDePasse = $this->htmlvars['modifMotDePasse'];
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/compte.js";
         $affichageProfil = $this->AfficherIden();
         return <<< END
@@ -191,9 +192,9 @@ END;
                         </div>
                         $affichageProfil
                     </div>
-                    <div class="c2">
+                    <div id="login">
                         <h2>Changer le mot de passe</h2>
-                        <form method="post" action="#" id="formvalider">
+                        <form method="post" action="$modifMotDePasse" id="formvalider">
                             <div class="div-bor">
                                 <input type="password" name="amdp" id="amdp" placeholder="Ancien mot de passe" required><br>
                                 <i class="icon-user4" id="icon-user4"></i>
@@ -203,14 +204,12 @@ END;
                                 <i class="icon-user5" id="icon-user5"></i>
                             </div>
                             <button type="submit" class="but" id="submit">Modifier</button>
-                        </form>                      
-                    </div>
+                        </form> 
+                        </div>                     
                 </div>	
             </div>
         <script type="text/javascript" src="$lienjs" defer></script>
-
 END;
-
     }
 
 
@@ -236,7 +235,6 @@ END;
                 $content = $this->htmlInscription();
                 break;
             }
-
         }
 
         return <<< END
