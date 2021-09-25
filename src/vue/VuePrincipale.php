@@ -83,6 +83,7 @@ END;
 
 
     public function htmlInscription(){
+        $lienjs = $this->htmlvars['basepath']."/public/web/javascript/inscription.js";
         $connexion = $this->htmlvars['connexion'];
         $action = $this->htmlvars['validerInscription'];
         return <<< END
@@ -105,11 +106,13 @@ END;
                     <h3>Un compte? Connectez-vous <a id = 'ici' href="$connexion">ici</a> !</h3>
                </div> 		
             </div>
+        <script type="text/javascript" src="$lienjs" defer></script>
 END;
     }
 
 
     public function htmlConnexion(){
+        $lienjs = $this->htmlvars['basepath']."/public/web/javascript/connexion.js";
         $validerConnexion = $this->htmlvars['validerConnexion'];
         $inscription = $this->htmlvars['inscription'];
         return <<<END
@@ -127,6 +130,7 @@ END;
                     <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
                 </div>     		
             </div>
+        <script type="text/javascript" src="$lienjs" defer></script>
 END;
     }
 
@@ -168,6 +172,7 @@ END;
 
 
     public function htmlCompte(){
+        $lienjs = $this->htmlvars['basepath']."/public/web/javascript/compte.js";
         $affichageProfil = $this->AfficherIden();
         return <<< END
 			<div class="entete2">
@@ -180,9 +185,9 @@ END;
                         <div class="c1" id="c1">
                              <div id="prompt3">
                                 <span id="imgSpan">Click upload image<br /></span>
-                                <input type="file" id="file" class="filepath" onchange="" accept="image/jpg,image/jpeg,image/png,image/PNG">
+                                <input type="file" id="file" class="filepath" onchange="uploadPhoto(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
                              </div>
-                             <img src="#" id="img3"/>        
+                             <img src="#" id="img3" alt="portrait"/>        
                         </div>
                         $affichageProfil
                     </div>
@@ -202,6 +207,8 @@ END;
                     </div>
                 </div>	
             </div>
+        <script type="text/javascript" src="$lienjs" defer></script>
+
 END;
 
     }
