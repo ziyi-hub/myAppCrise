@@ -153,10 +153,9 @@ END;
             <div class="alignement2">
                 <div class="d"><a href="#">Filtrer</a></div>
                 <div class="d"><a href="#">Group</a></div>
+                <div class="d"><a href="#">Localisation</a></div>
             </div>	
-			<div class = "catalogue2">
-                <h1 class="masthead-heading text-uppercase mb-0">ici est HOME de myAppCrise</h1>
-		    </div>
+            <h1>ici est HOME de myAppCrise</h1>
         </div>
 END;
     }
@@ -167,11 +166,7 @@ END;
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/compte.js";
         $affichageProfil = $this->AfficherIden();
         return <<< END
-			<div class="entete2">
-                <div class="alignement2">
-                    <div class="d"><a href="#">Filtrer</a></div>
-                    <div class="d"><a href="#">Group</a></div>
-                </div>	
+			<div class="entete">
 				<div class="monCompte">
 				    <div id="profil">
                         <div class="c1" id="c1">
