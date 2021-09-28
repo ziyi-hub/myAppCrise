@@ -12,13 +12,12 @@ session_start();
 $config = require_once '../src/conf/settings.php';
 $db = new DB();
 $db->addConnection(parse_ini_file($config['settings']['dbfile']));
-$db->bootEloquent();
 $db->setAsGlobal();
+$db->bootEloquent();
 $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $app->add(new BasePathMiddleware($app));
 $app->addErrorMiddleware(true, true, true);
-$container = $app->getContainer();
 
 
 $app->get('/',
