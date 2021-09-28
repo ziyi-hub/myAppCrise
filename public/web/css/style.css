@@ -421,5 +421,10 @@
         margin-top: 5px;
     }
 
+    .radio{
+        display: flex;
+    }
+
+
 }
 

@@ -14,6 +14,7 @@ class VuePrincipale
     const CONNEXION_VIEW = 3;
     const INSCRIPTION_VIEW = 4;
     const HOME_VIEW = 5;
+    const InfoContaminee_VIEW = 6;
 
     public function __construct(array $d, $container)
     {
@@ -62,14 +63,42 @@ END;
         if (!empty($_SESSION["profile"])){
             $monCompte = $this->htmlvars['monCompte'];
             $deconnexion = $this->htmlvars['deconnexion'];
+            $contaminee = $this->htmlvars['contaminee'];
             $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$monCompte>Mon Compte</a></li>
-<li><a href="#">Gérer compte</a></li>
+<li><a href=$contaminee>InfoContaminée</a></li>
 <li><a href=$deconnexion>Déconnexion</a></li>
 END;
         }
         return $html;
+    }
+
+
+    public function htmlContaminee(){
+        return <<< END
+            <div class="entete">
+				<div class="monCompte">
+                    <div id="login">
+                        <h2>Indication contaminée</h2>
+                        <form method="post" action="#" id="formvalider">
+                            <h4>Avez-vous eu une infection Covid-19 symptomatique ?</h4>
+                            <div class="radio">
+                                <label>oui</label><input type="radio" name="conversion1" value="oui" >
+                                <label>non</label><input type="radio" name="conversion1" value="non" checked>
+                            </div>
+                            
+                            <h4>Avez-vous reçu un vaccin ? </h4>
+                            <div class="radio">
+                                <label>oui</label><input type="radio" name="conversion2" value="oui" checked>
+                                <label>non</label><input type="radio" name="conversion2" value="non" >
+                            </div>
+                            <button type="submit" class="but" id="submit">Envoyer</button>
+                        </form> 
+                    </div>                     
+                </div>	
+            </div>
+END;
     }
 
 
@@ -191,7 +220,7 @@ END;
                             </div>
                             <button type="submit" class="but" id="submit">Modifier</button>
                         </form> 
-                        </div>                     
+                    </div>                     
                 </div>	
             </div>
         <script type="text/javascript" src="$lienjs" defer></script>
@@ -282,6 +311,12 @@ END;
                 $content = $this->htmlHome();
                 break;
             }
+
+            case self::InfoContaminee_VIEW: {
+                $content = $this->htmlContaminee();
+                break;
+            }
+
         }
 
         $html = <<<END

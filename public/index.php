@@ -109,4 +109,13 @@ $app->post('/modifMotDePasse',
 )->setName('modifMotDePasse');
 
 
+$app->get('/contaminee',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getInfoContaminee($req, $response, $args);
+        return $response;
+    }
+)->setName('contaminee');
+
+
 $app->run();

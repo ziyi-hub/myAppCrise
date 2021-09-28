@@ -33,6 +33,7 @@ class ControleurCrise
         $deconnexion = $routeParser->urlFor('deconnexion');
         $home = $routeParser->urlFor('home');
         $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
+        $contaminee = $routeParser->urlFor('contaminee');
 
         $this->htmlvars = [
             'basepath' => $basePath,
@@ -45,6 +46,7 @@ class ControleurCrise
             'deconnexion' => $deconnexion,
             'home' => $home,
             'modifMotDePasse' => $modifMotDePasse,
+            'contaminee' => $contaminee,
         ];
         return $rs;
     }
@@ -56,6 +58,14 @@ class ControleurCrise
             $vue = new VuePrincipale([$liste], $this->container);
             $rs->getBody()->write($vue->getVueUser());
         }
+        return $rs;
+    }
+
+
+    public function getInfoContaminee(Request $rq, Response $rs, array $args ): Response {
+        $this->initiale($rq, $rs, $args);
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->renderConnecte(6, $this->htmlvars));
         return $rs;
     }
 
