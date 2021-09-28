@@ -238,6 +238,10 @@
         text-align: left;
         justify-content: flex-end;
         margin-left: 30px;
+        width: 250px;
+        overflow: scroll;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .infoProfil_item{
