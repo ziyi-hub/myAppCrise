@@ -85,12 +85,12 @@ END;
                             <h4>Avez-vous eu une infection Covid-19 symptomatique ?</h4>
                             <div class="radio">
                                 <label>oui</label><input type="radio" name="conversion1" value="oui" >
-                                <label>non</label><input type="radio" name="conversion1" value="non" checked>
+                                <label>non</label><input type="radio" name="conversion1" value="non" >
                             </div>
                             
                             <h4>Avez-vous reçu un vaccin ? </h4>
                             <div class="radio">
-                                <label>oui</label><input type="radio" name="conversion2" value="oui" checked>
+                                <label>oui</label><input type="radio" name="conversion2" value="oui" >
                                 <label>non</label><input type="radio" name="conversion2" value="non" >
                             </div>
                             <button type="submit" class="but" id="submit">Envoyer</button>
@@ -203,7 +203,7 @@ END;
                                 <span id="imgSpan">Click upload image<br /></span>
                                 <input type="file" id="file" class="filepath" onchange="uploadPhoto(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
                              </div>
-                             <img src="#" id="img3" alt="portrait"/>        
+                             <img id="img3" alt="portrait"/>        
                         </div>
                         $affichageProfil
                     </div>
