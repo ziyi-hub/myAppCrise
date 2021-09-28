@@ -118,4 +118,13 @@ $app->get('/contaminee',
 )->setName('contaminee');
 
 
+$app->get('/filtrer',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getFiltrer($req, $response, $args);
+        return $response;
+    }
+)->setName('filtrer');
+
+
 $app->run();

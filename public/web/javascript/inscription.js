@@ -1,8 +1,8 @@
 
 window.onload=function() {
-    var icon = document.getElementById("icon-user");
-    var pass = document.getElementById("MotDePasse")
-    var affichage = true;
+    let icon = document.getElementById("icon-user");
+    let pass = document.getElementById("MotDePasse")
+    let affichage = true;
     icon.onclick = function () {
         if (affichage === true) {
             pass.type = "text"
@@ -12,9 +12,9 @@ window.onload=function() {
         affichage = !affichage
     }
 
-    var icon2=document.getElementById("icon-user2");
-    var pass2=document.getElementById("MotDePasse2")
-    var affichage2 = true;
+    let icon2=document.getElementById("icon-user2");
+    let pass2=document.getElementById("MotDePasse2")
+    let affichage2 = true;
     icon2.onclick=function(){
         if (affichage2 === true){
             pass2.type="text"

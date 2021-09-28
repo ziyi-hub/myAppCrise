@@ -34,6 +34,7 @@ class ControleurCrise
         $home = $routeParser->urlFor('home');
         $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
         $contaminee = $routeParser->urlFor('contaminee');
+        $filtrer = $routeParser->urlFor('filtrer');
 
         $this->htmlvars = [
             'basepath' => $basePath,
@@ -47,6 +48,7 @@ class ControleurCrise
             'home' => $home,
             'modifMotDePasse' => $modifMotDePasse,
             'contaminee' => $contaminee,
+            'filtrer' => $filtrer,
         ];
         return $rs;
     }
@@ -66,6 +68,14 @@ class ControleurCrise
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->renderConnecte(6, $this->htmlvars));
+        return $rs;
+    }
+
+
+    public function getFiltrer(Request $rq, Response $rs, array $args ): Response {
+        $this->initiale($rq, $rs, $args);
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->renderConnecte(7, $this->htmlvars));
         return $rs;
     }
 

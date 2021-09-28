@@ -15,6 +15,7 @@ class VuePrincipale
     const INSCRIPTION_VIEW = 4;
     const HOME_VIEW = 5;
     const InfoContaminee_VIEW = 6;
+    const Filtrer_VIEW = 7;
 
     public function __construct(array $d, $container)
     {
@@ -72,6 +73,20 @@ END;
 END;
         }
         return $html;
+    }
+
+
+    public function htmlFiltrer(){
+        $filtrer = $this->htmlvars['filtrer'];
+        return <<< END
+<div class="entete">
+<form action=$filtrer method="get">
+    <input type="text" name="keywords" id="keywords" onkeyup="">
+    <input type="submit" name="submit" id="submit" value="Filtrer">
+    <div id="showmsg" style="display: none"></div>
+</form>
+</div>
+END;
     }
 
 
@@ -177,10 +192,11 @@ END;
 
 
     public function htmlHome(){
+        $filtrer = $this->htmlvars['filtrer'];
         return <<< END
         <div class="entete">
             <div class="alignement2">
-                <div class="d"><a href="#">Filtrer</a></div>
+                <div class="d"><a href=$filtrer>Filtrer</a></div>
                 <div class="d"><a href="#">Group</a></div>
                 <div class="d"><a href="#">Localisation</a></div>
             </div>	
@@ -314,6 +330,11 @@ END;
 
             case self::InfoContaminee_VIEW: {
                 $content = $this->htmlContaminee();
+                break;
+            }
+
+            case self::Filtrer_VIEW: {
+                $content = $this->htmlFiltrer();
                 break;
             }
 
