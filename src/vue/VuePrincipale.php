@@ -80,11 +80,16 @@ END;
         $filtrer = $this->htmlvars['filtrer'];
         return <<< END
 <div class="entete">
-<form action=$filtrer method="get">
-    <input type="text" name="keywords" id="keywords" onkeyup="">
-    <input type="submit" name="submit" id="submit" value="Filtrer">
-    <div id="showmsg" style="display: none"></div>
-</form>
+    <div class="alignement2">
+        <div class="d"><a href=$filtrer>Filtrer</a></div>
+        <div class="d"><a href="#">Group</a></div>
+        <div class="d"><a href="#">Localisation</a></div>
+    </div>	
+    <form action=$filtrer method="get">
+        <input type="text" name="keywords" id="keywords" onkeyup="">
+        <input type="submit" name="submit" id="submit" value="Filtrer">
+        <div id="showmsg" style="display: none"></div>
+    </form>
 </div>
 END;
     }

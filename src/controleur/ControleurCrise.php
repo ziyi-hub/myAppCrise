@@ -55,7 +55,9 @@ class ControleurCrise
 
 
     public function getUtilisateurs(Request $rq, Response $rs, array $args ): Response {
-        $liste = Utilisateurs::all();
+        $this->initiale($rq, $rs, $args);
+        $tokenliste = $args['nom'];
+        $liste = Utilisateurs::query()->where("nomUtilisateur", "like", "%$tokenliste%")->get();
         if (!is_null($liste)){
             $vue = new VuePrincipale([$liste], $this->container);
             $rs->getBody()->write($vue->getVueUser());
