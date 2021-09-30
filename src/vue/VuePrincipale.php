@@ -76,16 +76,26 @@ END;
     }
 
 
+    private function myAppCrise() {
+        $html = null;
+        if (!empty($_SESSION["profile"])){
+            $filtrer = $this->htmlvars['filtrer'];
+            $html = <<<END
+<li><div id="triangle"></div></li>
+<li><a href=$filtrer>Filtrer</a></li>
+<li><a href="#">Messagerie</a></li>
+<li><a href="#">Localisation</a></li>
+END;
+        }
+        return $html;
+    }
+
+
     public function htmlFiltrer(){
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/filtrer.js";
         $filtrer = $this->htmlvars['filtrer'];
         return <<< END
 <div class="entete">
-    <div class="alignement2">
-        <div class="d"><a href=$filtrer>Filtrer</a></div>
-        <div class="d"><a href="#">Group</a></div>
-        <div class="d"><a href="#">Localisation</a></div>
-    </div>	
     <form action=$filtrer method="get">
         <input type="text" name="keywords" id="keywords" placeholder="Rechercher">
         <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
@@ -198,14 +208,8 @@ END;
 
 
     public function htmlHome(){
-        $filtrer = $this->htmlvars['filtrer'];
         return <<< END
-        <div class="entete">
-            <div class="alignement2">
-                <div class="d"><a href=$filtrer>Filtrer</a></div>
-                <div class="d"><a href="#">Group</a></div>
-                <div class="d"><a href="#">Localisation</a></div>
-            </div>	
+        <div class="entete">	
             <h1>ici est HOME de myAppCrise</h1>
         </div>
 END;
@@ -316,6 +320,7 @@ END;
         $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
         $img = $this->htmlvars['basepath'].'/public/web/images/tirer.png';
         $liste = $this->VerifAdmi();
+        $myAppCrise = $this->myAppCrise();
 
         switch ($this->selecteur) {
 
@@ -360,7 +365,13 @@ END;
                         <div class="logo"></div>
                         <div class="container">
                             <div class="d"><a href=$accueil>Accueil</a></div>
-                            <div class="d"><a href=$home>myAppCrise</a></div>
+                            <div class="d">
+                                <li class="drop-down">
+                                <a href=$home>myAppCrise</a>
+                                    <ul class="drop-down-content">
+                                        $myAppCrise
+                                    </ul>
+                                </div>
                             <hr>
                             <div class="d">
                                 <li class="drop-down">
