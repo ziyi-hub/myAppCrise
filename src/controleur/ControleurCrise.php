@@ -31,7 +31,6 @@ class ControleurCrise
         $validerInscription = $routeParser->urlFor('validerInscription');
         $validerConnexion = $routeParser->urlFor('validerConnexion');
         $deconnexion = $routeParser->urlFor('deconnexion');
-        $home = $routeParser->urlFor('home');
         $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
         $contaminee = $routeParser->urlFor('contaminee');
         $filtrer = $routeParser->urlFor('filtrer');
@@ -45,7 +44,6 @@ class ControleurCrise
             'monCompte' => $monCompte,
             'validerConnexion' => $validerConnexion,
             'deconnexion' => $deconnexion,
-            'home' => $home,
             'modifMotDePasse' => $modifMotDePasse,
             'contaminee' => $contaminee,
             'filtrer' => $filtrer,
@@ -90,14 +88,6 @@ class ControleurCrise
         }else{
             $rs->getBody()->write($vue->render(2, $this->htmlvars));
         }
-        return $rs;
-    }
-
-
-    function getHome(Request $rq, Response $rs, array $args ): Response {
-        $this->initiale($rq, $rs, $args);
-        $vue = new VuePrincipale([], $this->container);
-        $rs->getBody()->write($vue->renderConnecte(5, $this->htmlvars));
         return $rs;
     }
 

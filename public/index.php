@@ -90,15 +90,6 @@ $app->get('/deconnexion',
 )->setName('deconnexion');
 
 
-$app->get('/home',
-    function (Request $req, Response $response, $args): Response {
-        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
-        $response = $controleur->getHome($req, $response, $args);
-        return $response;
-    }
-)->setName('home');
-
-
 $app->post('/modifMotDePasse',
     function (Request $req, Response $response, $args): Response {
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());

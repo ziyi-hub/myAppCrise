@@ -13,7 +13,6 @@ class VuePrincipale
     const ACCUEIL_VIEW = 2;
     const CONNEXION_VIEW = 3;
     const INSCRIPTION_VIEW = 4;
-    const HOME_VIEW = 5;
     const InfoContaminee_VIEW = 6;
     const Filtrer_VIEW = 7;
 
@@ -207,15 +206,6 @@ END;
     }
 
 
-    public function htmlHome(){
-        return <<< END
-        <div class="entete">	
-            <h1>ici est HOME de myAppCrise</h1>
-        </div>
-END;
-    }
-
-
     public function htmlCompte(){
         $modifMotDePasse = $this->htmlvars['modifMotDePasse'];
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/compte.js";
@@ -315,7 +305,7 @@ END;
     public function renderConnecte($s, $h) {
         $this->selecteur = $s;
         $this->htmlvars = $h;
-        $home = $this->htmlvars['home'];
+        $filtrer = $this->htmlvars['filtrer'];
         $accueil = $this->htmlvars['accueil'];
         $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
         $img = $this->htmlvars['basepath'].'/public/web/images/tirer.png';
@@ -331,11 +321,6 @@ END;
 
             case self::ACCUEIL_VIEW: {
                 $content = $this->htmlAccueil();
-                break;
-            }
-
-            case self::HOME_VIEW: {
-                $content = $this->htmlHome();
                 break;
             }
 
@@ -367,7 +352,7 @@ END;
                             <div class="d"><a href=$accueil>Accueil</a></div>
                             <div class="d">
                                 <li class="drop-down">
-                                <a href=$home>myAppCrise</a>
+                                <a href=$filtrer>myAppCrise</a>
                                     <ul class="drop-down-content">
                                         $myAppCrise
                                     </ul>
