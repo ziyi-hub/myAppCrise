@@ -4,6 +4,7 @@ document.querySelector('.entete').addEventListener('keyup', getFiltrer);
 function getFiltrer(){
     var str = document.getElementById("keywords").value;
     if (str.length === 0){
+        document.getElementById('showmsg').innerHTML = "";
     }else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
