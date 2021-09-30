@@ -405,10 +405,11 @@
 
     .submit-chercher{
         width: unset;
+        display: none;
     }
 
     #chercher-user{
-        width: calc(250px);
+        width: calc(183px);
         height: fit-content;
         color: black;
     }
