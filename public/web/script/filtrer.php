@@ -5,7 +5,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 session_start();
 use crise\models\Utilisateurs;
 
-
+$html = null;
 $db = new DB();
 $db->addConnection(
     [
@@ -19,5 +19,13 @@ $db->addConnection(
     ]);
 $db->setAsGlobal();
 $db->bootEloquent();
-$users = Utilisateurs::where('nomUtilisateur', 'LIKE','%'.$_GET["NomUtilisateur"].'%')->get();
-echo $users;
+$users = Utilisateurs::query()->where('nomUtilisateur', 'LIKE',$_GET["NomUtilisateur"].'%')->get();
+foreach ($users as $donnees){
+    $id = $donnees->idUtilisateur;
+    $nom = $donnees->nomUtilisateur;
+    $html .=
+"<div id='chercher-user'>
+            <strong>PROFIL #N°</strong> : $id<br />$nom<br /><em>
+</div>";
+}
+echo $html;

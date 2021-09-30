@@ -403,10 +403,15 @@
         width: unset;
     }
 
-.submit-chercher{
-    width: unset;
-}
+    .submit-chercher{
+        width: unset;
+    }
 
+    #chercher-user{
+        width: calc(200px);
+        height: calc(200px);
+        color: #FFFFFF;
+    }
 
     .div-bor{
         position: relative;
