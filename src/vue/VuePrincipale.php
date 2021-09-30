@@ -77,6 +77,7 @@ END;
 
 
     public function htmlFiltrer(){
+        $lienjs = $this->htmlvars['basepath']."/public/web/javascript/filtrer.js";
         $filtrer = $this->htmlvars['filtrer'];
         return <<< END
 <div class="entete">
@@ -86,11 +87,12 @@ END;
         <div class="d"><a href="#">Localisation</a></div>
     </div>	
     <form action=$filtrer method="get">
-        <input type="text" name="keywords" id="keywords" onkeyup="">
-        <input type="submit" name="submit" id="submit" value="Filtrer">
-        <div id="showmsg" style="display: none"></div>
+        <input type="text" name="keywords" id="keywords" placeholder="Rechercher">
+        <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
+        <div id="showmsg"></div>
     </form>
 </div>
+<script type="text/javascript" src="$lienjs" defer></script>
 END;
     }
 
@@ -351,7 +353,7 @@ END;
             <head>
                 <meta charset="UTF-8">
                 <link rel="stylesheet" href=$liencss>
-                <title>myJukeBox</title>
+                <title>myAppCrise</title>
             </head>
             <body>
                 <header>
@@ -376,7 +378,7 @@ END;
                 <footer>
                     <div class="bas">
                         <div class="contact">Nous contacter</div>
-                        <span>©2020 myJukeBox | et autres régimes</span>
+                        <span>©2020 myAppCrise | et autres régimes</span>
                     </div>
                 </footer>
             </body>
