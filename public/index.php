@@ -9,15 +9,44 @@ use crise\controleur\ControleurCrise;
 use Slim\Factory\AppFactory;
 
 session_start();
-$config = require_once '../src/conf/settings.php';
 $db = new DB();
-$db->addConnection(parse_ini_file($config['settings']['dbfile']));
+$db->addConnection(
+    [
+        'host' => 'localhost',
+        'con_db_port' => '3306',
+        'username' => 'PWeb',
+        'password' => '1Zhongguo',
+        'database' => 'PWeb',
+        'charset' => 'utf8',
+        'driver' => 'mysql',
+    ]
+);
 $db->setAsGlobal();
 $db->bootEloquent();
 $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $app->add(new BasePathMiddleware($app));
-$app->addErrorMiddleware(true, true, true);
+
+
+// Define Custom Error Handler
+$customErrorHandler = function (
+    Request $request,
+    Throwable $exception
+) use ($app) {
+    $payload = ['error' => $exception->getMessage()];
+
+    $response = $app->getResponseFactory()->createResponse();
+    $response->getBody()->write(
+        json_encode($payload, JSON_UNESCAPED_UNICODE)
+    );
+
+    return $response;
+};
+
+// Add Error Middleware
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$errorMiddleware->setDefaultErrorHandler($customErrorHandler);
+
 
 
 $app->get('/',
