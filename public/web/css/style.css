@@ -480,8 +480,19 @@
         text-align: left;
     }
 
-    .messagerie{
+    .messagerie-user{
+        width: fit-content;
+    }
 
+    .messagerie-total{
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .messagerie-message{
+        text-align: left;
     }
 
 

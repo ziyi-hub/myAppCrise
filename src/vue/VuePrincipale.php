@@ -101,7 +101,10 @@ END;
             <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
             <div id="showmsg"></div>
         </form>
-        <div class="messagerie"></div>
+        <div class="messagerie-total">
+            <div class="messagerie-user"></div>
+            <div class="messagerie-message">ici est message</div>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="$lienjs" defer></script>

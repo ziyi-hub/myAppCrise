@@ -9,7 +9,7 @@ foreach ($users as $donnees){
     $id = $donnees->idUtilisateur;
     $nom = $donnees->nomUtilisateur;
     $html .=
-"<div id='chercher-user'>
+"<div id='chercher-user' data-id='$id' data-nom='$nom'>
             <strong>#N° : $id </strong>
             <strong>$nom</strong>
 </div>";
