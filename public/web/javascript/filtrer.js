@@ -14,13 +14,24 @@ function getFiltrer(){
                 document.getElementById('showmsg').style.textAlign = 'center';
                 document.getElementById('showmsg').innerHTML = this.responseText.split("}")[1];
                 document.querySelectorAll("#chercher-user").forEach(user => {
-                    let btnAjout = document.createElement("button")
-                    btnAjout.classList.add("add");
-                    user.appendChild(btnAjout)
+                    user.addEventListener("click", ajoutAmi)
                 })
             }
         }
         xmlhttp.open('GET', 'public/web/script/filtrer.php?NomUtilisateur=' + str, true);
         xmlhttp.send(str);
     }
+}
+
+function ajoutAmi(){
+    document.querySelector(".messagerie").innerHTML += `
+    <div id="listeAmi">
+        <div class="c1" id="c1">
+            <div id="prompt3">
+                <span id="imgSpan" style="left: 0; right: 0 ">Nom d'utilisateur</span>
+            </div>
+            <img id="img3" alt="portrait"/>        
+        </div>
+    </div>
+    `
 }

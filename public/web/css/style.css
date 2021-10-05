@@ -412,7 +412,7 @@
         height: 37px;
         color: white;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     #chercher-user:hover {
@@ -481,7 +481,7 @@
     }
 
     .messagerie{
-        border: 2px solid black;
+
     }
 
 

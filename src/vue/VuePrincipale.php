@@ -101,16 +101,7 @@ END;
             <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
             <div id="showmsg"></div>
         </form>
-        <div class="messagerie">
-            <!--<div id="listeAmi">
-                <div class="c1" id="c1">
-                    <div id="prompt3">
-                        <span id="imgSpan" style="left: 0; right: 0 ">Nom d'utilisateur<br /></span>
-                    </div>
-                    <img id="img3" alt="portrait"/>        
-               </div>
-            </div>-->
-        </div>
+        <div class="messagerie"></div>
     </div>
 </div>
 <script type="text/javascript" src="$lienjs" defer></script>
