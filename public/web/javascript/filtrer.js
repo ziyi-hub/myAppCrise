@@ -2,11 +2,11 @@
 document.querySelector('.entete').addEventListener('keyup', getFiltrer);
 
 function getFiltrer(){
-    var str = document.getElementById("keywords").value;
+    let str = document.getElementById("keywords").value;
     if (str.length === 0){
         document.getElementById('showmsg').innerHTML = "";
     }else {
-        var xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 console.log(this.responseText.split("}")[1]);
