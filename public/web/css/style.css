@@ -44,15 +44,13 @@
         margin-top:13px;
         background-color: #000;
         width: 100%;
-        height: 89%;
+        height: 85%;
         position: absolute;
         opacity:10;
         color: white;
     }
 
     .entete2{
-        height: 85%;
-        position: absolute;
         grid-template-rows: 8%;
     }
 
@@ -207,7 +205,7 @@
         color: darkred;
         align-content: center;
         z-index: 100;
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .filepath {
@@ -371,10 +369,6 @@
         margin-bottom: 10px;
     }
 
-    button {
-        height: 40px;
-    }
-
     button:hover {
         background-color: dodgerblue;
         color: white;
@@ -454,6 +448,8 @@
 
     #showmsg{
         background: rgba(4, 4, 4, 0.56);
+        height: 600px;
+        overflow-y: scroll;
     }
 
     button {
@@ -461,17 +457,7 @@
         height: 40px;
         background-color: deepskyblue;
         color: white;
-        border-radius: 50%;
-    }
-
-    button.add{
-        border-radius: 50%;
-        background-image: url(../images/bouton.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        border-color: black;
-        height: 30px;
-        width: 30px;
+        border-radius: 20%;
     }
 
     strong{
@@ -483,6 +469,8 @@
 
     .messagerie-user{
         width: fit-content;
+        height: 630px;
+        overflow-y: scroll;
     }
 
     .messagerie-total{
@@ -494,8 +482,26 @@
 
     .messagerie-message{
         text-align: left;
+        display: grid;
+        /*grid-template-rows: 9fr 1fr;*/
+        grid-template-rows: repeat(9, calc(92% / 10));
     }
 
+    .messagerie-chat{
+        display: inline-block;
+    }
+
+    #content-item{
+        background-color: rgba(0, 0, 0, 0.4);
+        border: 2px solid black;
+        height: 38px;
+    }
+
+    .messagerie-content{
+        width: 97%;
+        height: fit-content;
+        grid-row: 11/12;
+    }
 
 }
 

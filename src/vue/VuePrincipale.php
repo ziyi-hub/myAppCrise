@@ -97,13 +97,16 @@ END;
 <div class="entete">
     <div class="filtrer">
         <form action=$filtrer method="get">
-            <input type="text" name="keywords" id="keywords" placeholder="Rechercher/Ajouter">
+            <input type="text" name="keywords" id="keywords" placeholder="Rechercher / Ajouter un ami">
             <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
             <div id="showmsg"></div>
         </form>
         <div class="messagerie-total">
             <div class="messagerie-user"></div>
-            <div class="messagerie-message">ici est message</div>
+            <div class="messagerie-message">
+                <div class="messagerie-chat"><div id="content-item">hi</div></div>
+                <input type="text" class="messagerie-content" placeholder="Envoyer un message à lui">
+            </div>
         </div>
     </div>
 </div>
@@ -222,7 +225,7 @@ END;
 				    <div id="profil">
                         <div class="c1" id="c1">
                              <div id="prompt3">
-                                <span id="imgSpan">Click upload image<br /></span>
+                                <span id="imgSpan" style="left: 0; right: 0 ">Upload image</span>
                                 <input type="file" id="file" class="filepath" onchange="uploadPhoto(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
                              </div>
                              <img id="img3" alt="portrait"/>        
