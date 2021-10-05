@@ -202,11 +202,12 @@
 
     #imgSpan {
         position: absolute;
-        bottom: 90px;
+        bottom: 80px;
         text-align: center;
         color: darkred;
         align-content: center;
         z-index: 100;
+        font-size: 2em;
     }
 
     .filepath {

@@ -1,7 +1,17 @@
 
 document.querySelector('.entete').addEventListener('keyup', getFiltrer);
+let infos = []
+let load = function () {
+    let tmp = JSON.parse(localStorage.getItem('arrayAmis'));
+    if (tmp){
+        infos = tmp;
+    }
+}
+load()
 
 function getFiltrer(){
+    let amis = localStorage.getItem('arrayAmis');
+    let arrayAmis = JSON.parse(amis)??[];
     let str = document.getElementById("keywords").value;
     if (str.length === 0){
         document.getElementById('showmsg').innerHTML = "";
@@ -16,6 +26,11 @@ function getFiltrer(){
                 document.querySelectorAll("#chercher-user").forEach(user => {
                     user.onclick = () => {
                         ajoutAmi(user)
+                        arrayAmis.push({
+                            idUtilisateur:user.dataset.id,
+                            nomUtilisateur:user.dataset.nom
+                        })
+                        localStorage.setItem('arrayAmis', JSON.stringify(arrayAmis));
                     }
                 })
             }
@@ -27,13 +42,27 @@ function getFiltrer(){
 
 function ajoutAmi(info){
     document.querySelector(".messagerie-user").innerHTML += `
-    <div id="listeAmi">
-        <div class="c1" id="c1">
-            <div id="prompt3">
-                <span id="imgSpan" style="left: 0; right: 0 ">${info.dataset.nom}</span>
+        <div id="listeAmi">
+            <div class="c1" id="c1">
+                <div id="prompt3">
+                    <span id="imgSpan" style="left: 0; right: 0 ">${info.dataset.nom}</span>
+                </div>
+                <img id="img3" alt="portrait"/>        
             </div>
-            <img id="img3" alt="portrait"/>        
-        </div>
-    </div>
-    `
+        </div>`
 }
+
+function loadUser(){
+    infos.forEach(info => {
+        document.querySelector(".messagerie-user").innerHTML += `
+        <div id="listeAmi">
+            <div class="c1" id="c1">
+                <div id="prompt3">
+                    <span id="imgSpan" style="left: 0; right: 0 ">${info.nomUtilisateur}</span>
+                </div>
+                <img id="img3" alt="portrait"/>        
+            </div>
+        </div>`
+    })
+}
+loadUser()

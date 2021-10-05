@@ -97,7 +97,7 @@ END;
 <div class="entete">
     <div class="filtrer">
         <form action=$filtrer method="get">
-            <input type="text" name="keywords" id="keywords" placeholder="Rechercher">
+            <input type="text" name="keywords" id="keywords" placeholder="Rechercher/Ajouter">
             <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
             <div id="showmsg"></div>
         </form>
