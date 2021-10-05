@@ -10,7 +10,8 @@ foreach ($users as $donnees){
     $nom = $donnees->nomUtilisateur;
     $html .=
 "<div id='chercher-user'>
-            <strong>PROFIL #N°</strong> : $id<br />$nom<br /><em>
+            <strong>#N° : $id </strong>
+            <strong>$nom</strong>
 </div>";
 }
 echo $html;

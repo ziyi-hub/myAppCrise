@@ -400,7 +400,8 @@
     }
 
     #keywords{
-        width: unset;
+        width: calc(183px);
+        margin-bottom: 0;
     }
 
     .submit-chercher{
@@ -409,9 +410,15 @@
     }
 
     #chercher-user{
-        width: calc(183px);
-        height: fit-content;
-        color: black;
+        height: 37px;
+        color: white;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    #chercher-user:hover {
+        background-image: repeating-linear-gradient(blueviolet, blue);
+        color: white;
     }
 
     .div-bor{
@@ -438,6 +445,39 @@
 
     .radio{
         display: flex;
+    }
+
+    .filtrer{
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+    }
+
+    #showmsg{
+        background: rgba(4, 4, 4, 0.56);
+    }
+
+    button {
+        width: 40px;
+        height: 40px;
+        background-color: deepskyblue;
+        color: white;
+        border-radius: 50%;
+    }
+
+    button.add{
+        border-radius: 50%;
+        background-image: url(../images/bouton.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        border-color: black;
+        height: 30px;
+        width: 30px;
+    }
+
+    strong{
+        width: 103px;
+        overflow-x: scroll;
+        text-overflow: ellipsis;
     }
 
 

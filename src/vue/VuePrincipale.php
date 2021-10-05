@@ -95,11 +95,14 @@ END;
         $filtrer = $this->htmlvars['filtrer'];
         return <<< END
 <div class="entete">
-    <form action=$filtrer method="get">
-        <input type="text" name="keywords" id="keywords" placeholder="Rechercher">
-        <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
-        <div id="showmsg"></div>
-    </form>
+    <div class="filtrer">
+        <form action=$filtrer method="get">
+            <input type="text" name="keywords" id="keywords" placeholder="Rechercher">
+            <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
+            <div id="showmsg"></div>
+        </form>
+        <div class="messagerie">ici est messagerie</div>
+    </div>
 </div>
 <script type="text/javascript" src="$lienjs" defer></script>
 END;

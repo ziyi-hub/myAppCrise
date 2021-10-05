@@ -13,6 +13,11 @@ function getFiltrer(){
                 document.getElementById('showmsg').style.display = "block";
                 document.getElementById('showmsg').style.textAlign = 'center';
                 document.getElementById('showmsg').innerHTML = this.responseText.split("}")[1];
+                document.querySelectorAll("#chercher-user").forEach(user => {
+                    let btnAjout = document.createElement("button")
+                    btnAjout.classList.add("add");
+                    user.appendChild(btnAjout)
+                })
             }
         }
         xmlhttp.open('GET', 'public/web/script/filtrer.php?NomUtilisateur=' + str, true);
