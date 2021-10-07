@@ -444,11 +444,12 @@
     .filtrer{
         display: grid;
         grid-template-columns: 1fr 6fr;
+        max-height: 800px;
+        overflow-y: scroll;
     }
 
     #showmsg{
         background: rgba(4, 4, 4, 0.56);
-        height: 600px;
         overflow-y: scroll;
     }
 
@@ -467,40 +468,34 @@
         text-align: left;
     }
 
-    .messagerie-user{
-        width: fit-content;
-        height: 630px;
-        overflow-y: scroll;
-    }
-
     .messagerie-total{
         display: grid;
         grid-template-columns: 1fr 5fr;
-        text-align: center;
-        justify-content: center;
+        overflow-y: scroll;
+    }
+
+
+    .messagerie-user{
+        width: fit-content;
     }
 
     .messagerie-message{
-        text-align: left;
-        display: grid;
-        /*grid-template-rows: 9fr 1fr;*/
-        grid-template-rows: repeat(9, calc(92% / 10));
-    }
-
-    .messagerie-chat{
-        display: inline-block;
+        display: flex;
+        overflow-y: scroll;
     }
 
     #content-item{
         background-color: rgba(0, 0, 0, 0.4);
         border: 2px solid black;
-        height: 38px;
+        padding: 10px;
+        margin: 0;
+        width: fit-content;
     }
 
     .messagerie-content{
-        width: 97%;
-        height: fit-content;
-        grid-row: 11/12;
+        text-align: left;
+        position: absolute;
+        bottom: 0;
     }
 
 }

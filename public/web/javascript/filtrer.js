@@ -66,3 +66,35 @@ function loadUser(){
     })
 }
 loadUser()
+
+
+function sendMessage(){
+    let message = document.querySelector(".messagerie-content").value
+    console.log(message)
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            console.log(this.responseText.split("<}>")[1])
+            messageHTML(this.responseText.split("}")[1])
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/envoyer.php?message=' + message, true);
+    xmlhttp.send();
+}
+
+window.onload=function() {
+    if (document.addEventListener) {
+        document.addEventListener("keypress", keyPressHandler, true);
+    } else {
+        document.attachEvent("onkeyup", keyPressHandler);
+    }
+    function keyPressHandler(evt) {
+        if (evt.keyCode === 13) {
+            sendMessage()
+        }
+    }
+}
+
+function messageHTML(info){
+    document.querySelector('.messagerie-chat').innerHTML += `<div id="content-item">${info}</div>`
+}

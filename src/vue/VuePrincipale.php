@@ -104,7 +104,7 @@ END;
         <div class="messagerie-total">
             <div class="messagerie-user"></div>
             <div class="messagerie-message">
-                <div class="messagerie-chat"><!--<div id="content-item">hi</div>--></div>
+                <div class="messagerie-chat"></div>
                 <input type="text" class="messagerie-content" placeholder="Envoyer un message à lui">
             </div>
         </div>
