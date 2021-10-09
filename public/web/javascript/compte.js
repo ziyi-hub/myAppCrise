@@ -2,12 +2,12 @@ oeil();
 load();
 
 function oeil(){
-    var icon4 = document.getElementById("icon-user4");
-    var pass4 = document.getElementById("amdp")
-    var icon5 = document.getElementById("icon-user5");
-    var pass5 = document.getElementById("mdp")
-    var affichage4 = true;
-    var affichage5 = true;
+    let icon4 = document.getElementById("icon-user4");
+    let pass4 = document.getElementById("amdp")
+    let icon5 = document.getElementById("icon-user5");
+    let pass5 = document.getElementById("mdp")
+    let affichage4 = true;
+    let affichage5 = true;
 
     icon4.onclick = function () {
         if (affichage4 === true) {

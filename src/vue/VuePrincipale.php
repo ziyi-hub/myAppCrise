@@ -161,6 +161,7 @@ END;
                             <i class="icon-user2" id="icon-user2"></i>
                         </div>
                         <button type="submit" class="but" id="submit">Inscription</button>
+                        <div id="showmsg2" style="display: none"></div>
                     </form>
                     <h3>Un compte? Connectez-vous <a id = 'ici' href="$connexion">ici</a> !</h3>
                </div> 		

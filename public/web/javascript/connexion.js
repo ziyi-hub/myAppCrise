@@ -1,8 +1,8 @@
 
 window.onload=function() {
-    var icon3 = document.getElementById("icon-user3");
-    var pass3 = document.getElementById("password")
-    var affichage3 = true;
+    let icon3 = document.getElementById("icon-user3");
+    let pass3 = document.getElementById("password")
+    let affichage3 = true;
     icon3.onclick = function () {
         if (affichage3 === true) {
             pass3.type = "text"
