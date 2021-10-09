@@ -58,13 +58,6 @@ $app->get('/',
 )->setName('accueil');
 
 
-$app->get('/filtrer/{nom}[/]', function ($request, $response, array $args) {
-    $controleur = new ControleurCrise(AppFactory::create()->getContainer());
-    $response = $controleur->getUtilisateurs($request, $response, $args);
-    return $response;
-});
-
-
 $app->get('/inscription',
     function (Request $request, Response $response, $args): Response {
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
@@ -145,5 +138,12 @@ $app->get('/filtrer',
     }
 )->setName('filtrer');
 
+$app->get('/monCompte/{token}',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getMonCompte($req, $response, $args);
+        return $response;
+    }
+)->setName('monCompte/{token}');
 
 $app->run();

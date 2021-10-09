@@ -52,18 +52,6 @@ class ControleurCrise
     }
 
 
-    public function getUtilisateurs(Request $rq, Response $rs, array $args ): Response {
-        $this->initiale($rq, $rs, $args);
-        $tokenliste = $args['nom'];
-        $liste = Utilisateurs::query()->where("nomUtilisateur", "like", "%$tokenliste%")->get();
-        if (!is_null($liste)){
-            $vue = new VuePrincipale([$liste], $this->container);
-            $rs->getBody()->write($vue->getVueUser());
-        }
-        return $rs;
-    }
-
-
     public function getInfoContaminee(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
@@ -146,24 +134,36 @@ class ControleurCrise
         $this->initiale($rq, $rs, $args);
         $Login = $_POST['user'];
         $password = $_POST['password'];
-        $eloquentResult = Utilisateurs::query()->where('nomUtilisateur','=', $Login)->firstOr();
-        if (!empty($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
-            $user = Utilisateurs::find($eloquentResult->idUtilisateur);
+        $eloquentResult = Utilisateurs::query()
+            ->where('nomUtilisateur','=', $Login)
+            ->firstOr();
+        if ($_SESSION['token'] === $_POST['token']){
+            echo "<script>alert('La ressource a été demandée de façon sécurisée !')</script>";
+            if (!empty($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
+                $user = Utilisateurs::find($eloquentResult->idUtilisateur);
 
-            if(empty($_SESSION['profile'])){
-                $_SESSION['profile'] = array(
-                    'id'         => $user->idUtilisateur,
-                    'username'   => $user->nomUtilisateur,
-                    'role_id'    => $user->roleId,
-                    'mdp'        => $user->motDePasse,
-                );
+                if(empty($_SESSION['profile'])){
+                    $_SESSION['profile'] = array(
+                        'id'         => $user->idUtilisateur,
+                        'username'   => $user->nomUtilisateur,
+                        'role_id'    => $user->roleId,
+                        'mdp'        => $user->motDePasse,
+                    );
+                }
+                $user->token = $_SESSION["token"];
+                $user->save();
+                $urlredirection = RouteContext::fromRequest($rq)
+                    ->getRouteParser()
+                    ->relativeUrlFor('monCompte', ['token' => $user->token]);
+                $vue = new VuePrincipale([$eloquentResult], $this->container);
+                $rs->withHeader('Location', $urlredirection)
+                    ->withStatus(200)->getBody()
+                    ->write($vue->renderConnecte(1, $this->htmlvars));
+            }else{
+                echo "<script>alert('Attention! Le mot de passe incorrect! ')</script>";
+                $vue = new VuePrincipale([], $this->container);
+                $rs->getBody()->write($vue->render(3, $this->htmlvars));
             }
-            $vue = new VuePrincipale([$eloquentResult], $this->container);
-            $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
-        }else{
-            echo "<script>alert('Attention! Le mot de passe incorrect! ')</script>";
-            $vue = new VuePrincipale([], $this->container);
-            $rs->getBody()->write($vue->render(3, $this->htmlvars));
         }
         // echo "<script>alert('Compte n\'existe pas')</script>";
         return $rs;

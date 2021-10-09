@@ -22,27 +22,6 @@ class VuePrincipale
         $this->container = $container;
     }
 
-    public function getVueUser(){
-        $html = "";
-        $l = $this->data[0];
-        if(is_null($l))
-        {
-            return "<h2>Liste Inexistante</h2>";
-        }
-
-        foreach ($l as $donnees){
-            $id = $donnees->idUtilisateur;
-            $nom = $donnees->nomUtilisateur;
-            $mdp = $donnees->motDePasse;
-            $html .=
-"<p>
-            <strong>ID est</strong> : $id<br />
-            nom du l'utilisateur est $nom<br /><em>
-            mot de passe est $mdp<br /></em>
-</p>";
-        }
-        return $html;
-    }
 
     private function AfficherIden() {
         $l = $this->data[0];
@@ -61,7 +40,7 @@ END;
     private function VerifAdmi() {
         $html = null;
         if (!empty($_SESSION["profile"])){
-            $monCompte = $this->htmlvars['monCompte'];
+            $monCompte = $this->htmlvars['monCompte']."/".$_SESSION['token'];
             $deconnexion = $this->htmlvars['deconnexion'];
             $contaminee = $this->htmlvars['contaminee'];
             $html = <<<END
@@ -175,6 +154,8 @@ END;
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/connexion.js";
         $validerConnexion = $this->htmlvars['validerConnexion'];
         $inscription = $this->htmlvars['inscription'];
+        $token = md5(uniqid(mt_rand(), true));
+        $_SESSION['token'] = $token;
         return <<<END
 			<div class="entete4">
                 <div id="login">
@@ -185,6 +166,7 @@ END;
                             <input type="password" required="required" placeholder="Mot de passe" name="password" id="password" >
                             <i class="icon-user3" id="icon-user3"></i>
                         </div>
+                        <input type="hidden" name="token" id="token" value="$token">
                         <button class="but" type="submit">Connexion</button>
                     </form>
                     <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
