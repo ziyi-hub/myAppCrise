@@ -206,6 +206,9 @@
         align-content: center;
         z-index: 100;
         font-size: 1.5em;
+        overflow: scroll;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .filepath {
