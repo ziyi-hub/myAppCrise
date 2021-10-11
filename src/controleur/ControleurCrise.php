@@ -34,6 +34,7 @@ class ControleurCrise
         $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
         $contaminee = $routeParser->urlFor('contaminee');
         $filtrer = $routeParser->urlFor('filtrer');
+        $messagerie = $routeParser->urlFor('messagerie');
 
         $this->htmlvars = [
             'basepath' => $basePath,
@@ -47,7 +48,15 @@ class ControleurCrise
             'modifMotDePasse' => $modifMotDePasse,
             'contaminee' => $contaminee,
             'filtrer' => $filtrer,
+            'messagerie' => $messagerie,
         ];
+        return $rs;
+    }
+
+    public function getMessagerie(Request $rq, Response $rs, array $args ): Response {
+        $this->initiale($rq, $rs, $args);
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->renderConnecte(8, $this->htmlvars));
         return $rs;
     }
 
@@ -138,7 +147,6 @@ class ControleurCrise
             ->where('nomUtilisateur','=', $Login)
             ->firstOr();
         if ($_SESSION['token'] === $_POST['token']){
-            echo "<script>alert('La ressource a été demandée de façon sécurisée !')</script>";
             if (!empty($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
                 $user = Utilisateurs::find($eloquentResult->idUtilisateur);
 

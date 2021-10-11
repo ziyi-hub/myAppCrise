@@ -146,4 +146,12 @@ $app->get('/monCompte/{token}',
     }
 )->setName('monCompte/{token}');
 
+$app->get('/messagerie',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getMessagerie($req, $response, $args);
+        return $response;
+    }
+)->setName('messagerie');
+
 $app->run();

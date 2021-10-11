@@ -15,6 +15,7 @@ class VuePrincipale
     const INSCRIPTION_VIEW = 4;
     const InfoContaminee_VIEW = 6;
     const Filtrer_VIEW = 7;
+    const MESSAGERIE_VIEW = 8;
 
     public function __construct(array $d, $container)
     {
@@ -58,14 +59,52 @@ END;
         $html = null;
         if (!empty($_SESSION["profile"])){
             $filtrer = $this->htmlvars['filtrer'];
+            $messagerie = $this->htmlvars['messagerie'];
             $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$filtrer>Filtrer</a></li>
-<li><a href="#">Messagerie</a></li>
+<li><a href=$messagerie>Messagerie</a></li>
 <li><a href="#">Localisation</a></li>
 END;
         }
         return $html;
+    }
+
+    public function htmlMessagerie(){
+        $lienjs = $this->htmlvars['basepath']."/public/web/javascript/messagerie.js";
+        $lienjs2 = $this->htmlvars['basepath']."/public/web/javascript/jquery-2.1.1.min.js";
+        $lienjs3 = $this->htmlvars['basepath']."/public/web/javascript/index.js";
+        return <<< END
+<div class="entete">
+    <div class="wrapper">
+        <div class="contain">
+            <div class="left">
+                <div class="top" style="padding: 20px 29px;height: auto;">
+                    <div class="" style="font: 13px Arial; ">nombre en ligne：<span id="numbers">0</span> 人
+                    </div>
+                </div>
+                <ul class="people">
+                </ul>
+            </div>
+            <div class="right">
+                <div class="top"><span>Tips: <span class="name">websocke--group</span></span></div>
+                <div class="chat active-chat" data-chat="person1"
+                     style="border-width: 0;padding: 10px;height: 483px; padding: 10px;overflow-y: auto;scrollTop: 100px">
+                </div>
+                <div class="write">
+                    <a href="javascript:;" class="write-link attach"></a>
+                    <input type="text" id="input-value" onkeydown="confirm(event)"/>
+                    <a href="javascript:;" class="write-link smiley"></a>
+                    <a href="javascript:;" class="write-link send" onclick="send()"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="$lienjs" defer></script>
+<script type="text/javascript" src="$lienjs2" defer></script>
+<script type="text/javascript" src="$lienjs3" defer></script>
+END;
     }
 
 
@@ -301,6 +340,8 @@ END;
         $accueil = $this->htmlvars['accueil'];
         $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
         $img = $this->htmlvars['basepath'].'/public/web/images/tirer.png';
+        $liencss2 = $this->htmlvars['basepath']."/public/web/css/layer.css";
+        $liencss3 = $this->htmlvars['basepath']."/public/web/css/messagerie.css";
         $liste = $this->VerifAdmi();
         $myAppCrise = $this->myAppCrise();
 
@@ -326,6 +367,10 @@ END;
                 break;
             }
 
+            case self::MESSAGERIE_VIEW: {
+                $content = $this->htmlMessagerie();
+                break;
+            }
         }
 
         $html = <<<END
@@ -333,7 +378,10 @@ END;
         <html lang=fr>
             <head>
                 <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href=$liencss>
+                <link rel="stylesheet" href=$liencss2>
+                <link rel="stylesheet" href=$liencss3>
                 <title>myAppCrise</title>
             </head>
             <body>
