@@ -72,8 +72,6 @@ END;
 
     public function htmlMessagerie(){
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/messagerie.js";
-        $lienjs2 = $this->htmlvars['basepath']."/public/web/javascript/jquery-2.1.1.min.js";
-        $lienjs3 = $this->htmlvars['basepath']."/public/web/javascript/index.js";
         return <<< END
 <div class="entete">
     <div class="wrapper">
@@ -92,18 +90,16 @@ END;
                      style="border-width: 0;padding: 10px;height: 483px; padding: 10px;overflow-y: auto;scrollTop: 100px">
                 </div>
                 <div class="write">
-                    <a href="javascript:;" class="write-link attach"></a>
-                    <input type="text" id="input-value" onkeydown="confirm(event)"/>
-                    <a href="javascript:;" class="write-link smiley"></a>
-                    <a href="javascript:;" class="write-link send" onclick="send()"></a>
+                    <a href="" class="write-link attach"></a>
+                    <input type="text" id="input-value"/>
+                    <a href="" class="write-link smiley"></a>
+                    <a href="" class="write-link send"></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="$lienjs" defer></script>
-<script type="text/javascript" src="$lienjs2" defer></script>
-<script type="text/javascript" src="$lienjs3" defer></script>
 END;
     }
 
@@ -340,7 +336,6 @@ END;
         $accueil = $this->htmlvars['accueil'];
         $liencss = $this->htmlvars['basepath']."/public/web/css/style.css";
         $img = $this->htmlvars['basepath'].'/public/web/images/tirer.png';
-        $liencss2 = $this->htmlvars['basepath']."/public/web/css/layer.css";
         $liencss3 = $this->htmlvars['basepath']."/public/web/css/messagerie.css";
         $liste = $this->VerifAdmi();
         $myAppCrise = $this->myAppCrise();
@@ -380,7 +375,6 @@ END;
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href=$liencss>
-                <link rel="stylesheet" href=$liencss2>
                 <link rel="stylesheet" href=$liencss3>
                 <title>myAppCrise</title>
             </head>
