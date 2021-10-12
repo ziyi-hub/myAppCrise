@@ -93,7 +93,7 @@ function insertContact(){
 }
 document.querySelector("#btn-integAmi").addEventListener("click", insertContact)
 
-
+idGroup = -1
 function getContact(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -110,6 +110,7 @@ function getContact(){
     document.querySelectorAll(".exbtn").forEach(div => {
         div.onclick = () => {
             document.querySelector(".name").innerHTML = div.dataset.nomgroup
+            idGroup = div.dataset.idgroup
             xmlhttp.open('GET', 'public/web/script/contact.php?idGroup=' + div.dataset.idgroup, false);
             xmlhttp.send();
         }
@@ -182,7 +183,7 @@ function sendMessage() {
                 console.log(this.responseText.split("}"))
             }
         }
-        xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg, false);
+        xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg + "&idGroup=" + idGroup, false);
         xmlhttp.send();
     }
 }

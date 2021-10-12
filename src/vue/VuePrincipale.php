@@ -81,15 +81,15 @@ END;
                 <div class="top" style="padding: 20px 29px; height: auto;">
                     <div class="" style="font: 13px Arial; ">
                         nombre total : <span id="numbers">0</span>
-                        <button type='submit' id='nouGroup2'>Ajout des amis</button>
+                        <button type='submit' id='nouGroup2'>Inviter un ami</button>
                     </div>
                 </div>
                 <ul class="people"></ul>
         </div>
         <div class="right">
-            <div class="top"><span>Tips: <span class="name">websocke--group</span></span></div>
+            <div class="top"><span>Tips: <span class="name">myAppCrise--group</span></span></div>
             <div class="chat active-chat" data-chat="person1"
-                     style="border-width: 0;padding: 10px;height: 483px; padding: 10px;overflow-y: auto;scrollTop: 100px">
+                     style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
             </div>
             <div class="write">
                 <a href="" class="write-link attach"></a>
@@ -101,15 +101,15 @@ END;
         <div id="lightbox">
             <span class="close">X</span>
             <h2 style="color: unset; text-shadow: unset">Création un groupe</h2>
-            <input type="text" id="nom-group" placeholder="nom d'un group"/>
-            <button id="btn-group" style="width: 15%; border-radius: unset">Envoyer</button>
+            <input type="text" id="nom-group" placeholder="Nom d'un group"/>
+            <button id="btn-group">Envoyer</button>
         </div>
         <div id="recheAmi">
             <span class="close2">X</span>
-            <h2 style="color: unset; text-shadow: unset">Intégration des amis</h2>
-            <input type="text" id="key" style="width: 35%" placeholder="Ziyi-38"/>
-            <input type="text" id="key-idGroup" style="width: 35%" placeholder="IdGroup"/>
-            <button id="btn-integAmi" style="width: 15%; border-radius: unset">Envoyer</button>
+            <h2 style="color: unset; text-shadow: unset">Inviter un ami</h2>
+            <input type="text" id="key" placeholder="NomUtilisateur: Ziyi-38"/>
+            <input type="text" id="key-idGroup" placeholder="IdGroup: 1"/>
+            <button id="btn-integAmi">Envoyer</button>
             <div id="showmsg" style="box-sizing: border-box;"></div>
         </div>
     </div>

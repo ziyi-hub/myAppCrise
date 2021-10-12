@@ -535,6 +535,7 @@
         top: 30%;
         left: 20%;
         overflow-y: scroll;
+        border: 10px solid black;
     }
 
     .close, .close2{
@@ -551,6 +552,24 @@
     #nouGroup, #nouGroup2{
         border-radius: unset;
         width: 100%;
+    }
+
+    #key{
+        width: 45%;
+    }
+
+    #key-idGroup{
+        width: 20%;
+    }
+
+    #btn-integAmi{
+        width: 15%;
+        border-radius: unset;
+    }
+
+    #btn-group{
+        width: 15%;
+        border-radius: unset;
     }
 
 }
