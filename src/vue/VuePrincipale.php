@@ -84,18 +84,21 @@ END;
                 <ul class="people"></ul>
         </div>
         <div class="right">
-                <div class="top"><span>Tips: <span class="name">websocke--group</span></span></div>
-                <div class="chat active-chat" data-chat="person1"
+            <div class="top"><span>Tips: <span class="name">websocke--group</span></span></div>
+            <div class="chat active-chat" data-chat="person1"
                      style="border-width: 0;padding: 10px;height: 483px; padding: 10px;overflow-y: auto;scrollTop: 100px">
-                </div>
-                <div class="write">
-                    <a href="" class="write-link attach"></a>
-                    <input type="text" id="input-value"/>
-                    <a href="" class="write-link smiley"></a>
-                    <a href="" class="write-link send"></a>
-                </div>
+            </div>
+            <div class="write">
+                <a href="" class="write-link attach"></a>
+                <input type="text" id="input-value"/>
+                <a href="" class="write-link smiley"></a>
+                <a href="" class="write-link send"></a>
+            </div>
         </div>
-        <div id="lightbox" style="display: none; height: 50%; width: 50%; border : 5px solid gray; background-color: papayawhip; z-index: 999"></div>
+        <div id="lightbox" style="display: none; height: 100%; width: 100%; background-color: papayawhip;  padding: 30px; box-sizing: border-box;">
+            <h1>Création une group</h1>
+            <input type="text" id="nom-group" style="box-sizing: border-box;" placeholder="nom d'un group"/>
+        </div>
     </div>
 </div>
 </div>
