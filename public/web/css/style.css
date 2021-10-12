@@ -525,5 +525,33 @@
         box-sizing: border-box;
     }
 
+    #lightbox, #recheAmi{
+        display: none;
+        height: 45%;
+        width: 40%;
+        background-color: papayawhip;
+        padding: 30px;
+        box-sizing: border-box;
+        top: 30%;
+        left: 20%;
+        overflow-y: scroll;
+    }
+
+    .close, .close2{
+        padding: 10px;
+        border: 2px solid black;
+        box-sizing: border-box;
+    }
+
+    #nom-group{
+        box-sizing: border-box;
+        width: 80%;
+    }
+
+    #nouGroup, #nouGroup2{
+        border-radius: unset;
+        width: 100%;
+    }
+
 }
 

@@ -9,6 +9,7 @@ function hide(){
     document.querySelector('#lightbox').style.display="none"
     visible=false
 }
+
 var visible = false;
 function getGroup(){
     let xmlhttp = new XMLHttpRequest();
@@ -22,6 +23,7 @@ function getGroup(){
                     show()
                 }
             })
+            document.querySelector(".close").addEventListener('click', hide)
         }
     }
     xmlhttp.open('GET', 'public/web/script/messagerie.php', false);
@@ -29,6 +31,68 @@ function getGroup(){
 }
 
 getGroup()
+
+var visible2 = false;
+function showFiltrer(){
+    document.querySelector('#recheAmi').style.display="block"
+    document.querySelector('#recheAmi').style.position = "absolute"
+    visible2=true
+}
+
+
+function hideFiltrer(){
+    document.querySelector('#recheAmi').style.display="none"
+    visible2=false
+}
+
+function open(){
+    document.querySelector("#nouGroup2").addEventListener('click', ()=>{
+        if(visible2){
+            hideFiltrer()
+        }else {
+            showFiltrer()
+        }
+        document.querySelector(".close2").addEventListener('click', hideFiltrer)
+    })
+}
+open()
+
+function filtrer(){
+    let value = document.querySelector("#key").value
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            document.getElementById('showmsg').style.display = "block";
+            document.getElementById('showmsg').style.textAlign = 'center';
+            document.getElementById('showmsg').innerHTML = this.responseText.split("}")[1];
+            document.querySelectorAll("#chercher-user").forEach(user => {
+                user.onclick = () => {
+                    document.querySelector("#key").value = user.dataset.nom + "-" + user.dataset.id
+                }
+            })
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/integAmi.php?NomUtilisateur=' + value, false);
+    xmlhttp.send();
+}
+document.querySelector("#key").addEventListener('keyup', filtrer)
+
+
+function insertContact(){
+    let value = document.querySelector("#key").value
+    let idGroup = document.querySelector("#key-idGroup").value
+    let id = value.split("-")[1]
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            alert('Intégration réussie!')
+            //setContactor(JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]))
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&idGroup=" + idGroup, false);
+    xmlhttp.send();
+}
+document.querySelector("#btn-integAmi").addEventListener("click", insertContact)
 
 
 function getContact(){
@@ -51,7 +115,6 @@ function getContact(){
             xmlhttp.send();
         }
     })
-
 }
 getContact()
 
@@ -95,7 +158,6 @@ function messageList(data) {
                     <img src="` + data[i].headerimg + `" alt=""/>
                     <div class="bubble you">` + data[i].content + `</div>
                 </div>`;
-                    console.log(data[i].tempsEnvoi)
                     let active_chat = document.querySelector('div.active-chat');
                     let oldHtml = active_chat.innerHTML;
                     active_chat.innerHTML = oldHtml + html;
@@ -126,3 +188,20 @@ function sendMessage() {
 
 document.querySelector(".send").addEventListener('click', sendMessage)
 sendMessage()
+
+
+function creerGroup(){
+    let nomGroup = document.querySelector("#nom-group").value
+    if (nomGroup.length === 0){
+    }else{
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4) {
+                alert('Création réussie! Relancez le page pour voir')
+            }
+        }
+        xmlhttp.open('GET', 'public/web/script/group.php?nomGroup=' + nomGroup, false);
+        xmlhttp.send();
+    }
+}
+document.querySelector("#btn-group").addEventListener('click', creerGroup)

@@ -78,8 +78,11 @@ END;
     <div class="menu"></div>
     <div class="contain">
         <div class="left">
-                <div class="top" style="padding: 20px 29px;height: auto;">
-                    <div class="" style="font: 13px Arial; ">nombre total : <span id="numbers">0</span></div>
+                <div class="top" style="padding: 20px 29px; height: auto;">
+                    <div class="" style="font: 13px Arial; ">
+                        nombre total : <span id="numbers">0</span>
+                        <button type='submit' id='nouGroup2'>Ajout des amis</button>
+                    </div>
                 </div>
                 <ul class="people"></ul>
         </div>
@@ -95,9 +98,19 @@ END;
                 <a href="" class="write-link send"></a>
             </div>
         </div>
-        <div id="lightbox" style="display: none; height: 100%; width: 100%; background-color: papayawhip;  padding: 30px; box-sizing: border-box;">
-            <h1>Création une group</h1>
-            <input type="text" id="nom-group" style="box-sizing: border-box;" placeholder="nom d'un group"/>
+        <div id="lightbox">
+            <span class="close">X</span>
+            <h2 style="color: unset; text-shadow: unset">Création un groupe</h2>
+            <input type="text" id="nom-group" placeholder="nom d'un group"/>
+            <button id="btn-group" style="width: 15%; border-radius: unset">Envoyer</button>
+        </div>
+        <div id="recheAmi">
+            <span class="close2">X</span>
+            <h2 style="color: unset; text-shadow: unset">Intégration des amis</h2>
+            <input type="text" id="key" style="width: 35%" placeholder="Rechercher ami"/>
+            <input type="text" id="key-idGroup" style="width: 35%" placeholder="IdGroup"/>
+            <button id="btn-integAmi" style="width: 15%; border-radius: unset">Envoyer</button>
+            <div id="showmsg" style="box-sizing: border-box;"></div>
         </div>
     </div>
 </div>

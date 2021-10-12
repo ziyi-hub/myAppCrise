@@ -78,7 +78,7 @@ function sendMessage(){
             messageHTML(this.responseText.split("}")[1])
         }
     }
-    xmlhttp.open('GET', 'public/web/script/envoyer.php?message=' + message, true);
+    xmlhttp.open('GET', 'public/web/script/insertContact.php?message=' + message, true);
     xmlhttp.send();
 }
 
