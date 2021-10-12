@@ -107,7 +107,7 @@ END;
         <div id="recheAmi">
             <span class="close2">X</span>
             <h2 style="color: unset; text-shadow: unset">Intégration des amis</h2>
-            <input type="text" id="key" style="width: 35%" placeholder="Rechercher ami"/>
+            <input type="text" id="key" style="width: 35%" placeholder="Ziyi-38"/>
             <input type="text" id="key-idGroup" style="width: 35%" placeholder="IdGroup"/>
             <button id="btn-integAmi" style="width: 15%; border-radius: unset">Envoyer</button>
             <div id="showmsg" style="box-sizing: border-box;"></div>

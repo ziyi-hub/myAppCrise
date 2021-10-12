@@ -9,10 +9,12 @@ $idUtilisateur = $_GET['idUtilisateur'];
 $idGroup = $_GET["idGroup"];
 $nomContact = Utilisateurs::query()->where("idUtilisateur", "=", $idUtilisateur)->get(["nomUtilisateur"]);
 $contact = new Contact;
-//$contact->belongsToMany(new Messages, );
+$message = new Messages;
 $contact->nomContact = $nomContact[0]["nomUtilisateur"];
 $contact->idUtilisateur = $idUtilisateur;
 $contact->idGroupContact = $idGroup;
+$message->content = "";
+$message->save();
+$contact->idMessage = $message->idMessage;
 $contact->save();
 
-echo Contact::all();

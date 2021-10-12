@@ -85,8 +85,7 @@ function insertContact(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            alert('Intégration réussie!')
-            //setContactor(JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]))
+            alert('Intégration réussie! Relancez le page pour voir')
         }
     }
     xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&idGroup=" + idGroup, false);
@@ -137,31 +136,33 @@ function messageList(data) {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            console.log()
             document.querySelector('div.active-chat').innerHTML = ""
             for (let i = 0; i < data.length; i++) {
-                if (data[i].nomContact === this.responseText) {
-                    html = `
+                //Si content est null, alors on n'affiche pas
+                if (data[i].content !== ""){
+                    if (data[i].nomContact === this.responseText) {
+                        html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
                     <div class="message" style="margin-bottom: 15px;">
                     <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
                     <div class="bubble me">` + data[i].content + `</div>
                 </div>`;
-                    let active_chat = document.querySelector('div.active-chat');
-                    let oldHtml = active_chat.innerHTML;
-                    active_chat.innerHTML = oldHtml + html;
-                    active_chat.scrollTop = active_chat.scrollHeight;
-                } else {
-                    html = `
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    } else {
+                        html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
                     <div class="message" style="margin-bottom: 15px;">
                     <img src="` + data[i].headerimg + `" alt=""/>
                     <div class="bubble you">` + data[i].content + `</div>
                 </div>`;
-                    let active_chat = document.querySelector('div.active-chat');
-                    let oldHtml = active_chat.innerHTML;
-                    active_chat.innerHTML = oldHtml + html;
-                    active_chat.scrollTop = active_chat.scrollHeight;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    }
                 }
             }
         }
