@@ -20,6 +20,8 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
         '60799491728b879e74601d83e38b2cad' => __DIR__ . '/..' . '/illuminate/collections/helpers.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -46,6 +48,7 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
             'Slim\\Psr7\\' => 10,
+            'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
             'SimpleCli\\' => 10,
             'Selective\\BasePath\\' => 19,
@@ -57,9 +60,15 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'PhpDocReader\\' => 13,
+        ),
+        'O' => 
+        array (
+            'Opis\\Closure\\' => 13,
         ),
         'I' => 
         array (
+            'Invoker\\' => 8,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Database\\' => 20,
             'Illuminate\\Contracts\\' => 21,
@@ -73,6 +82,7 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
         'D' => 
         array (
             'Doctrine\\Inflector\\' => 19,
+            'DI\\' => 3,
         ),
         'C' => 
         array (
@@ -141,6 +151,10 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
         array (
             0 => __DIR__ . '/..' . '/slim/psr7/src',
         ),
+        'Slim\\Csrf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/csrf/src',
+        ),
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
@@ -175,6 +189,18 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'PhpDocReader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
+        ),
+        'Opis\\Closure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/opis/closure/src',
+        ),
+        'Invoker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/collections',
@@ -204,6 +230,10 @@ class ComposerStaticInit86998f26bcdaf3a5c06a057dd4b58312
         'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
+        ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
         ),
         'Carbon\\' => 
         array (

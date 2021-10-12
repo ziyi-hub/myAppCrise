@@ -4,7 +4,7 @@ require_once '../../index.php';
 use crise\models\Group;
 
 
-$html = null;
+$html = "<button type='submit' id='nouGroup' style='border-radius: unset; width: 100%'>Créer un group</button>";
 $groups = Group::query()->get();
 foreach ($groups as $group){
     $nomGroup = $group->nomGroup;

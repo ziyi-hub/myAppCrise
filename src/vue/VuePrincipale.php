@@ -82,8 +82,8 @@ END;
                     <div class="" style="font: 13px Arial; ">nombre total : <span id="numbers">0</span></div>
                 </div>
                 <ul class="people"></ul>
-            </div>
-            <div class="right">
+        </div>
+        <div class="right">
                 <div class="top"><span>Tips: <span class="name">websocke--group</span></span></div>
                 <div class="chat active-chat" data-chat="person1"
                      style="border-width: 0;padding: 10px;height: 483px; padding: 10px;overflow-y: auto;scrollTop: 100px">
@@ -95,6 +95,7 @@ END;
                     <a href="" class="write-link send"></a>
                 </div>
         </div>
+        <div id="lightbox" style="display: none; height: 50%; width: 50%; border : 5px solid gray; background-color: papayawhip; z-index: 999"></div>
     </div>
 </div>
 </div>

@@ -1,8 +1,27 @@
+function show(){
+    document.querySelector('#lightbox').style.display="block"
+    document.querySelector('#lightbox').style.position = "absolute"
+    visible=true
+}
+
+
+function hide(){
+    document.querySelector('#lightbox').style.display="none"
+    visible=false
+}
+var visible = false;
 function getGroup(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4) {
             document.querySelector('.menu').innerHTML = this.responseText.split("}")[1];
+            document.querySelector("#nouGroup").addEventListener('click', () => {
+                if(visible){
+                    hide()
+                }else {
+                    show()
+                }
+            })
         }
     }
     xmlhttp.open('GET', 'public/web/script/messagerie.php', false);
@@ -90,19 +109,20 @@ function messageList(data) {
 }
 
 
-/*
 function sendMessage() {
     let msg = document.querySelector("#input-value").value;
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4) {
-            console.log(this.responseText.split("}")[1])
+    if (msg.length === 0){
+    }else{
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4) {
+                console.log(this.responseText.split("}"))
+            }
         }
+        xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg, false);
+        xmlhttp.send();
     }
-    xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg, false);
-    xmlhttp.send();
 }
 
-document.querySelector("#input-value").addEventListener('keyup', sendMessage)
+document.querySelector(".send").addEventListener('click', sendMessage)
 sendMessage()
-*/
