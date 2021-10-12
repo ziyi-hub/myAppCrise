@@ -444,11 +444,30 @@
         display: flex;
     }
 
-    .filtrer{
+    .filtrer, .filtrer2{
         display: grid;
-        grid-template-columns: 1fr 6fr;
         max-height: 800px;
         overflow-y: scroll;
+    }
+
+    .filtrer{
+        grid-template-columns: 1fr 6fr;
+    }
+
+    .menu{
+        background-color: rgba(0, 0, 0, 0.4);
+        font-size: 2em;
+        justify-content: stretch;
+    }
+
+    .exbtn{
+        width: 100%;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .filtrer2{
+        grid-template-columns: 1fr 5fr;
     }
 
     #showmsg{
@@ -499,6 +518,11 @@
         text-align: left;
         position: absolute;
         bottom: 0;
+    }
+
+    .people, .person{
+        padding: 0;
+        box-sizing: border-box;
     }
 
 }

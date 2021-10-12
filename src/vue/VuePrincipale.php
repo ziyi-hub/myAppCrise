@@ -74,15 +74,14 @@ END;
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/messagerie.js";
         return <<< END
 <div class="entete">
-    <div class="wrapper">
-        <div class="contain">
-            <div class="left">
+<div class="filtrer2">
+    <div class="menu"></div>
+    <div class="contain">
+        <div class="left">
                 <div class="top" style="padding: 20px 29px;height: auto;">
-                    <div class="" style="font: 13px Arial; ">nombre en ligne：<span id="numbers">0</span> 人
-                    </div>
+                    <div class="" style="font: 13px Arial; ">nombre total : <span id="numbers">0</span></div>
                 </div>
-                <ul class="people">
-                </ul>
+                <ul class="people"></ul>
             </div>
             <div class="right">
                 <div class="top"><span>Tips: <span class="name">websocke--group</span></span></div>
@@ -95,9 +94,9 @@ END;
                     <a href="" class="write-link smiley"></a>
                     <a href="" class="write-link send"></a>
                 </div>
-            </div>
         </div>
     </div>
+</div>
 </div>
 <script type="text/javascript" src="$lienjs" defer></script>
 END;
