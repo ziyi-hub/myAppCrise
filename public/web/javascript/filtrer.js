@@ -12,7 +12,6 @@ function filtrer(){
                 }
             })
         }
-
     }
     xmlhttp.open('GET', 'public/web/script/filtrer.php?NomUtilisateur=' + value, false);
     xmlhttp.send();
@@ -29,6 +28,7 @@ function sendAjout() {
             if (xmlhttp.readyState === 4) {
                 alert('Ajout réussie!')
                 let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+                //console.log(JSON.parse(contactInfo))
                 setContactor(JSON.parse(contactInfo))
             }
         }
@@ -94,7 +94,7 @@ function getListAmi(){
 }
 getListAmi()
 
-
+idUser = -1
 function getMessage(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -106,6 +106,7 @@ function getMessage(){
     }
     document.querySelectorAll(".person").forEach(user => {
         user.onclick = () => {
+            idUser = user.dataset.chat
             xmlhttp.open('GET', 'public/web/script/getMessageIndividu.php?idUser=' + user.dataset.chat, false);
             xmlhttp.send();
         }
@@ -151,4 +152,27 @@ function messageList(data) {
     xmlhttp.open('GET', 'public/web/script/userMoi.php', false);
     xmlhttp.send();
 }
+
+
+function sendMessage() {
+    let msg = document.querySelector("#input-value").value;
+    if (msg.length === 0){
+    }else{
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4) {
+                let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+                console.log(contactInfo)
+                //setContactor(JSON.parse(contactInfo))
+                //messageList(JSON.parse(contactInfo))
+                //getMessage()
+            }
+        }
+        console.log(idUser)
+        xmlhttp.open('GET', 'public/web/script/messageIndividu.php?message=' + msg + "&idUtilisateur=" + idUser, false);
+        xmlhttp.send();
+    }
+}
+
+document.querySelector(".send").addEventListener('click', sendMessage)
 

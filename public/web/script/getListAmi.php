@@ -6,7 +6,7 @@ use crise\models\Contact;
 
 $res = Contact::join("Utilisateurs", "Utilisateurs.idUtilisateur", "=", "Contact.idUtilisateur")
     ->where("ami", "=", "oui")
-    ->where("idGroupContact", "=", "-1")
+    ->where("individuel", "=", "oui")
     ->get();
 
 echo $res;
