@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model as Modele;
 
 class Messages extends Modele
 {
-    protected $table = 'messages';
+    protected $table = 'Messages';
     protected $primaryKey = 'idMessage';
     public $timestamps = false;
 }

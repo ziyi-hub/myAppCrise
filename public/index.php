@@ -10,6 +10,20 @@ use Slim\Factory\AppFactory;
 
 session_start();
 $db = new DB();
+/*
+$db->addConnection(
+    [
+        'host' => getenv("DB_HOST"),
+        'username' => getenv("DB_USER"),
+        'password' => getenv("DB_PASSWORD"),
+        'database' => getenv("DB_NAME"),
+        'con_db_port' => getenv("DB_PORT"),
+        'charset' => 'utf8',
+        'driver' => 'mysql',
+    ]
+);
+*/
+
 $db->addConnection(
     [
         'host' => 'localhost',
@@ -21,6 +35,7 @@ $db->addConnection(
         'driver' => 'mysql',
     ]
 );
+
 $db->setAsGlobal();
 $db->bootEloquent();
 $app = AppFactory::create();

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Localisations extends Model
 {
-    protected $table = 'localisations';
+    protected $table = 'Localisations';
     protected $primaryKey = 'numLocal';
     public $timestamps = false;
 }

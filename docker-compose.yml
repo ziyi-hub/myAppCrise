@@ -22,10 +22,10 @@ services:
       - db_data:/var/lib/mysql
       - ./baseeCrise.sql:/docker-entrypoint-initdb.d
     environment:
-      MYSQL_ROOT_PASSWORD: "1Zhongguo"
-      MYSQL_DATABASE: "PWeb"
-      MYSQL_PASSWORD: "1Zhongguo"
-      MYSQL_USER: "PWeb"
+      MYSQL_ROOT_PASSWORD: 1Zhongguo
+      MYSQL_DATABASE: PWeb
+      MYSQL_PASSWORD: 1Zhongguo
+      MYSQL_USER: PWeb
 
   phpmyadmin:
     image: phpmyadmin
