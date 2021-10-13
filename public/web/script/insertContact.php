@@ -20,3 +20,10 @@ $message->save();
 $contact->idMessage = $message->idMessage;
 $contact->save();
 
+$messages = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idGroupContact", "=", $Group["idGroup"])
+    ->orderBy('tempsEnvoi','ASC')
+    ->get();
+
+echo $messages;
+

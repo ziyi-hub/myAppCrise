@@ -10,7 +10,7 @@ function hide(){
     visible=false
 }
 
-var visible = false;
+let visible = false;
 function getGroup(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -24,6 +24,7 @@ function getGroup(){
                 }
             })
             document.querySelector(".close").addEventListener('click', hide)
+            getContact()
         }
     }
     xmlhttp.open('GET', 'public/web/script/messagerie.php', false);
@@ -32,7 +33,7 @@ function getGroup(){
 
 getGroup()
 
-var visible2 = false;
+let visible2 = false;
 function showFiltrer(){
     document.querySelector('#recheAmi').style.display="block"
     document.querySelector('#recheAmi').style.position = "absolute"
@@ -85,8 +86,10 @@ function insertContact(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            alert('Intégration réussie! Relancez le page pour voir')
-            console.log(this.responseText.split("}"))
+            alert('Intégration réussie!')
+            setContactor(JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]))
+            document.querySelector("#numbers").innerHTML = JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]).length
+            getContact()
         }
     }
     xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&nomGroup=" + nomGroup, false);
@@ -110,7 +113,7 @@ function getContact(){
     }
     document.querySelectorAll(".exbtn").forEach(div => {
         div.onclick = () => {
-            document.querySelector(".name").innerHTML = div.dataset.nomgroup
+            document.querySelector(".nameGroup").innerHTML = div.dataset.nomgroup
             idGroup = div.dataset.idgroup
             xmlhttp.open('GET', 'public/web/script/contact.php?idGroup=' + div.dataset.idgroup, false);
             xmlhttp.send();
@@ -200,7 +203,8 @@ function creerGroup(){
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4) {
-                alert('Création réussie! Relancez le page pour voir')
+                getGroup()
+                alert('Création réussie!')
             }
         }
         xmlhttp.open('GET', 'public/web/script/group.php?nomGroup=' + nomGroup, false);

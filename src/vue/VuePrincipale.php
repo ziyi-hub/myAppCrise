@@ -87,7 +87,7 @@ END;
                 <ul class="people"></ul>
         </div>
         <div class="right">
-            <div class="top"><span>Tips: <span class="name">myAppCrise--group</span></span></div>
+            <div class="top"><span>Tips: <span class="nameGroup">myAppCrise--group</span></span></div>
             <div class="chat active-chat" data-chat="person1"
                      style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
             </div>
@@ -136,7 +136,7 @@ END;
                     <ul class="people"></ul>
             </div>
             <div class="right">
-                <div class="top"><span>Tips: <span class="name">Message individuel</span></span></div>
+                <div class="top"><span>Tips: <span class="">Message individuel</span></span></div>
                 <div class="chat active-chat" data-chat="person1"
                          style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
                 </div>

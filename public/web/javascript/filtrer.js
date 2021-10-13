@@ -28,6 +28,8 @@ function sendAjout() {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4) {
                 alert('Ajout réussie!')
+                let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+                setContactor(JSON.parse(contactInfo))
             }
         }
         xmlhttp.open('GET', 'public/web/script/sendAjout.php?idUtilisateur=' + msg.split("-")[1], false);
@@ -62,3 +64,91 @@ function open(){
     })
 }
 open()
+
+
+function setContactor(user) {
+    let html = '';
+    for (let i = 0; i < user.length; i++) {
+        html += `
+<li class="person" data-chat=${user[i].idUtilisateur}>
+    <img src="` + user[i].headerimg + `" alt=""/>
+    <span class="name">` + user[i].nomContact + `</span>
+    <span class="time"></span>
+</li>`;
+    }
+    document.querySelector('ul.people').innerHTML = html;
+    getMessage()
+}
+
+function getListAmi(){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+            let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+            setContactor(JSON.parse(contactInfo))
+            document.querySelector("#numbers").innerHTML = JSON.parse(contactInfo).length
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/getListAmi.php', false);
+    xmlhttp.send();
+}
+getListAmi()
+
+
+function getMessage(){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+            let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+            console.log(contactInfo)
+            messageList(JSON.parse(contactInfo))
+        }
+    }
+    document.querySelectorAll(".person").forEach(user => {
+        user.onclick = () => {
+            xmlhttp.open('GET', 'public/web/script/getMessageIndividu.php?idUser=' + user.dataset.chat, false);
+            xmlhttp.send();
+        }
+    })
+}
+getMessage()
+
+function messageList(data) {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            document.querySelector('div.active-chat').innerHTML = ""
+            for (let i = 0; i < data.length; i++) {
+                //Si content est null, alors on n'affiche pas
+                if (data[i].content !== ""){
+                    if (data[i].nomContact === this.responseText) {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                    <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                    <div class="bubble me">` + data[i].content + `</div>
+                </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    } else {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                    <img src="` + data[i].headerimg + `" alt=""/>
+                    <div class="bubble you">` + data[i].content + `</div>
+                </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    }
+                }
+            }
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/userMoi.php', false);
+    xmlhttp.send();
+}
+
