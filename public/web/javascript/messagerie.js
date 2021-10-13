@@ -80,15 +80,16 @@ document.querySelector("#key").addEventListener('keyup', filtrer)
 
 function insertContact(){
     let value = document.querySelector("#key").value
-    let idGroup = document.querySelector("#key-idGroup").value
+    let nomGroup = document.querySelector("#key-idGroup").value
     let id = value.split("-")[1]
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             alert('Intégration réussie! Relancez le page pour voir')
+            console.log(this.responseText.split("}"))
         }
     }
-    xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&idGroup=" + idGroup, false);
+    xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&nomGroup=" + nomGroup, false);
     xmlhttp.send();
 }
 document.querySelector("#btn-integAmi").addEventListener("click", insertContact)
@@ -189,7 +190,7 @@ function sendMessage() {
 }
 
 document.querySelector(".send").addEventListener('click', sendMessage)
-//sendMessage()
+
 
 
 function creerGroup(){

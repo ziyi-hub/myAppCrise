@@ -107,8 +107,8 @@ END;
         <div id="recheAmi">
             <span class="close2">X</span>
             <h2 style="color: unset; text-shadow: unset">Inviter un ami</h2>
-            <input type="text" id="key" placeholder="NomUtilisateur: Ziyi-38"/>
-            <input type="text" id="key-idGroup" placeholder="IdGroup: 1"/>
+            <input type="text" id="key" placeholder="Ex: Ziyi-38"/>
+            <input type="text" id="key-idGroup" placeholder="Ex: group1"/>
             <button id="btn-integAmi">Envoyer</button>
             <div id="showmsg" style="box-sizing: border-box;"></div>
         </div>
