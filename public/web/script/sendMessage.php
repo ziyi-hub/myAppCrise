@@ -6,7 +6,7 @@ use crise\models\Messages;
 
 $message = $_GET['message'];
 $idGroup = $_GET['idGroup'];
-echo $message;
+
 
 $messages = new Messages;
 $messages->content = $message;
@@ -20,3 +20,10 @@ if (!is_null($_SESSION['profile'])) {
 }
 $contact->idMessage = $messages->idMessage;
 $contact->save();
+
+$res = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idGroupContact", "=", $idGroup)
+    ->orderBy('tempsEnvoi','ASC')
+    ->get();
+
+echo $res;

@@ -106,9 +106,7 @@ function getContact(){
             document.querySelector("#numbers").innerHTML = JSON.parse(contactInfo).length
             setContactor(JSON.parse(contactInfo))
             messageList(JSON.parse(contactInfo))
-            JSON.parse(contactInfo).forEach(contact => {
-                console.log(contact)
-            })
+           //document.querySelector(".send").addEventListener('click', sendMessage)
         }
     }
     document.querySelectorAll(".exbtn").forEach(div => {
@@ -185,14 +183,23 @@ function sendMessage() {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4) {
                 console.log(this.responseText.split("}"))
+                let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+                setContactor(JSON.parse(contactInfo))
+                messageList(JSON.parse(contactInfo))
+                getContact()
             }
         }
+        document.querySelectorAll(".exbtn").forEach(div => {
+            div.onclick = () => {
+                idGroup = div.dataset.idgroup
+            }
+        })
         xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg + "&idGroup=" + idGroup, false);
         xmlhttp.send();
     }
 }
 
-document.querySelector(".send").addEventListener('click', sendMessage)
+document.querySelector(".send").addEventListener('mouseover', sendMessage)
 
 
 
