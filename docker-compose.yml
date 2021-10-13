@@ -1,20 +1,41 @@
 version: "3"
 services:
-  mysql:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 1Zhongguo
-      MYSQL_DATABASE: PWeb
-      MYSQL_USER: PWeb
-      MYSQL_PASSWORD: 1Zhongguo
-
-  phpapp:
-    image: myappcrise
+  web-server:
     build: .
-    command: php -S 0.0.0.0:8080 -t /var/www/html/public
+    restart: unless-stopped
+    ports:
+      - 8001:80
+    image: myappcrise
     volumes:
       - .:/var/www/html
+    environment:
+      DB_HOST: mysql
+      DB_USER: PWeb
+      DB_PASSWORD: 1Zhongguo
+      DB_NAME: PWeb
+      DB_PORT: 3306
+
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./baseeCrise.sql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: "1Zhongguo"
+      MYSQL_DATABASE: "PWeb"
+      MYSQL_PASSWORD: "1Zhongguo"
+      MYSQL_USER: "PWeb"
+
+  phpmyadmin:
+    image: phpmyadmin
     ports:
-      - '8000:8080'
+      - 8002:80
+    environment:
+      - PMA_ABRITRARY=1
+      - PMA_HOST=mysql
+
+volumes:
+  db_data:
 
 
