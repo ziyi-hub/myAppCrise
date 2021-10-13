@@ -490,34 +490,12 @@
         text-align: left;
     }
 
-    .messagerie-total{
-        display: grid;
-        grid-template-columns: 1fr 5fr;
-        overflow-y: scroll;
-    }
-
-
-    .messagerie-user{
-        width: fit-content;
-    }
-
-    .messagerie-message{
-        display: flex;
-        overflow-y: scroll;
-    }
-
     #content-item{
         background-color: rgba(0, 0, 0, 0.4);
         border: 2px solid black;
         padding: 10px;
         margin: 0;
         width: fit-content;
-    }
-
-    .messagerie-content{
-        text-align: left;
-        position: absolute;
-        bottom: 0;
     }
 
     .people, .person{

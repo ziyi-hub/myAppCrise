@@ -122,20 +122,31 @@ END;
 
     public function htmlFiltrer(){
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/filtrer.js";
-        $filtrer = $this->htmlvars['filtrer'];
         return <<< END
 <div class="entete">
-    <div class="filtrer">
-        <form action=$filtrer method="get">
-            <input type="text" name="keywords" id="keywords" placeholder="Rechercher / Ajouter un ami">
-            <input type="submit" name="submit" id="submit" class="submit-chercher" value="Effacer">
-            <div id="showmsg"></div>
-        </form>
-        <div class="messagerie-total">
-            <div class="messagerie-user"></div>
-            <div class="messagerie-message">
-                <div class="messagerie-chat"></div>
-                <input type="text" class="messagerie-content" placeholder="Envoyer un message à lui">
+    <div class="filtrer2">
+        <div class="menu"></div>
+        <div class="contain">
+            <div class="left">
+                    <div class="top" style="padding: 20px 29px; height: auto;">
+                        <div class="" style="font: 13px Arial; ">
+                            nombre total : <span id="numbers">0</span>
+                            <button type='submit' id='nouGroup2'>Inviter un ami</button>
+                        </div>
+                    </div>
+                    <ul class="people"></ul>
+            </div>
+            <div class="right">
+                <div class="top"><span>Tips: <span class="name">Message individuel</span></span></div>
+                <div class="chat active-chat" data-chat="person1"
+                         style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
+                </div>
+                <div class="write">
+                    <a href="" class="write-link attach"></a>
+                    <input type="text" id="input-value"/>
+                    <a href="" class="write-link smiley"></a>
+                    <a href="" class="write-link send"></a>
+                </div>
             </div>
         </div>
     </div>
