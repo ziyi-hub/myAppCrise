@@ -124,14 +124,13 @@ END;
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/filtrer.js";
         return <<< END
 <div class="entete">
-    <div class="filtrer2">
-        <div class="menu"></div>
+    <div class="filtrer3">
         <div class="contain">
             <div class="left">
                     <div class="top" style="padding: 20px 29px; height: auto;">
                         <div class="" style="font: 13px Arial; ">
                             nombre total : <span id="numbers">0</span>
-                            <button type='submit' id='nouGroup2'>Inviter un ami</button>
+                            <button type='submit' id='nouGroup2'>Ajouter un ami</button>
                         </div>
                     </div>
                     <ul class="people"></ul>
@@ -147,6 +146,13 @@ END;
                     <a href="" class="write-link smiley"></a>
                     <a href="" class="write-link send"></a>
                 </div>
+            </div>
+            <div id="recheAmi">
+                <span class="close2">X</span>
+                <h2 style="color: unset; text-shadow: unset">Rechercher/Ajouter un ami</h2>
+                <input type="text" id="keywords" placeholder="Ex: Ziyi" style="width: 77%;"/>
+                <button id="btn-integAmi">Envoyer</button>
+                <div id="showmsg" style="box-sizing: border-box;"></div>
             </div>
         </div>
     </div>

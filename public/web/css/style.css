@@ -444,7 +444,7 @@
         display: flex;
     }
 
-    .filtrer, .filtrer2{
+    .filtrer, .filtrer2, .filtrer3{
         display: grid;
         max-height: 800px;
         overflow-y: scroll;

@@ -189,7 +189,7 @@ function sendMessage() {
 }
 
 document.querySelector(".send").addEventListener('click', sendMessage)
-sendMessage()
+//sendMessage()
 
 
 function creerGroup(){
