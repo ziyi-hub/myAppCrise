@@ -12,14 +12,12 @@ $messages = new Messages;
 $messages->content = $message;
 $messages->save();
 
-/*
-$nomContact = Utilisateurs::query()->where("idUtilisateur", "=", $idUtilisateur)->get(["nomUtilisateur"]);
 $contact = new Contact;
-$contact->nomContact = $nomContact[0]["nomUtilisateur"];
-$contact->individuel = "oui";
-$contact->idUtilisateur = $idUtilisateur;
+$contact->nomContact = $_SESSION['profile']['username'];
+$contact->individuel = $idUtilisateur;
+$contact->idUtilisateur = $_SESSION['profile']['id'];
 $contact->idMessage = $messages->idMessage;
+$contact->idGroupContact = 29;
 $contact->save();
-*/
 
 

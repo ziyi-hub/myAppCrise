@@ -107,6 +107,7 @@ function getMessage(){
     document.querySelectorAll(".person").forEach(user => {
         user.onclick = () => {
             idUser = user.dataset.chat
+            console.log(idUser)
             xmlhttp.open('GET', 'public/web/script/getMessageIndividu.php?idUser=' + user.dataset.chat, false);
             xmlhttp.send();
         }
