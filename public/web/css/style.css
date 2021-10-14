@@ -516,7 +516,16 @@
         border: 10px solid black;
     }
 
-    .close, .close2{
+    #board{
+        display: none;
+        height: 100%;
+        width: 100%;
+        background-color: papayawhip;
+        padding: 50px;
+        box-sizing: border-box;
+    }
+
+    .close, .close2, .close3{
         padding: 10px;
         border: 2px solid black;
         box-sizing: border-box;

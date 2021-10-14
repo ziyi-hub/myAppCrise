@@ -4,7 +4,6 @@ function show(){
     visible=true
 }
 
-
 function hide(){
     document.querySelector('#lightbox').style.display="none"
     visible=false
@@ -219,3 +218,28 @@ function creerGroup(){
     }
 }
 document.querySelector("#btn-group").addEventListener('click', creerGroup)
+
+
+function show3(){
+    document.querySelector('#board').style.display="block"
+    document.querySelector('#board').style.position = "absolute"
+    visible3=true
+}
+
+function hide3(){
+    document.querySelector('#board').style.display="none"
+    visible3=false
+}
+
+let visible3 = false;
+function getBoard(){
+    document.querySelector("#btn-board").addEventListener('click', () => {
+        if(visible3){
+            hide3()
+        }else {
+            show3()
+        }
+    })
+    document.querySelector(".close3").addEventListener('click', hide3)
+}
+getBoard()

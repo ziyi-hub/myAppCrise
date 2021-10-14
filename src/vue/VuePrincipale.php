@@ -87,7 +87,10 @@ END;
                 <ul class="people"></ul>
         </div>
         <div class="right">
-            <div class="top"><span>Tips: <span class="nameGroup">myAppCrise--group</span></span></div>
+            <div class="top">
+                <span style="padding: 15px 30px;">Tips: <span class="nameGroup">myAppCrise--group</span></span>
+                <span><button id="btn-board" style="width: 50%; border-radius: unset; height: 100%; margin: 0">Board</button></span>
+            </div>
             <div class="chat active-chat" data-chat="person1"
                      style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
             </div>
@@ -111,6 +114,13 @@ END;
             <input type="text" id="key-idGroup" placeholder="Ex: group1"/>
             <button id="btn-integAmi">Envoyer</button>
             <div id="showmsg" style="box-sizing: border-box;"></div>
+        </div>
+        <div id="board">
+            <span class="close3">X</span>
+            <h2 style="color: unset; text-shadow: unset">Board</h2>
+            <input type="text" id=""/>
+            <button id="envoie-board">Envoyer</button>
+            <div id="info-Board" style="box-sizing: border-box;"></div>
         </div>
     </div>
 </div>
