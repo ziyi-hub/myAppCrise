@@ -198,7 +198,7 @@ function sendMessage() {
     }
 }
 
-document.querySelector(".send").addEventListener('mouseover', sendMessage)
+document.querySelector(".send").addEventListener('click', sendMessage)
 
 
 

@@ -3,16 +3,11 @@
 require_once '../../index.php';
 use crise\models\Utilisateurs;
 use crise\models\Contact;
-use crise\models\Group;
 
 $idUtilisateur = $_GET['idUtilisateur'];
 $user = Utilisateurs::find($idUtilisateur);
 $user->ami = "oui";
 $user->save();
-
-$group = new Group;
-$group->nomGroup = "";
-$group->save();
 
 $contact = new Contact;
 $contact->nomContact = $user->nomUtilisateur;
