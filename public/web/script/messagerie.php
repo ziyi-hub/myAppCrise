@@ -5,7 +5,9 @@ use crise\models\Group;
 
 
 $html = "<button type='submit' id='nouGroup'>Créer un nouveau groupe</button>";
-$groups = Group::query()->get();
+$groups = Group::query()
+                ->where("nomGroup", "!=", "")
+                ->get();
 foreach ($groups as $group){
     $nomGroup = $group->nomGroup;
     $idGroup = $group->idGroup;
