@@ -148,7 +148,7 @@ END;
             <div class="right">
                 <div class="top"><span>Tips: <span class="">Message individuel</span></span></div>
                 <div class="chat active-chat" data-chat="person1"
-                         style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
+                         style="box-sizing: border-box; border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
                 </div>
                 <div class="write">
                     <a href="" class="write-link attach"></a>

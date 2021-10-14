@@ -32,7 +32,7 @@ function sendAjout() {
                 setContactor(JSON.parse(contactInfo))
             }
         }
-        xmlhttp.open('GET', 'public/web/script/sendAjout.php?idUtilisateur=' + msg.split("-")[1], false);
+        xmlhttp.open('GET', 'public/web/script/ajoutAmi.php?idUtilisateur=' + msg.split("-")[1], false);
         xmlhttp.send();
     }
 }
@@ -107,7 +107,6 @@ function getMessage(){
     document.querySelectorAll(".person").forEach(user => {
         user.onclick = () => {
             idUser = user.dataset.chat
-            console.log(idUser)
             xmlhttp.open('GET', 'public/web/script/getMessageIndividu.php?idUser=' + user.dataset.chat, false);
             xmlhttp.send();
         }
@@ -164,13 +163,13 @@ function sendMessage() {
             if (xmlhttp.readyState === 4) {
                 let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
                 console.log(contactInfo)
-                //setContactor(JSON.parse(contactInfo))
-                //messageList(JSON.parse(contactInfo))
-                //getMessage()
+                setContactor(JSON.parse(contactInfo))
+                messageList(JSON.parse(contactInfo))
+                getMessage()
             }
         }
         console.log(idUser)
-        xmlhttp.open('GET', 'public/web/script/messageIndividu.php?message=' + msg + "&idUtilisateur=" + idUser, false);
+        xmlhttp.open('GET', 'public/web/script/sendMessageIndividu.php?message=' + msg + "&idUtilisateur=" + idUser, false);
         xmlhttp.send();
     }
 }
