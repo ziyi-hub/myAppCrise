@@ -292,21 +292,28 @@ function fileChange(className) {
 
 // uploader
 function uploadFile(className) {
-    fileChange(className)
-    let fd = new FormData();
-    fd.append("file", document.getElementById(className).files[0]);
     let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(this.responseText.split("{\"error\":\"Not found.\"}")[1])
+        }
+        alert("So large")
+    }
     xhr.upload.addEventListener("progress", function (evt) {
         if (evt.lengthComputable) {
             let percentComplete = Math.round(evt.loaded * 100 / evt.total);
-            document.querySelector("#progress").innerHTML = "上传中" + percentComplete + "%";
-        } else {
-            document.querySelector("#progress").innerHTML = "无法计算";
+            document.querySelector("#progress").innerHTML = "onload" + percentComplete + "%";
         }
     }, false);
-    let url = '';
-    xhr.open("POST", url);
-    xhr.send(fd);
+    fileChange(className)
+    let reads = new FileReader();
+    let f = document.getElementById(className).files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function() {
+        //console.log(this.result)
+        xhr.open('GET', 'public/web/script/sendBoard.php?content=' + this.result, false);
+        xhr.send();
+    };
 }
 
 // Ouvrir la fenêtre de supression

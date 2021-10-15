@@ -76,6 +76,7 @@ END;
         $img_Pdf = $this->htmlvars['basepath']."/public/web/images/AdobePdf.png";
         $img_Word = $this->htmlvars['basepath']."/public/web/images/Word.png";
         $img_Excel = $this->htmlvars['basepath']."/public/web/images/Excel.png";
+        $img_icon_info = $this->htmlvars['basepath']."/public/web/images/icon_info@2x.png";
         return <<< END
 <div class="entete">
 <div class="filtrer2">
@@ -129,6 +130,7 @@ END;
             </div>
             <!-- Partie déjà uploader -->
             <div class="d-already-upload">
+                <div class="d-tips"><img src=$img_icon_info>La taille ne peut pas excéder 5KB, sinon ajax ne marche pas</div>
                 <div class="d-file">
                     <div class="left-board">
                         <img class="img-png" src=$img_icon_png>
