@@ -243,14 +243,91 @@ function getBoard(){
     document.querySelector(".close3").addEventListener('click', hide3)
 }
 getBoard()
-/*
-function load(){
-    document.querySelector(".attach").style.display = "none";
-    let reads = new FileReader();
-    let f = document.getElementById('file').files[0];
-    reads.readAsDataURL(f);
-    reads.onload = function() {
-        console.log(this.result)
-    };
+
+
+
+
+
+//Board uploader fichier
+
+function clickUpLoad(str) {
+    document.getElementById(str).click();
 }
-*/
+
+// affichage des infos de fichier uploadé
+function fileChange(className) {
+    document.querySelector(".d-already-upload").style.display="block"
+    document.querySelector(".d-upload").style.display="none"
+    let fileObj = document.getElementById(className).files[0]; // js 获取文件对象
+    let index = fileObj.name.lastIndexOf(".");
+    let fileType = fileObj.name.substr(index + 1);
+    document.querySelector(".img-png").style.display="none"
+    document.querySelector(".img-pdf").style.display="none"
+    document.querySelector(".img-word").style.display="none"
+    document.querySelector(".img-excel").style.display="none"
+    if (fileType === 'png' || fileType === 'PNG' || fileType === 'jpg' || fileType === 'JPG') {
+        document.querySelector(".img-png").style.display="inline-block"
+    }
+    if (fileType === 'pdf' || fileType === 'PDF') {
+        document.querySelector(".img-pdf").style.display="inline-block"
+    }
+    if (fileType === 'doc' || fileType === 'DOC' || fileType === 'docx' || fileType === 'DOCX') {
+        document.querySelector(".img-word").style.display="inline-block"
+    }
+    if (fileType === 'xlsx' || fileType === 'XLSX') {
+        document.querySelector(".img-excel").style.display="inline-block"
+    }
+    document.querySelector(".s-file-name").textContent = fileObj.name
+    document.querySelector(".s-file-name").attributes = fileObj.name
+
+    let fileSize = '';
+    if (fileObj.size > 1024 * 1024) {
+        fileSize = (fileObj.size / 1024 / 1024).toFixed(2) + 'M';
+    } else if (fileObj.size > 1024) {
+        fileSize = (fileObj.size / 1024).toFixed(2) + 'KB';
+    }
+    document.querySelector(".s-file-size").textContent = fileSize
+
+}
+
+// uploader
+function uploadFile(className) {
+    fileChange(className)
+    let fd = new FormData();
+    fd.append("file", document.getElementById(className).files[0]);
+    let xhr = new XMLHttpRequest();
+    xhr.upload.addEventListener("progress", function (evt) {
+        if (evt.lengthComputable) {
+            let percentComplete = Math.round(evt.loaded * 100 / evt.total);
+            document.querySelector("#progress").innerHTML = "上传中" + percentComplete + "%";
+        } else {
+            document.querySelector("#progress").innerHTML = "无法计算";
+        }
+    }, false);
+    let url = '';
+    xhr.open("POST", url);
+    xhr.send(fd);
+}
+
+// Ouvrir la fenêtre de supression
+function openModal() {
+    document.querySelector(".d-modal").style.display="block"
+}
+
+// fermer la fenêtre de supression
+function closeModal() {
+    document.querySelector(".d-modal").style.display="none"
+}
+
+// suppression du fichier
+function deleteFile() {
+    document.querySelector(".img-png").style.display="none"
+    document.querySelector(".img-pdf").style.display="none"
+    document.querySelector(".img-word").style.display="none"
+    document.querySelector(".img-excel").style.display="none"
+    document.querySelector(".s-file-name").textContent=""
+    document.querySelector(".s-file-size").textContent=""
+    document.querySelector(".d-already-upload").style.display="none"
+    document.querySelector(".d-upload").style.display="block"
+    document.querySelector(".d-modal").style.display="none"
+}

@@ -1,0 +1,277 @@
+img {
+    vertical-align: middle;
+}
+
+.left-board {
+    float: left;
+}
+
+.right-board {
+    float: right;
+}
+
+.d-upload-box {
+    padding: 6px;
+}
+
+.d-title {
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.d-upload {
+    position: relative;
+    border: 1px dashed #ddd;
+    height: 40px;
+    line-height: 40px;
+    background: #FCFCFC;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.d-upload:hover {
+    border-color: #4285F4;
+    background-color: #ecf3fe;
+}
+
+.upload-new,
+.upload-replace {
+    display: none;
+}
+
+.d-upload .icon-upload,
+.d-upload:hover .icon-upload {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin: -2px 5px 0 0;
+}
+
+.d-upload .icon-upload {
+    background: url(../images/icon-upload.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.d-upload:hover .icon-upload {
+    background: url(../images/icon-upload-active.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.d-already-upload {
+    display: none;
+}
+
+.d-tips {
+    color: #999;
+    margin: 10px 12px;
+    font-size: 12px;
+}
+
+.d-tips img {
+    width: 18px;
+    margin-right: 5px;
+    vertical-align: -5px;
+}
+
+.d-file {
+    margin: 4px 4px 4px 5px;
+    font-size: 15px;
+    color: #333;
+}
+
+.d-file::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.d-file .left-board {
+    width: 90%;
+}
+
+.d-file .right {
+    width: 10%;
+}
+
+.d-file .img-png,
+.d-file .img-pdf,
+.d-file .img-word,
+.d-file .img-excel {
+    width: 32px;
+    display: none;
+}
+
+.d-file .s-file-name {
+    display: inline-block;
+    max-width: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+.d-file .s-file-size {
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #999;
+    font-size: 13px;
+}
+
+.d-file .s-text {
+    font-size: 12px;
+    white-space: nowrap;
+    margin-left: 4px;
+    margin-right: 10px;
+}
+
+.d-file .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px auto;
+    vertical-align: -5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.d-file .icon-success {
+    cursor: text;
+    background-image: url(../images/icon_success@2x.png);
+}
+
+/*.d-file .icon-view {*/
+/*    background-image: url('../images/icon_view@2x.png');*/
+/*}*/
+
+.d-file .icon-replace {
+    position: relative;
+    background-image: url(../images/icon_replace@2x.png);
+}
+
+.d-file .icon-del {
+    background-image: url(../images/icon_del@2x.png);
+}
+
+.d-modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.d-modal-content {
+    width: 436px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.d-modal-head {
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    position: relative;
+}
+
+.d-modal-head .d-modal-head-left {
+    float: left;
+    padding-left: 12px;
+}
+
+.d-modal-head .d-modal-head-right {
+    margin: 0;
+    float: none;
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon-delete.png) no-repeat 0 0;
+    background-size: auto 16px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    margin-top: -8px;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.d-modal-body {
+    text-align: center;
+}
+
+.d-modal-body-left {
+    float: none;
+    display: inline-block;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    width: 62px;
+    height: 110px;
+    position: static;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    vertical-align: top;
+    background: url(../images/dialog_doubt.png) no-repeat 15px 50%;
+    background-size: 62px auto;
+}
+
+.d-modal-body-right {
+    margin: 0;
+    padding: 15px;
+    max-width: 74%;
+    display: inline-block;
+    min-height: 110px;
+    vertical-align: top;
+}
+
+.d-modal-body-title {
+    margin: 20px 0;
+    text-align: left;
+    font-size: inherit;
+}
+
+.d-btn {
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.d-btn:first-child, .d-btn:last-child {
+    padding: 0 20px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    transition-duration: .3s;
+    cursor: pointer;
+}
+
+.d-btn:first-child {
+    color: #fff;
+    border: 1px solid #325ce1;
+    background-color: #325ce1;
+}
+
+.d-btn:last-child {
+    color: #999;
+    border: 1px solid #d9d9d9;
+    background-color: #fafafa;
+}
