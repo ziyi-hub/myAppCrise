@@ -139,7 +139,6 @@ END;
             <div class="left">
                     <div class="top" style="padding: 20px 29px; height: auto;">
                         <div class="" style="font: 13px Arial; ">
-                            nombre total : <span id="numbers">0</span>
                             <button type='submit' id='nouGroup2'>Ajouter un ami</button>
                         </div>
                     </div>

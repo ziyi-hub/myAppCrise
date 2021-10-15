@@ -86,7 +86,6 @@ function getListAmi(){
         if (xmlhttp.readyState === 4) {
             let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
             setContactor(JSON.parse(contactInfo))
-            document.querySelector("#numbers").innerHTML = JSON.parse(contactInfo).length
         }
     }
     xmlhttp.open('GET', 'public/web/script/getListAmi.php', false);
