@@ -76,107 +76,103 @@ END;
         $img_Pdf = $this->htmlvars['basepath']."/public/web/images/AdobePdf.png";
         $img_Word = $this->htmlvars['basepath']."/public/web/images/Word.png";
         $img_Excel = $this->htmlvars['basepath']."/public/web/images/Excel.png";
-        $img_icon_info = $this->htmlvars['basepath']."/public/web/images/icon_info@2x.png";
         return <<< END
 <div class="entete">
 <div class="filtrer2">
-    <div class="menu"></div>
-    <div class="contain">
-        <div class="left">
-                <div class="top" style="padding: 20px 29px; height: auto;">
-                    <div class="" style="font: 13px Arial; ">
-                        nombre total : <span id="numbers">0</span>
-                        <button type='submit' id='nouGroup2'>Inviter un ami</button>
+<div class="menu"></div>
+<div class="contain">
+    <div class="left">
+        <div class="top" style="padding: 20px 29px; height: auto;">
+            <div class="" style="font: 13px Arial; ">nombre total : <span id="numbers">0</span>
+                <button type='submit' id='nouGroup2'>Inviter un ami</button>
+            </div>
+        </div>
+        <ul class="people"></ul>
+    </div>
+    <div class="right">
+        <div class="top">
+            <span style="padding: 15px 30px;">Tips: <span class="nameGroup">myAppCrise--group</span></span>
+            <span><button id="btn-board" style="width: 50%; border-radius: unset; height: 100%; margin: 0">Board</button></span>
+        </div>
+        <div class="chat active-chat" data-chat="person1" style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px"></div>
+        <div class="write">
+            <a class="write-link attach"></a>
+            <input type="text" id="input-value"/>
+            <a class="write-link smiley"></a>
+            <a class="write-link send"></a>
+        </div>
+    </div>
+    <div id="lightbox">
+        <span class="close">X</span>
+        <h2 style="color: unset; text-shadow: unset">Création un groupe</h2>
+        <input type="text" id="nom-group" placeholder="Nom d'un group"/>
+        <button id="btn-group">Envoyer</button>
+    </div>
+    <div id="recheAmi">
+        <span class="close2">X</span>
+        <h2 style="color: unset; text-shadow: unset">Inviter un ami</h2>
+        <input type="text" id="key" placeholder="Ex: Ziyi-38"/>
+        <input type="text" id="key-idGroup" placeholder="Ex: group1"/>
+        <button id="btn-integAmi">Envoyer</button>
+        <div id="showmsg" style="box-sizing: border-box;"></div>
+    </div>
+    <div id="board">
+        <span class="close3">X</span>
+        <div class="d-upload-box" style="margin-top: 50px">
+            <div class="d-title"></div>
+            <!-- partie non uploader -->
+            <div class="d-upload" onclick="clickUpLoad('upload-new')">
+                <input type="file" id="upload-new" class="upload-new" accept="*"
+                       onchange="uploadFile('upload-new')">
+                <span class="icon-upload"></span>
+                &nbsp;<span style="color:#325ce1;">Cliquez pour uploader</span>
+            </div>
+            <!-- Partie déjà uploader -->
+            <div class="d-already-upload">
+                <div class="d-file">
+                    <div class="left-board">
+                        <img class="img-png" src=$img_icon_png>
+                        <img class="img-pdf" src=$img_Pdf>
+                        <img class="img-word" src=$img_Word>
+                        <img class="img-excel" src=$img_Excel>
+                        <span class="s-file-name"></span>
+                        <span class="right-board s-file-size"></span>
                     </div>
-                </div>
-                <ul class="people"></ul>
-        </div>
-        <div class="right">
-            <div class="top">
-                <span style="padding: 15px 30px;">Tips: <span class="nameGroup">myAppCrise--group</span></span>
-                <span><button id="btn-board" style="width: 50%; border-radius: unset; height: 100%; margin: 0">Board</button></span>
-            </div>
-            <div class="chat active-chat" data-chat="person1"
-                     style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
-            </div>
-            <div class="write">
-                <a class="write-link attach"></a>
-                <input type="text" id="input-value"/>
-                <a class="write-link smiley"></a>
-                <a class="write-link send"></a>
-            </div>
-        </div>
-        <div id="lightbox">
-            <span class="close">X</span>
-            <h2 style="color: unset; text-shadow: unset">Création un groupe</h2>
-            <input type="text" id="nom-group" placeholder="Nom d'un group"/>
-            <button id="btn-group">Envoyer</button>
-        </div>
-        <div id="recheAmi">
-            <span class="close2">X</span>
-            <h2 style="color: unset; text-shadow: unset">Inviter un ami</h2>
-            <input type="text" id="key" placeholder="Ex: Ziyi-38"/>
-            <input type="text" id="key-idGroup" placeholder="Ex: group1"/>
-            <button id="btn-integAmi">Envoyer</button>
-            <div id="showmsg" style="box-sizing: border-box;"></div>
-        </div>
-        <div id="board">
-            <span class="close3">X</span>
-            <div class="d-upload-box" style="margin-top: 50px">
-    <div class="d-title"></div>
-    <!-- partie non uploader -->
-    <div class="d-upload" onclick="clickUpLoad('upload-new')">
-        <input type="file" id="upload-new" class="upload-new" accept="*"
-               onchange="uploadFile('upload-new')">
-        <span class="icon-upload"></span>
-        &nbsp;<span style="color:#325ce1;">Cliquez pour uploader</span>
-    </div>
-    <!-- Partie déjà uploader -->
-    <div class="d-already-upload">
-        <div class="d-file">
-            <div class="left-board">
-                <img class="img-png" src=$img_icon_png>
-                <img class="img-pdf" src=$img_Pdf>
-                <img class="img-word" src=$img_Word>
-                <img class="img-excel" src=$img_Excel>
-                <span class="s-file-name"></span>
-                <span class="right-board s-file-size"></span>
-            </div>
-            <div class="right-board">
-                <span id="progress" style="display:none">Téléchargement</span>
-                <span class="s-text"><i class="icon icon-success"></i>Succès</span>
-                <i class="icon icon-replace" title="remplace" onclick="clickUpLoad('upload-replace')">
-                    <input type="file" id="upload-replace" class="upload-replace"
-                           accept="*"
-                           onchange="uploadFile('upload-replace')">
-                </i>
-                <i class="icon icon-del" title="supprimer" onclick="openModal()"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- supression fenêtre -->
-    <div class="d-modal">
-        <div class="d-modal-content">
-            <div class="d-modal-head">
-                <div class="d-modal-head-left">fenêtre</div>
-                <div class="d-modal-head-right" onclick="closeModal()"></div>
-            </div>
-            <div class="d-modal-body">
-                <div class="d-modal-body-left"></div>
-                <div class="d-modal-body-right">
-                    <div class="d-modal-body-title">Etes-vous sûr le supprimer？</div>
-                    <div>
-                        <div class="d-btn" onclick="deleteFile()">Oui</div>
-                        <div class="d-btn" onclick="closeModal()">Annuler</div>
+                    <div class="right-board">
+                        <span id="progress" style="display:none">Téléchargement</span>
+                        <span class="s-text"><i class="icon icon-success"></i>Succès</span>
+                        <i class="icon icon-replace" title="remplace" onclick="clickUpLoad('upload-replace')">
+                            <input type="file" id="upload-replace" class="upload-replace"
+                                   accept="*"
+                                   onchange="uploadFile('upload-replace')">
+                        </i>
+                        <i class="icon icon-del" title="supprimer" onclick="openModal()"></i>
                     </div>
                 </div>
             </div>
-        </div>
+        
+            <!-- supression fenêtre -->
+            <div class="d-modal">
+                <div class="d-modal-content">
+                    <div class="d-modal-head">
+                        <div class="d-modal-head-left">fenêtre</div>
+                        <div class="d-modal-head-right" onclick="closeModal()"></div>
+                    </div>
+                    <div class="d-modal-body">
+                        <div class="d-modal-body-left"></div>
+                        <div class="d-modal-body-right">
+                            <div class="d-modal-body-title">Etes-vous sûr le supprimer？</div>
+                            <div>
+                                <div class="d-btn" onclick="deleteFile()">Oui</div>
+                                <div class="d-btn" onclick="closeModal()">Annuler</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </div>
 </div>
-        </div>
-    </div>
 </div>
 </div>
 <script type="text/javascript" src="$lienjs" defer></script>

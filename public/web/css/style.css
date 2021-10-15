@@ -466,6 +466,11 @@
         border: 1px solid white;
     }
 
+    .exbtn:hover{
+        background-color: black;
+        color: darkred;
+    }
+
     .filtrer2{
         grid-template-columns: 1fr 5fr;
     }
