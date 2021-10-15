@@ -10,8 +10,8 @@ class Utilisateurs extends Model
     protected $primaryKey = 'idUtilisateur';
     public $timestamps = false;
 
-    public function profil(){
-        return $this->belongsTo(
-            Profil::class, "idProfil", "idProfil");
+    public function message(){
+        return $this->belongsToMany(
+            "crise\models\Messages", "Contact", "idUtilisateur", "idMessage");
     }
 }
