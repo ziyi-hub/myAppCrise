@@ -243,3 +243,14 @@ function getBoard(){
     document.querySelector(".close3").addEventListener('click', hide3)
 }
 getBoard()
+/*
+function load(){
+    document.querySelector(".attach").style.display = "none";
+    let reads = new FileReader();
+    let f = document.getElementById('file').files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function() {
+        console.log(this.result)
+    };
+}
+*/
