@@ -162,7 +162,6 @@ function sendMessage() {
             if (xmlhttp.readyState === 4) {
                 let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
                 console.log(contactInfo)
-                setContactor(JSON.parse(contactInfo))
                 messageList(JSON.parse(contactInfo))
                 getMessage()
             }
