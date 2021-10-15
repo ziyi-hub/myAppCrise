@@ -317,7 +317,7 @@ END;
                         <h1 class="masthead-heading text-uppercase mb-0">Welcome to myAppCrise</h1>
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon">Créé par Ziyi</div>
+                            <div class="divider-custom-icon">Réalisé par Ziyi</div>
                             <div class="divider-custom-line"></div>
                         </div>
                         <p class="masthead-subheading font-weight-light mb-0">Offrez-vous le Premium! <br>Profiter de l'essai gratuit</p>
