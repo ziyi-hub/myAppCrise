@@ -295,9 +295,8 @@ function uploadFile(className) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            console.log(this.responseText.split("{\"error\":\"Not found.\"}")[1])
+            //console.log(this.responseText.split("{\"error\":\"Not found.\"}")[1])
         }
-        alert("So large")
     }
     xhr.upload.addEventListener("progress", function (evt) {
         if (evt.lengthComputable) {
@@ -338,3 +337,37 @@ function deleteFile() {
     document.querySelector(".d-upload").style.display="block"
     document.querySelector(".d-modal").style.display="none"
 }
+
+function getMsgBoard(){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]).forEach(item => {
+                //console.log(item)
+                document.querySelector("#affichage-board").innerHTML += `
+    <div class="d-file">
+        <div class="left-board">
+            <img class="img-png" src="public/web/images/icon_png.png">
+            <img class="img-pdf" src="public/web/AdobePdf.png">
+            <img class="img-word" src="public/web/Word.png">
+            <img class="img-excel" src="public/web/Excel.png">
+            <span class="s-file-name">${item.contentBoard}</span>
+            <span class="right-board s-file-size"></span>
+        </div>
+        <div class="right-board">
+            <span id="progress" style="display:none">Téléchargement</span>
+            <span class="s-text"><i class="icon icon-success"></i>Succès</span>
+            <i class="icon icon-replace" title="remplace" onclick="clickUpLoad('upload-replace')">
+                <input type="file" id="upload-replace" class="upload-replace" accept="*" onchange="uploadFile('upload-replace')">
+            </i>
+            <i class="icon icon-del" title="supprimer" onclick="openModal()"></i>
+        </div>
+    </div>
+    `
+            })
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/getMsgBoard.php', false);
+    xmlhttp.send();
+}
+getMsgBoard()

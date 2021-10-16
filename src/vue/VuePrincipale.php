@@ -172,7 +172,8 @@ END;
                     </div>
                 </div>
             </div>
-        </div>        
+        </div> 
+        <div id="affichage-board"></div>       
     </div>
 </div>
 </div>
