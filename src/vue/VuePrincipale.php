@@ -91,7 +91,7 @@ END;
         <ul class="people"></ul>
     </div>
     <div class="right">
-        <div class="top">
+        <div class="top" style="padding-top: 0 !important; padding-bottom: 0 !important;">
             <span style="padding: 15px 30px;">Tips: <span class="nameGroup">myAppCrise--group</span></span>
             <span><button id="btn-board" style="width: 50%; border-radius: unset; height: 100%; margin: 0">Board</button></span>
         </div>
