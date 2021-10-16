@@ -112,6 +112,8 @@ function getContact(){
         div.onclick = () => {
             document.querySelector(".nameGroup").innerHTML = div.dataset.nomgroup
             idGroup = div.dataset.idgroup
+            document.querySelector("#affichage-board").innerHTML = ""
+            getMsgBoard(idGroup)
             xmlhttp.open('GET', 'public/web/script/contact.php?idGroup=' + div.dataset.idgroup, false);
             xmlhttp.send();
         }
@@ -338,7 +340,7 @@ function deleteFile() {
     document.querySelector(".d-modal").style.display="none"
 }
 
-function getMsgBoard(){
+function getMsgBoard(idGroup){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -351,7 +353,9 @@ function getMsgBoard(){
             <img class="img-pdf" src="public/web/AdobePdf.png">
             <img class="img-word" src="public/web/Word.png">
             <img class="img-excel" src="public/web/Excel.png">
-            <span class="s-file-name"><a href=${item.contentBoard}>Télécharger fichier uploadé</span>
+            <span class="s-file-name">
+                <a href=${item.contentBoard}>Télécharger fichier uploadé</a>
+            </span>
             <span class="right-board s-file-size"></span>
         </div>
         <div class="right-board">
@@ -367,7 +371,7 @@ function getMsgBoard(){
             })
         }
     }
-    xmlhttp.open('GET', 'public/web/script/getMsgBoard.php', false);
+    xmlhttp.open('GET', 'public/web/script/getMsgBoard.php?idgroup=' + idGroup, false);
     xmlhttp.send();
 }
-getMsgBoard()
+//getMsgBoard()
