@@ -351,7 +351,7 @@ function getMsgBoard(){
             <img class="img-pdf" src="public/web/AdobePdf.png">
             <img class="img-word" src="public/web/Word.png">
             <img class="img-excel" src="public/web/Excel.png">
-            <span class="s-file-name">${item.contentBoard}</span>
+            <span class="s-file-name"><a href=${item.contentBoard}>Télécharger fichier uploadé</span>
             <span class="right-board s-file-size"></span>
         </div>
         <div class="right-board">
