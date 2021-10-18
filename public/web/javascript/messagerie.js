@@ -296,8 +296,7 @@ function uploadFile(className) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            console.log(this.responseText)
-            //alert("Envoyer réussie! Actualisez la page pour voir")
+            //console.log(this.responseText)
         }
     }
     xhr.upload.addEventListener("progress", function (evt) {
@@ -362,13 +361,11 @@ function getMsgBoard(idGroup){
             <img class="img-pdf" src="public/web/images/AdobePdf.png">
             <img class="img-word" src="public/web/images/Word.png">
             <img class="img-excel" src="public/web/images/Excel.png">
-            <span class="s-file-name">
-                <a href=${item.contentBoard}>${item.fileName}</a>
-            </span>
+            <span class="s-file-name">${item.fileName}</span>
             <span class="right-board s-file-size"></span>
         </div>
         <div class="right-board">
-            <span id="progress" style="display:none">Téléchargement</span>
+            <span id="progress"><a href=${item.contentBoard}>Téléchargement</a></span>
             <span class="s-text"><i class="icon icon-success"></i>Succès</span>
             <i class="icon icon-del" data-idboard=${item.idBoard} title="supprimer" onclick="openModal(${item.idBoard})"></i>
         </div>

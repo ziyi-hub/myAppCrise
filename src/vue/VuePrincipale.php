@@ -143,7 +143,7 @@ END;
                         <span class="right-board s-file-size"></span>
                     </div>
                     <div class="right-board">
-                        <span id="progress" style="display:none">Téléchargement</span>
+                        <span id="progress" >Téléchargement</span>
                         <span class="s-text"><i class="icon icon-success"></i>Succès</span>
                         <i class="icon icon-del" title="supprimer" onclick="openModal()"></i>
                     </div>
