@@ -251,7 +251,6 @@ getBoard()
 
 
 //Board uploader fichier
-
 function clickUpLoad(str) {
     document.getElementById(str).click();
 }
@@ -298,6 +297,7 @@ function uploadFile(className) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             //console.log(this.responseText.split("{\"error\":\"Not found.\"}")[1])
+            alert("Envoyer réussie! Actualisez la page pour voir")
         }
     }
     xhr.upload.addEventListener("progress", function (evt) {
@@ -312,7 +312,7 @@ function uploadFile(className) {
     reads.readAsDataURL(f);
     reads.onload = function() {
         //console.log(this.result)
-        xhr.open('GET', 'public/web/script/sendBoard.php?content=' + this.result, false);
+        xhr.open('GET', 'public/web/script/sendBoard.php?content=' + this.result + "&idgroup=" + idGroup, false);
         xhr.send();
     };
 }

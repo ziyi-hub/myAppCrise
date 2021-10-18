@@ -125,8 +125,11 @@ END;
             <div class="d-upload" onclick="clickUpLoad('upload-new')">
                 <input type="file" id="upload-new" class="upload-new" accept="*"
                        onchange="uploadFile('upload-new')">
-                <span class="icon-upload"></span>
-                &nbsp;<span style="color:#325ce1;">Cliquez pour uploader</span>
+                <span class="icon-upload"></span>&nbsp;
+                <span style="color:#325ce1;">
+                    Cliquez pour uploader 
+                    (La taille ne peut pas excéder 5KB)
+                </span>
             </div>
             <!-- Partie déjà uploader -->
             <div class="d-already-upload">
