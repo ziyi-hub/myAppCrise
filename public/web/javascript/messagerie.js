@@ -370,9 +370,6 @@ function getMsgBoard(idGroup){
         <div class="right-board">
             <span id="progress" style="display:none">Téléchargement</span>
             <span class="s-text"><i class="icon icon-success"></i>Succès</span>
-            <i class="icon icon-replace" title="remplace" onclick="clickUpLoad('upload-replace')">
-                <input type="file" id="upload-replace" class="upload-replace" accept="*" onchange="uploadFile('upload-replace')">
-            </i>
             <i class="icon icon-del" data-idboard=${item.idBoard} title="supprimer" onclick="openModal(${item.idBoard})"></i>
         </div>
     </div>
