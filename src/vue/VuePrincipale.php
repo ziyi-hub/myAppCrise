@@ -128,12 +128,11 @@ END;
                 <span class="icon-upload"></span>&nbsp;
                 <span style="color:#325ce1;">
                     Cliquez pour uploader 
-                    (La taille ne peut pas excéder 5KB)
                 </span>
             </div>
             <!-- Partie déjà uploader -->
             <div class="d-already-upload">
-                <div class="d-tips"><img src=$img_icon_info>La taille ne peut pas excéder 5KB, sinon ajax ne marche pas</div>
+                <div class="d-tips"><img src=$img_icon_info>Actualisez la page pour voir</div>
                 <div class="d-file">
                     <div class="left-board">
                         <img class="img-png" src=$img_icon_png>

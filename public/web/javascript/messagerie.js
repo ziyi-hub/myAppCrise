@@ -296,8 +296,8 @@ function uploadFile(className) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            //console.log(this.responseText.split("{\"error\":\"Not found.\"}")[1])
-            alert("Envoyer réussie! Actualisez la page pour voir")
+            console.log(this.responseText)
+            //alert("Envoyer réussie! Actualisez la page pour voir")
         }
     }
     xhr.upload.addEventListener("progress", function (evt) {
@@ -307,6 +307,20 @@ function uploadFile(className) {
         }
     }, false);
     fileChange(className)
+    let fd = new FormData();
+    let reads = new FileReader();
+    let f = document.getElementById(className).files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function() {
+        fd.append("file", document.getElementById(className).files[0]);
+        fd.append("api", this.result);
+        fd.append("idgroup", idGroup);
+        console.log(fd.get("file"))
+        xhr.open('POST', 'public/web/script/sendBoard.php', false);
+        xhr.send(fd);
+    };
+
+    /*
     let reads = new FileReader();
     let f = document.getElementById(className).files[0];
     reads.readAsDataURL(f);
@@ -315,6 +329,8 @@ function uploadFile(className) {
         xhr.open('GET', 'public/web/script/sendBoard.php?content=' + this.result + "&idgroup=" + idGroup, false);
         xhr.send();
     };
+
+     */
 }
 
 // Ouvrir la fenêtre de supression
@@ -345,16 +361,19 @@ function getMsgBoard(idGroup){
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]).forEach(item => {
-                //console.log(item)
+                //console.log(item.fileName);
+                let index = item.fileName.lastIndexOf(".");
+                let fileType = item.fileName.substr(index + 1);
+
                 document.querySelector("#affichage-board").innerHTML += `
     <div class="d-file">
         <div class="left-board">
             <img class="img-png" src="public/web/images/icon_png.png">
-            <img class="img-pdf" src="public/web/AdobePdf.png">
-            <img class="img-word" src="public/web/Word.png">
-            <img class="img-excel" src="public/web/Excel.png">
+            <img class="img-pdf" src="public/web/images/AdobePdf.png">
+            <img class="img-word" src="public/web/images/Word.png">
+            <img class="img-excel" src="public/web/images/Excel.png">
             <span class="s-file-name">
-                <a href=${item.contentBoard}>Télécharger fichier uploadé</a>
+                <a href=${item.contentBoard}>${item.fileName}</a>
             </span>
             <span class="right-board s-file-size"></span>
         </div>
@@ -374,4 +393,4 @@ function getMsgBoard(idGroup){
     xmlhttp.open('GET', 'public/web/script/getMsgBoard.php?idgroup=' + idGroup, false);
     xmlhttp.send();
 }
-//getMsgBoard()
+
