@@ -319,22 +319,12 @@ function uploadFile(className) {
         xhr.open('POST', 'public/web/script/sendBoard.php', false);
         xhr.send(fd);
     };
-
-    /*
-    let reads = new FileReader();
-    let f = document.getElementById(className).files[0];
-    reads.readAsDataURL(f);
-    reads.onload = function() {
-        //console.log(this.result)
-        xhr.open('GET', 'public/web/script/sendBoard.php?content=' + this.result + "&idgroup=" + idGroup, false);
-        xhr.send();
-    };
-
-     */
 }
 
+idboard = -1
 // Ouvrir la fenêtre de supression
-function openModal() {
+function openModal(idBoard) {
+    idboard = idBoard
     document.querySelector(".d-modal").style.display="block"
 }
 
@@ -345,15 +335,19 @@ function closeModal() {
 
 // suppression du fichier
 function deleteFile() {
-    document.querySelector(".img-png").style.display="none"
-    document.querySelector(".img-pdf").style.display="none"
-    document.querySelector(".img-word").style.display="none"
-    document.querySelector(".img-excel").style.display="none"
-    document.querySelector(".s-file-name").textContent=""
-    document.querySelector(".s-file-size").textContent=""
-    document.querySelector(".d-already-upload").style.display="none"
+    console.log(idboard)
     document.querySelector(".d-upload").style.display="block"
     document.querySelector(".d-modal").style.display="none"
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+            console.log(this.responseText)
+            document.querySelector("#affichage-board").innerHTML = ""
+            getMsgBoard(idGroup)
+        }
+    }
+    xmlhttp.open('GET', 'public/web/script/deleteMsgBoard.php?idBoard=' + idboard, false);
+    xmlhttp.send();
 }
 
 function getMsgBoard(idGroup){
@@ -361,10 +355,6 @@ function getMsgBoard(idGroup){
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             JSON.parse(this.responseText.split("{\"error\":\"Not found.\"}")[1]).forEach(item => {
-                //console.log(item.fileName);
-                let index = item.fileName.lastIndexOf(".");
-                let fileType = item.fileName.substr(index + 1);
-
                 document.querySelector("#affichage-board").innerHTML += `
     <div class="d-file">
         <div class="left-board">
@@ -383,7 +373,7 @@ function getMsgBoard(idGroup){
             <i class="icon icon-replace" title="remplace" onclick="clickUpLoad('upload-replace')">
                 <input type="file" id="upload-replace" class="upload-replace" accept="*" onchange="uploadFile('upload-replace')">
             </i>
-            <i class="icon icon-del" title="supprimer" onclick="openModal()"></i>
+            <i class="icon icon-del" data-idboard=${item.idBoard} title="supprimer" onclick="openModal(${item.idBoard})"></i>
         </div>
     </div>
     `
