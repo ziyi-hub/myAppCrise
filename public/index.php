@@ -133,6 +133,17 @@ $app->post('/validerInscription',
 
 $app->post('/validerConnexion',
     function (Request $req, Response $response, $args): Response {
+        $csrf = $this->get('csrf');
+        $nameKey = $csrf->getTokenNameKey();
+        $valueKey = $csrf->getTokenValueKey();
+        $name = $req->getAttribute($nameKey);
+        $value = $req->getAttribute($valueKey);
+        $_SESSION['token_modif'] = array(
+            'nameKey'       => $nameKey,
+            'valueKey'      => $valueKey,
+            'value'         => $value,
+            'name'          => $name,
+        );
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
         $response = $controleur->validerConnexion($req, $response, $args);
         return $response;
@@ -142,6 +153,17 @@ $app->post('/validerConnexion',
 
 $app->get('/monCompte',
     function (Request $req, Response $response, $args): Response {
+        $csrf = $this->get('csrf');
+        $nameKey = $csrf->getTokenNameKey();
+        $valueKey = $csrf->getTokenValueKey();
+        $name = $req->getAttribute($nameKey);
+        $value = $req->getAttribute($valueKey);
+        $_SESSION['token_modif'] = array(
+            'nameKey'       => $nameKey,
+            'valueKey'      => $valueKey,
+            'value'         => $value,
+            'name'          => $name,
+        );
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
         $response = $controleur->getMonCompte($req, $response, $args);
         return $response;

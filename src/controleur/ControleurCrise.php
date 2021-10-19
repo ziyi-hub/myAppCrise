@@ -129,11 +129,14 @@ class ControleurCrise
             $rs->getBody()->write($vue->render(3, $this->htmlvars));
         }elseif ($MotDePasse !== $MotDePasse2){
             echo "<script>alert('Les deux mots de passe doivent être identiques')</script>";
-            $vue = new VuePrincipale([], $this->container);
-            $rs->getBody()->write($vue->render(4, $this->htmlvars));
+            //$vue = new VuePrincipale([], $this->container);
+            //$rs->getBody()->write($vue->render(4, $this->htmlvars));
+            return $rs->withHeader('Location', $this->htmlvars['inscription'])->withStatus(302);
+
         }else{
-            $vue = new VuePrincipale([], $this->container);
-            $rs->getBody()->write($vue->render(4, $this->htmlvars));
+            //$vue = new VuePrincipale([], $this->container);
+            //$rs->getBody()->write($vue->render(4, $this->htmlvars));
+            return $rs->withHeader('Location', $this->htmlvars['inscription'])->withStatus(302);
         }
         return $rs;
     }
@@ -158,13 +161,13 @@ class ControleurCrise
                         'mdp'        => $user->motDePasse,
                     );
                 }
-                //$user->save();
                 $vue = new VuePrincipale([$eloquentResult], $this->container);
                 $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
             }else{
                 echo "<script>alert('Attention! Le mot de passe incorrect! ')</script>";
-                $vue = new VuePrincipale([], $this->container);
-                $rs->getBody()->write($vue->render(3, $this->htmlvars));
+                //$vue = new VuePrincipale([], $this->container);
+                //$rs->getBody()->write($vue->render(3, $this->htmlvars));
+                return $rs->withHeader('Location', $this->htmlvars['connexion'])->withStatus(302);
             }
         return $rs;
     }
@@ -201,11 +204,13 @@ class ControleurCrise
                 $eloquentResult->save();
                 echo "<script>alert('Modification réussie')</script>";
                 session_unset();
-                $vue = new VuePrincipale([], $this->container);
-                $rs->getBody()->write($vue->render(3, $this->htmlvars));
+                //$vue = new VuePrincipale([], $this->container);
+                //$rs->getBody()->write($vue->render(3, $this->htmlvars));
+                return $rs->withHeader('Location', $this->htmlvars['connexion'])->withStatus(302);
             }else{
                 echo "<script>alert('Attention! Ancien mot de passe incorrect! ')</script>";
-                $this->getMonCompte($rq, $rs, $args);
+                //$this->getMonCompte($rq, $rs, $args);
+                return $rs->withHeader('Location', $this->htmlvars['monCompte'])->withStatus(302);
             }
         }
         return $rs;

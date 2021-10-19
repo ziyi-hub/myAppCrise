@@ -337,6 +337,10 @@ END;
 
 
     public function htmlCompte(){
+        $name = $_SESSION['token_modif']['name'];
+        $value = $_SESSION['token_modif']['value'];
+        $nameKey = $_SESSION['token_modif']['nameKey'];
+        $valueKey = $_SESSION['token_modif']['valueKey'];
         $modifMotDePasse = $this->htmlvars['modifMotDePasse'];
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/compte.js";
         $affichageProfil = $this->AfficherIden();
@@ -364,6 +368,8 @@ END;
                                 <input type="password" name="mdp" id="mdp" placeholder="Nouveau mot de passe" required><br>
                                 <i class="icon-user5" id="icon-user5"></i>
                             </div>
+                            <input type="hidden" name="$nameKey" value="$name">
+                            <input type="hidden" name="$valueKey" value="$value">
                             <button type="submit" class="but" id="submit">Modifier</button>
                         </form> 
                     </div>                     
