@@ -217,9 +217,11 @@ class ControleurCrise
         {
             session_unset();
         }
+        /*
         if ($_SESSION['token'] ?? ''){
             session_unset();
         }
+        */
         $this->getConnexion($rq, $rs, $args);
         return $rs;
     }
