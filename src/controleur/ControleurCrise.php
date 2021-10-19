@@ -213,17 +213,12 @@ class ControleurCrise
 
 
     public function deconnexion(Request $rq, Response $rs, array $args ):Response{
+        $this->initiale($rq, $rs, $args);
         if($_SESSION['profile']['id'] ?? '')
         {
             session_unset();
         }
-        /*
-        if ($_SESSION['token'] ?? ''){
-            session_unset();
-        }
-        */
-        $this->getConnexion($rq, $rs, $args);
-        return $rs;
+        return $rs->withHeader('Location', $this->htmlvars['connexion'])->withStatus(302);
     }
 
 
