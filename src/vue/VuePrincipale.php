@@ -41,7 +41,7 @@ END;
     private function VerifAdmi() {
         $html = null;
         if (!empty($_SESSION["profile"])){
-            $monCompte = $this->htmlvars['monCompte'];/*."/".$_SESSION['token'];*/
+            $monCompte = $this->htmlvars['monCompte'];
             $deconnexion = $this->htmlvars['deconnexion'];
             $contaminee = $this->htmlvars['contaminee'];
             $html = <<<END
@@ -249,6 +249,11 @@ END;
 
 
     public function htmlInscription(){
+        $name = $_SESSION['token_ins']['name'];
+        $value = $_SESSION['token_ins']['value'];
+        $nameKey = $_SESSION['token_ins']['nameKey'];
+        $valueKey = $_SESSION['token_ins']['valueKey'];
+
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/inscription.js";
         $connexion = $this->htmlvars['connexion'];
         $action = $this->htmlvars['validerInscription'];
@@ -266,6 +271,8 @@ END;
                             <input type="password" name="MotDePasse2" id="MotDePasse2" placeholder="Confirmer le mot de passe" required>
                             <i class="icon-user2" id="icon-user2"></i>
                         </div>
+                        <input type="hidden" name="$nameKey" value="$name">
+                        <input type="hidden" name="$valueKey" value="$value">
                         <button type="submit" class="but" id="submit">Inscription</button>
                         <div id="showmsg2" style="display: none"></div>
                     </form>
@@ -278,10 +285,10 @@ END;
 
 
     public function htmlConnexion(){
-        $name = $_SESSION['token']['name'];
-        $value = $_SESSION['token']['value'];
-        $nameKey = $_SESSION['token']['nameKey'];
-        $valueKey = $_SESSION['token']['valueKey'];
+        $name = $_SESSION['token_con']['name'];
+        $value = $_SESSION['token_con']['value'];
+        $nameKey = $_SESSION['token_con']['nameKey'];
+        $valueKey = $_SESSION['token_con']['valueKey'];
 
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/connexion.js";
         $validerConnexion = $this->htmlvars['validerConnexion'];

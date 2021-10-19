@@ -84,6 +84,17 @@ $app->get('/',
 
 $app->get('/inscription',
     function (Request $request, Response $response, $args): Response {
+        $csrf = $this->get('csrf');
+        $nameKey = $csrf->getTokenNameKey();
+        $valueKey = $csrf->getTokenValueKey();
+        $name = $request->getAttribute($nameKey);
+        $value = $request->getAttribute($valueKey);
+        $_SESSION['token_ins'] = array(
+            'nameKey'       => $nameKey,
+            'valueKey'      => $valueKey,
+            'value'         => $value,
+            'name'          => $name,
+        );
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
         $response = $controleur->getInscription($request, $response, $args);
         return $response;
@@ -98,7 +109,7 @@ $app->get('/connexion',
         $valueKey = $csrf->getTokenValueKey();
         $name = $request->getAttribute($nameKey);
         $value = $request->getAttribute($valueKey);
-            $_SESSION['token'] = array(
+            $_SESSION['token_con'] = array(
                 'nameKey'       => $nameKey,
                 'valueKey'      => $valueKey,
                 'value'         => $value,

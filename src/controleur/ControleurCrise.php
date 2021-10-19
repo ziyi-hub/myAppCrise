@@ -158,7 +158,7 @@ class ControleurCrise
                         'mdp'        => $user->motDePasse,
                     );
                 }
-                $user->save();
+                //$user->save();
                 $vue = new VuePrincipale([$eloquentResult], $this->container);
                 $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
             }else{
