@@ -146,7 +146,7 @@ class ControleurCrise
         $eloquentResult = Utilisateurs::query()
             ->where('nomUtilisateur','=', $Login)
             ->firstOr();
-        if ($_SESSION['token'] === $_POST['token']){
+
             if (!empty($eloquentResult) && password_verify($password, $eloquentResult->motDePasse) === true) {
                 $user = Utilisateurs::find($eloquentResult->idUtilisateur);
 
@@ -158,22 +158,14 @@ class ControleurCrise
                         'mdp'        => $user->motDePasse,
                     );
                 }
-                $user->token = $_SESSION["token"];
                 $user->save();
-                $urlredirection = RouteContext::fromRequest($rq)
-                    ->getRouteParser()
-                    ->relativeUrlFor('monCompte', ['token' => $user->token]);
                 $vue = new VuePrincipale([$eloquentResult], $this->container);
-                $rs->withHeader('Location', $urlredirection)
-                    ->withStatus(200)->getBody()
-                    ->write($vue->renderConnecte(1, $this->htmlvars));
+                $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
             }else{
                 echo "<script>alert('Attention! Le mot de passe incorrect! ')</script>";
                 $vue = new VuePrincipale([], $this->container);
                 $rs->getBody()->write($vue->render(3, $this->htmlvars));
             }
-        }
-        // echo "<script>alert('Compte n\'existe pas')</script>";
         return $rs;
     }
 
@@ -223,6 +215,9 @@ class ControleurCrise
     public function deconnexion(Request $rq, Response $rs, array $args ):Response{
         if($_SESSION['profile']['id'] ?? '')
         {
+            session_unset();
+        }
+        if ($_SESSION['token'] ?? ''){
             session_unset();
         }
         $this->getConnexion($rq, $rs, $args);

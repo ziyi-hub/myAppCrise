@@ -7,8 +7,12 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Selective\BasePath\BasePathMiddleware;
 use crise\controleur\ControleurCrise;
 use Slim\Factory\AppFactory;
+use DI\Container;
+use Slim\Csrf\Guard;
 
 session_start();
+$container = new Container();
+AppFactory::setContainer($container);
 $db = new DB();
 /*
 $db->addConnection(
@@ -39,6 +43,11 @@ $db->addConnection(
 $db->setAsGlobal();
 $db->bootEloquent();
 $app = AppFactory::create();
+$responseFactory = $app->getResponseFactory();
+$container->set('csrf', function () use ($responseFactory) {
+    return new Guard($responseFactory);
+});
+$app->add('csrf');
 $app->addRoutingMiddleware();
 $app->add(new BasePathMiddleware($app));
 
@@ -84,6 +93,17 @@ $app->get('/inscription',
 
 $app->get('/connexion',
     function (Request $request, Response $response, $args): Response {
+        $csrf = $this->get('csrf');
+        $nameKey = $csrf->getTokenNameKey();
+        $valueKey = $csrf->getTokenValueKey();
+        $name = $request->getAttribute($nameKey);
+        $value = $request->getAttribute($valueKey);
+            $_SESSION['token'] = array(
+                'nameKey'       => $nameKey,
+                'valueKey'      => $valueKey,
+                'value'         => $value,
+                'name'          => $name,
+            );
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
         $response = $controleur->getConnexion($request, $response, $args);
         return $response;
@@ -153,13 +173,6 @@ $app->get('/filtrer',
     }
 )->setName('filtrer');
 
-$app->get('/monCompte/{token}',
-    function (Request $req, Response $response, $args): Response {
-        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
-        $response = $controleur->getMonCompte($req, $response, $args);
-        return $response;
-    }
-)->setName('monCompte/{token}');
 
 $app->get('/messagerie',
     function (Request $req, Response $response, $args): Response {

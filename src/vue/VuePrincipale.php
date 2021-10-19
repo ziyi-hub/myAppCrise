@@ -41,7 +41,7 @@ END;
     private function VerifAdmi() {
         $html = null;
         if (!empty($_SESSION["profile"])){
-            $monCompte = $this->htmlvars['monCompte']."/".$_SESSION['token'];
+            $monCompte = $this->htmlvars['monCompte'];/*."/".$_SESSION['token'];*/
             $deconnexion = $this->htmlvars['deconnexion'];
             $contaminee = $this->htmlvars['contaminee'];
             $html = <<<END
@@ -278,11 +278,14 @@ END;
 
 
     public function htmlConnexion(){
+        $name = $_SESSION['token']['name'];
+        $value = $_SESSION['token']['value'];
+        $nameKey = $_SESSION['token']['nameKey'];
+        $valueKey = $_SESSION['token']['valueKey'];
+
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/connexion.js";
         $validerConnexion = $this->htmlvars['validerConnexion'];
         $inscription = $this->htmlvars['inscription'];
-        $token = md5(uniqid(mt_rand(), true));
-        $_SESSION['token'] = $token;
         return <<<END
 			<div class="entete4">
                 <div id="login">
@@ -293,7 +296,8 @@ END;
                             <input type="password" required="required" placeholder="Mot de passe" name="password" id="password" >
                             <i class="icon-user3" id="icon-user3"></i>
                         </div>
-                        <input type="hidden" name="token" id="token" value="$token">
+                        <input type="hidden" name="$nameKey" value="$name">
+                        <input type="hidden" name="$valueKey" value="$value">
                         <button class="but" type="submit">Connexion</button>
                     </form>
                     <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
