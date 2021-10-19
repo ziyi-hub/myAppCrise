@@ -362,6 +362,7 @@ function getMsgBoard(idGroup){
             <img class="img-word" src="public/web/images/Word.png">
             <img class="img-excel" src="public/web/images/Excel.png">
             <span class="s-file-name">${item.fileName}</span>
+            <span><strong>Propriétaire ${item.nomUtilisateur}</strong></span>
             <span class="right-board s-file-size"></span>
         </div>
         <div class="right-board">

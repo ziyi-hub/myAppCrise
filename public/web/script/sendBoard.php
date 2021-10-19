@@ -13,6 +13,7 @@ $board = new Board;
 $board->idGroup = $idgroup;
 $board->fileName = $filename;
 $board->idUtilisateur = $_SESSION['profile']['id'];
+$board->nomUtilisateur = $_SESSION['profile']['username'];
 $board->contentBoard = $blob;
 $board->save();
 
