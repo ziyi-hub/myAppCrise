@@ -163,6 +163,7 @@ class ControleurCrise
                 }
                 $vue = new VuePrincipale([$eloquentResult], $this->container);
                 $rs->getBody()->write($vue->renderConnecte(1, $this->htmlvars));
+                return $rs->withHeader('Location', $this->htmlvars['monCompte'])->withStatus(302);
             }else{
                 echo "<script>alert('Attention! Le mot de passe incorrect! ')</script>";
                 //$vue = new VuePrincipale([], $this->container);
