@@ -34,7 +34,7 @@ class ControleurCrise
         $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
         $contaminee = $routeParser->urlFor('contaminee');
         $filtrer = $routeParser->urlFor('filtrer');
-        $messagerie = $routeParser->urlFor('messagerie');
+        $groupe = $routeParser->urlFor('groupe');
 
         $this->htmlvars = [
             'basepath' => $basePath,
@@ -48,12 +48,12 @@ class ControleurCrise
             'modifMotDePasse' => $modifMotDePasse,
             'contaminee' => $contaminee,
             'filtrer' => $filtrer,
-            'messagerie' => $messagerie,
+            'groupe' => $groupe,
         ];
         return $rs;
     }
 
-    public function getMessagerie(Request $rq, Response $rs, array $args ): Response {
+    public function getGroupe(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->renderConnecte(8, $this->htmlvars));

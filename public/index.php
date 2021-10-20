@@ -207,12 +207,12 @@ $app->get('/filtrer',
 )->setName('filtrer');
 
 
-$app->get('/messagerie',
+$app->get('/groupe',
     function (Request $req, Response $response, $args): Response {
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
-        $response = $controleur->getMessagerie($req, $response, $args);
+        $response = $controleur->getGroupe($req, $response, $args);
         return $response;
     }
-)->setName('messagerie');
+)->setName('groupe');
 
 $app->run();

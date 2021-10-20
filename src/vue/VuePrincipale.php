@@ -59,11 +59,11 @@ END;
         $html = null;
         if (!empty($_SESSION["profile"])){
             $filtrer = $this->htmlvars['filtrer'];
-            $messagerie = $this->htmlvars['messagerie'];
+            $groupe = $this->htmlvars['groupe'];
             $html = <<<END
 <li><div id="triangle"></div></li>
-<li><a href=$filtrer>Filtrer</a></li>
-<li><a href=$messagerie>Messagerie</a></li>
+<li><a href=$filtrer>Messagerie</a></li>
+<li><a href=$groupe>Groupe</a></li>
 <li><a href="#">Localisation</a></li>
 END;
         }
