@@ -215,4 +215,12 @@ $app->get('/groupe',
     }
 )->setName('groupe');
 
+$app->get('/localisation',
+    function (Request $req, Response $response, $args): Response {
+        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
+        $response = $controleur->getLocal($req, $response, $args);
+        return $response;
+    }
+)->setName('localisation');
+
 $app->run();

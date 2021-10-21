@@ -16,6 +16,7 @@ class VuePrincipale
     const InfoContaminee_VIEW = 6;
     const Filtrer_VIEW = 7;
     const MESSAGERIE_VIEW = 8;
+    const LOCAL_VIEW = 9;
 
     public function __construct(array $d, $container)
     {
@@ -60,11 +61,12 @@ END;
         if (!empty($_SESSION["profile"])){
             $filtrer = $this->htmlvars['filtrer'];
             $groupe = $this->htmlvars['groupe'];
+            $localisation = $this->htmlvars['localisation'];
             $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$filtrer>Messagerie</a></li>
 <li><a href=$groupe>Groupe</a></li>
-<li><a href="#">Localisation</a></li>
+<li><a href=$localisation>Localisation</a></li>
 END;
         }
         return $html;
@@ -243,6 +245,14 @@ END;
                         </form> 
                     </div>                     
                 </div>	
+            </div>
+END;
+    }
+
+    public function htmlLocal(){
+        return <<< END
+            <div class="entete">
+				
             </div>
 END;
     }
@@ -474,6 +484,11 @@ END;
 
             case self::MESSAGERIE_VIEW: {
                 $content = $this->htmlMessagerie();
+                break;
+            }
+
+            case self::LOCAL_VIEW: {
+                $content = $this->htmlLocal();
                 break;
             }
         }

@@ -35,6 +35,7 @@ class ControleurCrise
         $contaminee = $routeParser->urlFor('contaminee');
         $filtrer = $routeParser->urlFor('filtrer');
         $groupe = $routeParser->urlFor('groupe');
+        $localisation = $routeParser->urlFor('localisation');
 
         $this->htmlvars = [
             'basepath' => $basePath,
@@ -49,6 +50,7 @@ class ControleurCrise
             'contaminee' => $contaminee,
             'filtrer' => $filtrer,
             'groupe' => $groupe,
+            'localisation' => $localisation,
         ];
         return $rs;
     }
@@ -73,6 +75,14 @@ class ControleurCrise
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->renderConnecte(7, $this->htmlvars));
+        return $rs;
+    }
+
+
+    public function getLocal(Request $rq, Response $rs, array $args ): Response {
+        $this->initiale($rq, $rs, $args);
+        $vue = new VuePrincipale([], $this->container);
+        $rs->getBody()->write($vue->renderConnecte(9, $this->htmlvars));
         return $rs;
     }
 
