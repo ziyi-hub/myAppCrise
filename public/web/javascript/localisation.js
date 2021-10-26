@@ -6,18 +6,17 @@ function initialize() {
     };
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-    let myLatLng = {lat: 48.684457, lng: 6.163311};
+    position(48.684457, 6.163311)
+    position(50.684457, 7.163311)
+
+}
+
+function position(lat, lng){
+    let myLatLng = {lat: lat, lng: lng};
     let marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
     });
-
-    let myLatLng2 = {lat: 50.684457, lng: 7.163311};
-    let marker2 = new google.maps.Marker({
-        position: myLatLng2,
-        map: map,
-    });
-
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
