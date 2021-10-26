@@ -2,18 +2,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 listeContaminee = []
 function getListeLocal(){
-    //let rayon = document.querySelector("#rayon").value
+    let rayon = document.querySelector("#rayon").value
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4) {
             let listeLocal = this.responseText.split("{\"error\":\"Not found.\"}")[1]
             JSON.parse(listeLocal).forEach(local => {
-                //console.log(local)
+                console.log(local)
                 listeContaminee.push(local)
+            })
+            listeContaminee.forEach(local => {
+                position(parseFloat(local.longitude), parseFloat(local.latitude))
             })
         }
     }
-    xmlhttp.open('GET', 'public/web/script/localisation.php', false);
+    xmlhttp.open('GET', 'public/web/script/localisation.php?rayon=' + rayon, false);
     xmlhttp.send();
 }
 
@@ -24,10 +27,7 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    getListeLocal()
-    listeContaminee.forEach(local => {
-        position(parseFloat(local.longitude), parseFloat(local.latitude))
-    })
+    document.querySelector("#btn-rayon").addEventListener('click', getListeLocal)
 }
 
 function position(lat, lng){

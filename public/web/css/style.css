@@ -408,6 +408,13 @@
         top: 20px !important;
     }
 
+    #btn-rayon{
+        position:relative;
+        left: 58px !important;
+        top: 18px !important;
+        z-index: 1000;
+    }
+
     .submit-chercher{
         width: unset;
         display: none;
