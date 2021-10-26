@@ -7,10 +7,11 @@ function getListeLocal(){
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4) {
             let listeLocal = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+            listeContaminee.splice(0, listeContaminee.length)
             JSON.parse(listeLocal).forEach(local => {
-                console.log(local)
                 listeContaminee.push(local)
             })
+            console.log(listeContaminee)
             listeContaminee.forEach(local => {
                 position(parseFloat(local.longitude), parseFloat(local.latitude))
             })
