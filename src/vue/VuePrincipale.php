@@ -255,7 +255,7 @@ END;
         <div class="entete">
             <div id="googleMap"></div>
         </div>
-        <input type="text" id="rayon">
+        <input type="text" id="rayon" placeholder="Ex: 0.01" required>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCfld0seEmoVxj0ZRr7AAT_206D96d2QU"></script>
         <script type="text/javascript" src=$lienjs defer></script>
