@@ -1,4 +1,5 @@
 google.maps.event.addDomListener(window, 'load', initialize);
+document.querySelector("#btn-rayon").addEventListener('click', getListeLocal)
 
 listeContaminee = []
 function getListeLocal(){
@@ -8,10 +9,11 @@ function getListeLocal(){
         if (xmlhttp.readyState === 4) {
             let listeLocal = this.responseText.split("{\"error\":\"Not found.\"}")[1]
             listeContaminee.splice(0, listeContaminee.length)
+            initialize()
             JSON.parse(listeLocal).forEach(local => {
                 listeContaminee.push(local)
             })
-            console.log(listeContaminee)
+            //console.log(listeContaminee)
             listeContaminee.forEach(local => {
                 position(parseFloat(local.longitude), parseFloat(local.latitude))
             })
@@ -28,7 +30,6 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    document.querySelector("#btn-rayon").addEventListener('click', getListeLocal)
 }
 
 function position(lat, lng){
