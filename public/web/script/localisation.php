@@ -1,6 +1,12 @@
 <?php
 
 require_once '../../index.php';
-use crise\models\Localisations;
+use crise\models\Profil;
 
-echo Localisations::query()->where("rayon", "<", $_GET["rayon"])->get();
+$profil = Profil::query()
+    ->join("Localisations", "Localisations.idProfil", "=", "Profil.idProfil")
+    ->where("statutContamine", "=", "oui")
+    ->where("rayon", "<", $_GET["rayon"])
+    ->get();
+
+echo $profil;
