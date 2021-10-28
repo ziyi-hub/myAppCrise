@@ -85,8 +85,8 @@ END;
 <div class="menu"></div>
 <div class="contain">
     <div class="left">
-        <div class="top" style="padding: 20px 29px; height: auto;">
-            <div class="" style="font: 13px Arial; ">nombre total : <span id="numbers">0</span>
+        <div class="top">
+            <div class="top-nombre">nombre total : <span id="numbers">0</span>
                 <button type='submit' id='nouGroup2'>Inviter un ami</button>
             </div>
         </div>
@@ -287,10 +287,14 @@ END;
                             <input type="password" name="MotDePasse2" id="MotDePasse2" placeholder="Confirmer le mot de passe" required>
                             <i class="icon-user2" id="icon-user2"></i>
                         </div>
+                        <div class="radio">
+                            contaminé(e)<input type="radio" name="oui" value="oui" style="width: 40px;">
+                            non contaminé(e)<input type="radio" name="non" value="non" style="width: 40px;">
+                        </div>
                         <input type="hidden" name="$nameKey" value="$name">
                         <input type="hidden" name="$valueKey" value="$value">
                         <button type="submit" class="but" id="submit">Inscription</button>
-                        <div id="showmsg2" style="display: none"></div>
+                        <div id="showmsg2"></div>
                     </form>
                     <h3>Un compte? Connectez-vous <a id = 'ici' href="$connexion">ici</a> !</h3>
                </div> 		

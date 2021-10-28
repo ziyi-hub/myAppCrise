@@ -382,6 +382,10 @@
         overflow-x: hidden;
     }
 
+    #NomUtilisateur, #MotDePasse, #MotDePasse2, #user, #password, #amdp, #mdp{
+        box-sizing: border-box;
+    }
+
     input{
         width: 100%;
         margin-bottom: 10px;
@@ -456,6 +460,15 @@
 
     .radio{
         display: flex;
+        color: white;
+    }
+
+    #showmsg2{
+        display: none;
+    }
+
+    #inscrit > h3 {
+        margin: unset;
     }
 
     .filtrer, .filtrer2, .filtrer3{

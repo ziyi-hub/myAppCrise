@@ -31,8 +31,12 @@
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    height: 96px;
+    height: fit-content;
     padding: 29px;
+}
+
+.top{
+    padding: 20px 29px;
 }
 
 .contain .left .top:after {
@@ -413,4 +417,8 @@
 
 #input-value{
     width: 460px;
+}
+
+.top-nombre{
+    font: 13px Arial;
 }
