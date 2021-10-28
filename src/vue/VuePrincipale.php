@@ -288,8 +288,8 @@ END;
                             <i class="icon-user2" id="icon-user2"></i>
                         </div>
                         <div class="radio">
-                            contaminé(e)<input type="radio" name="oui" value="oui" style="width: 40px;">
-                            non contaminé(e)<input type="radio" name="non" value="non" style="width: 40px;">
+                            contaminé(e)<input type="radio" id="statut" name="statut" value="oui" style="width: 40px;">
+                            non contaminé(e)<input type="radio" id="statut" name="statut" value="non" style="width: 40px;">
                         </div>
                         <input type="hidden" name="$nameKey" value="$name">
                         <input type="hidden" name="$valueKey" value="$value">

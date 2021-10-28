@@ -120,6 +120,7 @@ class ControleurCrise
         $NomUtilisateur = $_POST['NomUtilisateur'];
         $MotDePasse = $_POST['MotDePasse'];
         $MotDePasse2 = $_POST['MotDePasse2'];
+        $statut = $_POST['statut'];
 
         if (($MotDePasse === $MotDePasse2)&&(strpos($NomUtilisateur, ' ') === false)){
             $hash = password_hash($MotDePasse, PASSWORD_DEFAULT);
@@ -128,6 +129,7 @@ class ControleurCrise
             $utilisateur->nomUtilisateur = $NomUtilisateur;
             $utilisateur->motDePasse = $hash;
             $utilisateur->roleId = 1;
+            $profil->statutContamine = $statut;
             $profil->roleId = 1;
             $profil->codeProfil = "admin";
             $profil->save();
