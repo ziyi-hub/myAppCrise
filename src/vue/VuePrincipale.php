@@ -202,8 +202,8 @@ END;
                          style="box-sizing: border-box; border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
                 </div>
                 <div class="write">
-                    <a class="write-link attach"></a>
-                    <input type="text" id="input-value"/>
+                    <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG" style="position: absolute; z-index: 99;">
+                    <input type="text" id="input-value" style="position: relative; z-index: 999; left: 30px !important; width: 600px !important;"/>
                     <a class="write-link smiley"></a>
                     <a class="write-link send"></a>
                 </div>

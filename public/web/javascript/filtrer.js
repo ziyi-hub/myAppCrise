@@ -99,7 +99,7 @@ function getMessage(){
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4) {
             let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
-            console.log(contactInfo)
+            //console.log(contactInfo)
             messageList(JSON.parse(contactInfo))
         }
     }
@@ -174,3 +174,26 @@ function sendMessage() {
 
 document.querySelector(".send").addEventListener('click', sendMessage)
 
+
+function upload() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+            console.log(contactInfo)
+        }
+    }
+
+    let fd = new FormData();
+    let reads = new FileReader();
+    let f = document.getElementById('file').files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function() {
+        //console.log(idUser)
+        fd.append("blob", this.result);
+        fd.append("id", idUser);
+        //console.log(fd.get("blob"))
+        xhr.open('POST', 'public/web/script/sendFichier.php', false);
+        xhr.send(fd);
+    };
+}
