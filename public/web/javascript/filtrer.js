@@ -13,7 +13,7 @@ function filtrer(){
             })
         }
     }
-    xmlhttp.open('GET', 'public/web/script/filtrer.php?NomUtilisateur=' + value, false);
+    xmlhttp.open('GET', 'public/web/script/filtrer.php?NomUtilisateur=' + value, true);
     xmlhttp.send();
 }
 document.querySelector("#keywords").addEventListener('keyup', filtrer)
@@ -32,7 +32,7 @@ function sendAjout() {
                 setContactor(JSON.parse(contactInfo))
             }
         }
-        xmlhttp.open('GET', 'public/web/script/ajoutAmi.php?idUtilisateur=' + msg.split("-")[1], false);
+        xmlhttp.open('GET', 'public/web/script/ajoutAmi.php?idUtilisateur=' + msg.split("-")[1], true);
         xmlhttp.send();
     }
 }
@@ -88,7 +88,7 @@ function getListAmi(){
             setContactor(JSON.parse(contactInfo))
         }
     }
-    xmlhttp.open('GET', 'public/web/script/getListAmi.php', false);
+    xmlhttp.open('GET', 'public/web/script/getListAmi.php', true);
     xmlhttp.send();
 }
 getListAmi()
@@ -106,7 +106,7 @@ function getMessage(){
     document.querySelectorAll(".person").forEach(user => {
         user.onclick = () => {
             idUser = user.dataset.chat
-            xmlhttp.open('GET', 'public/web/script/getMessageIndividu.php?idUser=' + user.dataset.chat, false);
+            xmlhttp.open('GET', 'public/web/script/getMessageIndividu.php?idUser=' + user.dataset.chat, true);
             xmlhttp.send();
         }
     })
@@ -196,7 +196,7 @@ function messageList(data) {
             }
         }
     }
-    xmlhttp.open('GET', 'public/web/script/userMoi.php', false);
+    xmlhttp.open('GET', 'public/web/script/userMoi.php', true);
     xmlhttp.send();
 }
 
@@ -209,13 +209,13 @@ function sendMessage() {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4) {
                 let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
-                console.log(contactInfo)
+                //console.log(contactInfo)
                 messageList(JSON.parse(contactInfo))
                 getMessage()
             }
         }
         //console.log(idUser)
-        xmlhttp.open('GET', 'public/web/script/sendMessageIndividu.php?message=' + msg + "&idUtilisateur=" + idUser, false);
+        xmlhttp.open('GET', 'public/web/script/sendMessageIndividu.php?message=' + msg + "&idUtilisateur=" + idUser, true);
         xmlhttp.send();
     }
 }
@@ -240,8 +240,7 @@ function upload() {
     reads.onload = function() {
         fd.append("blob", this.result);
         fd.append("id", idUser);
-        xhr.open('POST', 'public/web/script/sendFichier.php', false);
+        xhr.open('POST', 'public/web/script/sendFichier.php', true);
         xhr.send(fd);
     };
 }
-upload()

@@ -26,7 +26,7 @@ function getGroup(){
             getContact()
         }
     }
-    xmlhttp.open('GET', 'public/web/script/messagerie.php', false);
+    xmlhttp.open('GET', 'public/web/script/messagerie.php', true);
     xmlhttp.send();
 }
 
@@ -72,7 +72,7 @@ function filtrer(){
             })
         }
     }
-    xmlhttp.open('GET', 'public/web/script/integAmi.php?NomUtilisateur=' + value, false);
+    xmlhttp.open('GET', 'public/web/script/integAmi.php?NomUtilisateur=' + value, true);
     xmlhttp.send();
 }
 document.querySelector("#key").addEventListener('keyup', filtrer)
@@ -91,7 +91,7 @@ function insertContact(){
             getContact()
         }
     }
-    xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&nomGroup=" + nomGroup, false);
+    xmlhttp.open('GET', 'public/web/script/insertContact.php?idUtilisateur=' + id + "&nomGroup=" + nomGroup, true);
     xmlhttp.send();
 }
 document.querySelector("#btn-integAmi").addEventListener("click", insertContact)
@@ -114,7 +114,7 @@ function getContact(){
             idGroup = div.dataset.idgroup
             document.querySelector("#affichage-board").innerHTML = ""
             getMsgBoard(idGroup)
-            xmlhttp.open('GET', 'public/web/script/contact.php?idGroup=' + div.dataset.idgroup, false);
+            xmlhttp.open('GET', 'public/web/script/contact.php?idGroup=' + div.dataset.idgroup, true);
             xmlhttp.send();
         }
     })
@@ -220,7 +220,7 @@ function messageList(data) {
             }
         }
     }
-    xmlhttp.open('GET', 'public/web/script/userMoi.php', false);
+    xmlhttp.open('GET', 'public/web/script/userMoi.php', true);
     xmlhttp.send();
 }
 
@@ -250,11 +250,10 @@ function upload() {
         })
         fd.append("blob", this.result);
         fd.append("idGroup", idGroup);
-        xhr.open('POST', 'public/web/script/sendGrpFichier.php', false);
+        xhr.open('POST', 'public/web/script/sendGrpFichier.php', true);
         xhr.send(fd);
     };
 }
-upload()
 
 
 function sendMessage() {
@@ -276,7 +275,7 @@ function sendMessage() {
                 idGroup = div.dataset.idgroup
             }
         })
-        xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg + "&idGroup=" + idGroup, false);
+        xmlhttp.open('GET', 'public/web/script/sendMessage.php?message=' + msg + "&idGroup=" + idGroup, true);
         xmlhttp.send();
     }
 }
@@ -296,7 +295,7 @@ function creerGroup(){
                 alert('Création réussie!')
             }
         }
-        xmlhttp.open('GET', 'public/web/script/group.php?nomGroup=' + nomGroup, false);
+        xmlhttp.open('GET', 'public/web/script/group.php?nomGroup=' + nomGroup, true);
         xmlhttp.send();
     }
 }
@@ -415,18 +414,18 @@ function closeModal() {
 
 // suppression du fichier
 function deleteFile() {
-    console.log(idboard)
+    //console.log(idboard)
     document.querySelector(".d-upload").style.display="block"
     document.querySelector(".d-modal").style.display="none"
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4) {
-            console.log(this.responseText)
+            //console.log(this.responseText)
             document.querySelector("#affichage-board").innerHTML = ""
             getMsgBoard(idGroup)
         }
     }
-    xmlhttp.open('GET', 'public/web/script/deleteMsgBoard.php?idBoard=' + idboard, false);
+    xmlhttp.open('GET', 'public/web/script/deleteMsgBoard.php?idBoard=' + idboard, true);
     xmlhttp.send();
 }
 
@@ -456,7 +455,7 @@ function getMsgBoard(idGroup){
             })
         }
     }
-    xmlhttp.open('GET', 'public/web/script/getMsgBoard.php?idgroup=' + idGroup, false);
+    xmlhttp.open('GET', 'public/web/script/getMsgBoard.php?idgroup=' + idGroup, true);
     xmlhttp.send();
 }
 
