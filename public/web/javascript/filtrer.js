@@ -120,14 +120,14 @@ function messageList(data) {
             document.querySelector('div.active-chat').innerHTML = ""
             for (let i = 0; i < data.length; i++) {
                 //Si content est null, alors on n'affiche pas
-                if (data[i].content !== ""){
+                if ((data[i].content !== "") && (data[i].content.indexOf("data:") === -1)){
                     if (data[i].nomContact === this.responseText) {
                         html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
                     <div class="message" style="margin-bottom: 15px;">
-                    <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
-                    <div class="bubble me">` + data[i].content + `</div>
-                </div>`;
+                        <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble me">` + data[i].content + `</div>
+                    </div>`;
                         let active_chat = document.querySelector('div.active-chat');
                         let oldHtml = active_chat.innerHTML;
                         active_chat.innerHTML = oldHtml + html;
@@ -136,9 +136,33 @@ function messageList(data) {
                         html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
                     <div class="message" style="margin-bottom: 15px;">
-                    <img src="` + data[i].headerimg + `" alt=""/>
-                    <div class="bubble you">` + data[i].content + `</div>
-                </div>`;
+                        <img src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble you">` + data[i].content + `</div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    }
+                }else{
+                    if (data[i].nomContact === this.responseText) {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble me"><embed src='` + data[i].content + `' width=150 height=100></div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    } else {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble you"><embed src='` + data[i].content + `' width=150 height=100></div>
+                    </div>`;
                         let active_chat = document.querySelector('div.active-chat');
                         let oldHtml = active_chat.innerHTML;
                         active_chat.innerHTML = oldHtml + html;
@@ -180,7 +204,8 @@ function upload() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
-            console.log(contactInfo)
+            messageList(JSON.parse(contactInfo))
+            getMessage()
         }
     }
 
@@ -189,11 +214,10 @@ function upload() {
     let f = document.getElementById('file').files[0];
     reads.readAsDataURL(f);
     reads.onload = function() {
-        //console.log(idUser)
         fd.append("blob", this.result);
         fd.append("id", idUser);
-        //console.log(fd.get("blob"))
         xhr.open('POST', 'public/web/script/sendFichier.php', false);
         xhr.send(fd);
     };
 }
+upload()
