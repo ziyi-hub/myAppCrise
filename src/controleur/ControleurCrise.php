@@ -32,7 +32,6 @@ class ControleurCrise
         $validerConnexion = $routeParser->urlFor('validerConnexion');
         $deconnexion = $routeParser->urlFor('deconnexion');
         $modifMotDePasse = $routeParser->urlFor('modifMotDePasse');
-        $contaminee = $routeParser->urlFor('contaminee');
         $filtrer = $routeParser->urlFor('filtrer');
         $groupe = $routeParser->urlFor('groupe');
         $localisation = $routeParser->urlFor('localisation');
@@ -47,7 +46,6 @@ class ControleurCrise
             'validerConnexion' => $validerConnexion,
             'deconnexion' => $deconnexion,
             'modifMotDePasse' => $modifMotDePasse,
-            'contaminee' => $contaminee,
             'filtrer' => $filtrer,
             'groupe' => $groupe,
             'localisation' => $localisation,
@@ -59,14 +57,6 @@ class ControleurCrise
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->renderConnecte(8, $this->htmlvars));
-        return $rs;
-    }
-
-
-    public function getInfoContaminee(Request $rq, Response $rs, array $args ): Response {
-        $this->initiale($rq, $rs, $args);
-        $vue = new VuePrincipale([], $this->container);
-        $rs->getBody()->write($vue->renderConnecte(6, $this->htmlvars));
         return $rs;
     }
 

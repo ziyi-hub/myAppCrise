@@ -189,15 +189,6 @@ $app->post('/modifMotDePasse',
 )->setName('modifMotDePasse');
 
 
-$app->get('/contaminee',
-    function (Request $req, Response $response, $args): Response {
-        $controleur = new ControleurCrise(AppFactory::create()->getContainer());
-        $response = $controleur->getInfoContaminee($req, $response, $args);
-        return $response;
-    }
-)->setName('contaminee');
-
-
 $app->get('/filtrer',
     function (Request $req, Response $response, $args): Response {
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
@@ -215,6 +206,7 @@ $app->get('/groupe',
     }
 )->setName('groupe');
 
+
 $app->get('/localisation',
     function (Request $req, Response $response, $args): Response {
         $controleur = new ControleurCrise(AppFactory::create()->getContainer());
@@ -222,5 +214,6 @@ $app->get('/localisation',
         return $response;
     }
 )->setName('localisation');
+
 
 $app->run();

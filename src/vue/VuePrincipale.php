@@ -13,7 +13,6 @@ class VuePrincipale
     const ACCUEIL_VIEW = 2;
     const CONNEXION_VIEW = 3;
     const INSCRIPTION_VIEW = 4;
-    const InfoContaminee_VIEW = 6;
     const Filtrer_VIEW = 7;
     const MESSAGERIE_VIEW = 8;
     const LOCAL_VIEW = 9;
@@ -44,11 +43,9 @@ END;
         if (!empty($_SESSION["profile"])){
             $monCompte = $this->htmlvars['monCompte'];
             $deconnexion = $this->htmlvars['deconnexion'];
-            $contaminee = $this->htmlvars['contaminee'];
             $html = <<<END
 <li><div id="triangle"></div></li>
 <li><a href=$monCompte>Mon Compte</a></li>
-<li><a href=$contaminee>InfoContaminée</a></li>
 <li><a href=$deconnexion>Déconnexion</a></li>
 END;
         }
@@ -222,32 +219,6 @@ END;
 END;
     }
 
-
-    public function htmlContaminee(){
-        return <<< END
-            <div class="entete">
-				<div class="monCompte">
-                    <div id="login">
-                        <h2>Indication contaminée</h2>
-                        <form method="post" action="#" id="formvalider">
-                            <h4>Avez-vous eu une infection Covid-19 symptomatique ?</h4>
-                            <div class="radio">
-                                <label>oui</label><input type="radio" name="conversion1" value="oui" >
-                                <label>non</label><input type="radio" name="conversion1" value="non" >
-                            </div>
-                            
-                            <h4>Avez-vous reçu un vaccin ? </h4>
-                            <div class="radio">
-                                <label>oui</label><input type="radio" name="conversion2" value="oui" >
-                                <label>non</label><input type="radio" name="conversion2" value="non" >
-                            </div>
-                            <button type="submit" class="but" id="submit">Envoyer</button>
-                        </form> 
-                    </div>                     
-                </div>	
-            </div>
-END;
-    }
 
     public function htmlLocal(){
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/localisation.js";
@@ -479,11 +450,6 @@ END;
 
             case self::ACCUEIL_VIEW: {
                 $content = $this->htmlAccueil();
-                break;
-            }
-
-            case self::InfoContaminee_VIEW: {
-                $content = $this->htmlContaminee();
                 break;
             }
 
