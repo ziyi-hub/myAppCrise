@@ -240,7 +240,7 @@ END;
         $value = $_SESSION['token_ins']['value'];
         $nameKey = $_SESSION['token_ins']['nameKey'];
         $valueKey = $_SESSION['token_ins']['valueKey'];
-
+        $erreur = $_SESSION['erreur']['inscription'];
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/inscription.js";
         $connexion = $this->htmlvars['connexion'];
         $action = $this->htmlvars['validerInscription'];
@@ -266,6 +266,7 @@ END;
                         <input type="hidden" name="$valueKey" value="$value">
                         <button type="submit" class="but" id="submit">Inscription</button>
                         <div id="showmsg2"></div>
+                        <div id="erreur-inscription">$erreur</div>
                     </form>
                     <h3>Un compte? Connectez-vous <a id = 'ici' href="$connexion">ici</a> !</h3>
                </div> 		
@@ -284,6 +285,7 @@ END;
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/connexion.js";
         $validerConnexion = $this->htmlvars['validerConnexion'];
         $inscription = $this->htmlvars['inscription'];
+        $erreur = $_SESSION['erreur']['connexion'];
         return <<<END
 			<div class="entete4">
                 <div id="login">
@@ -297,6 +299,7 @@ END;
                         <input type="hidden" name="$nameKey" value="$name">
                         <input type="hidden" name="$valueKey" value="$value">
                         <button class="but" type="submit">Connexion</button>
+                        <div id="erreur-connexion">$erreur</div>
                     </form>
                     <h3>Pas de compte? Inscrivez-vous <a id = 'ici' href="$inscription">ici</a> !</h3>
                 </div>     		
@@ -334,6 +337,7 @@ END;
         $valueKey = $_SESSION['token_modif']['valueKey'];
         $modifMotDePasse = $this->htmlvars['modifMotDePasse'];
         $lienjs = $this->htmlvars['basepath']."/public/web/javascript/compte.js";
+        $erreur = $_SESSION['erreur']['modification'];
         $affichageProfil = $this->AfficherIden();
         return <<< END
 			<div class="entete">
@@ -362,6 +366,7 @@ END;
                             <input type="hidden" name="$nameKey" value="$name">
                             <input type="hidden" name="$valueKey" value="$value">
                             <button type="submit" class="but" id="submit">Modifier</button>
+                            <div id="erreur-modification">$erreur</div>
                         </form> 
                     </div>                     
                 </div>	

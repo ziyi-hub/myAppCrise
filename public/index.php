@@ -14,7 +14,7 @@ session_start();
 $container = new Container();
 AppFactory::setContainer($container);
 $db = new DB();
-/*
+
 $db->addConnection(
     [
         'host' => getenv("DB_HOST"),
@@ -26,8 +26,8 @@ $db->addConnection(
         'driver' => 'mysql',
     ]
 );
-*/
 
+/*
 $db->addConnection(
     [
         'host' => 'localhost',
@@ -39,7 +39,7 @@ $db->addConnection(
         'driver' => 'mysql',
     ]
 );
-
+*/
 $db->setAsGlobal();
 $db->bootEloquent();
 $app = AppFactory::create();
