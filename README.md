@@ -1,4 +1,4 @@
-# CIASIE__LP2__WANG Ziyi
+# CIASIE__LP2__WANG
 
 <h1>Pour utiliser l'application sur une machine personelle</h1>
 
