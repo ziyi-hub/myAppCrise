@@ -96,8 +96,8 @@ END;
         </div>
         <div class="chat active-chat" data-chat="person1" style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px"></div>
         <div class="write">
-            <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG,audio/*" style="z-index: 99; width: 600px;">
-            <input type="text" id="input-value" style="position: absolute; z-index: 100; left: 35px !important; width: 550px !important;"/>
+            <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG,audio/*" style="z-index: 99; width: 500px;">
+            <input type="text" id="input-value" style="position: absolute; z-index: 100; left: 35px !important; width: 450px !important;"/>
             <a class="write-link smiley"></a>
             <a class="write-link send"></a>
         </div>
@@ -199,7 +199,7 @@ END;
                          style="box-sizing: border-box; border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
                 </div>
                 <div class="write">
-                    <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG,audio/*" style="z-index: 99; width: 700px;">
+                    <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG,audio/*" style="z-index: 99; width: 600px;">
                     <input type="text" id="input-value" style="position: absolute; z-index: 100; left: 35px !important; width: 550px !important;"/>
                     <a class="write-link smiley"></a>
                     <a class="write-link send"></a>
@@ -226,7 +226,7 @@ END;
         <div class="entete">
             <div id="googleMap"></div>
         </div>
-        <input type="text" id="rayon" placeholder="Ex: 0 ~ 0.01" required>
+        <input type="text" id="rayon" placeholder="Ex: 0 ~ 5 (km)" required>
         <button type="submit" id="btn-rayon">ok</button>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCfld0seEmoVxj0ZRr7AAT_206D96d2QU"></script>
@@ -345,7 +345,7 @@ END;
 				    <div id="profil">
                         <div class="c1" id="c1">
                              <div id="prompt3">
-                                <span id="imgSpan" style="left: 0; right: 0 ">Upload image</span>
+                                <span id="imgSpan" style="left: 0; right: 0 "></span>
                                 <input type="file" id="file" class="filepath" onchange="uploadPhoto(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
                              </div>
                              <img id="img3" alt="portrait"/>        
