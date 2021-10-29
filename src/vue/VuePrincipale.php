@@ -208,7 +208,7 @@ END;
             <div id="recheAmi">
                 <span class="close2">X</span>
                 <h2 style="color: unset; text-shadow: unset">Rechercher/Ajouter un ami</h2>
-                <input type="text" id="keywords" placeholder="Ex: Ziyi" style="width: 77%;"/>
+                <input type="text" id="keywords" placeholder="Ex: Ziyi-38" style="width: 77%;"/>
                 <button id="btn-integAmi">Envoyer</button>
                 <div id="showmsg" style="box-sizing: border-box;"></div>
             </div>

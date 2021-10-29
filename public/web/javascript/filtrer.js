@@ -214,7 +214,7 @@ function sendMessage() {
                 getMessage()
             }
         }
-        console.log(idUser)
+        //console.log(idUser)
         xmlhttp.open('GET', 'public/web/script/sendMessageIndividu.php?message=' + msg + "&idUtilisateur=" + idUser, false);
         xmlhttp.send();
     }
