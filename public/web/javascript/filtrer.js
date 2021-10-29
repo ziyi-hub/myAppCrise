@@ -144,7 +144,7 @@ function messageList(data) {
                         active_chat.innerHTML = oldHtml + html;
                         active_chat.scrollTop = active_chat.scrollHeight;
                     }
-                }else{
+                }else if(data[i].content.indexOf("data:image") !== -1){
                     if (data[i].nomContact === this.responseText) {
                         html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
@@ -162,6 +162,30 @@ function messageList(data) {
                     <div class="message" style="margin-bottom: 15px;">
                         <img src="` + data[i].headerimg + `" alt=""/>
                         <div class="bubble you"><embed src='` + data[i].content + `' width=150 height=100></div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    }
+                }else if (data[i].content.indexOf("data:audio") !== -1){
+                    if (data[i].nomContact === this.responseText) {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble me"><video controls src='` + data[i].content + `'></div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    } else {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble you"><video controls src='` + data[i].content + `'></div>
                     </div>`;
                         let active_chat = document.querySelector('div.active-chat');
                         let oldHtml = active_chat.innerHTML;
