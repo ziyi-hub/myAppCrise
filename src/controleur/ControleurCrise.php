@@ -77,7 +77,7 @@ class ControleurCrise
     }
 
 
-    function getAccueil(Request $rq, Response $rs, array $args ): Response {
+    public function getAccueil(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         if(!empty($_SESSION['profile'])){
@@ -89,7 +89,7 @@ class ControleurCrise
     }
 
 
-    function getInscription(Request $rq, Response $rs, array $args ): Response {
+    public function getInscription(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(4, $this->htmlvars));
@@ -97,7 +97,7 @@ class ControleurCrise
     }
 
 
-    function getConnexion(Request $rq, Response $rs, array $args ): Response {
+    public function getConnexion(Request $rq, Response $rs, array $args ): Response {
         $this->initiale($rq, $rs, $args);
         $vue = new VuePrincipale([], $this->container);
         $rs->getBody()->write($vue->render(3, $this->htmlvars));

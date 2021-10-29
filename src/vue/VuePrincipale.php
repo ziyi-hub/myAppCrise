@@ -196,7 +196,7 @@ END;
             <div class="right">
                 <div class="top"><span>Tips: <span class="">Message individuel</span></span></div>
                 <div class="chat active-chat" data-chat="person1"
-                         style="box-sizing: border-box; border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px">
+                         style="box-sizing: border-box; border-width: 0; padding: 10px; height: 483px; overflow-y: auto;">
                 </div>
                 <div class="write">
                     <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG,audio/*" style="z-index: 99; width: 600px;">
