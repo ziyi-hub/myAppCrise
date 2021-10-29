@@ -99,8 +99,8 @@ END;
         </div>
         <div class="chat active-chat" data-chat="person1" style="border-width: 0; padding: 10px; height: 483px; padding: 10px; overflow-y: auto; scrollTop: 100px"></div>
         <div class="write">
-            <a class="write-link attach"></a>
-            <input type="text" id="input-value"/>
+            <input type="file" id="file" class="write-link attach" onchange="upload(this)" accept="image/jpg,image/jpeg,image/png,image/PNG,audio/*" style="position: absolute; z-index: 99;">
+            <input type="text" id="input-value" style="position: relative; z-index: 100; left: 30px !important;"/>
             <a class="write-link smiley"></a>
             <a class="write-link send"></a>
         </div>
@@ -119,7 +119,7 @@ END;
         <button id="btn-integAmi">Envoyer</button>
         <div id="showmsg" style="box-sizing: border-box;"></div>
     </div>
-    <div id="board">
+    <div id="board" style="position: relative; z-index: 101;">
         <span class="close3">X</span>
         <div class="d-upload-box" style="margin-top: 50px">
             <div class="d-title"></div>

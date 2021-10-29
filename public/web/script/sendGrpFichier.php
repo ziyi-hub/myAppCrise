@@ -1,0 +1,28 @@
+<?php
+
+require_once '../../index.php';
+use crise\models\Contact;
+use crise\models\Messages;
+
+$blob = $_POST["blob"];
+$idGroup = $_POST["idGroup"];
+
+$messages = new Messages;
+$messages->content = $blob;
+$messages->save();
+
+$contact = new Contact;
+$contact->idGroupContact = $idGroup;
+if (!is_null($_SESSION['profile'])) {
+    $contact->nomContact = $_SESSION['profile']['username'];
+    $contact->idUtilisateur = $_SESSION['profile']['id'];
+}
+$contact->idMessage = $messages->idMessage;
+$contact->save();
+
+$res = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idGroupContact", "=", $idGroup)
+    ->orderBy('tempsEnvoi','ASC')
+    ->get();
+
+echo $res;

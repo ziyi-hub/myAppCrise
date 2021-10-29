@@ -136,6 +136,7 @@ function setContactor(user) {
 }
 
 
+
 function messageList(data) {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -143,14 +144,14 @@ function messageList(data) {
             document.querySelector('div.active-chat').innerHTML = ""
             for (let i = 0; i < data.length; i++) {
                 //Si content est null, alors on n'affiche pas
-                if (data[i].content !== ""){
+                if ((data[i].content !== "") && (data[i].content.indexOf("data:") === -1)){
                     if (data[i].nomContact === this.responseText) {
                         html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
                     <div class="message" style="margin-bottom: 15px;">
-                    <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
-                    <div class="bubble me">` + data[i].content + `</div>
-                </div>`;
+                        <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble me">` + data[i].content + `</div>
+                    </div>`;
                         let active_chat = document.querySelector('div.active-chat');
                         let oldHtml = active_chat.innerHTML;
                         active_chat.innerHTML = oldHtml + html;
@@ -159,9 +160,57 @@ function messageList(data) {
                         html = `
                     <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
                     <div class="message" style="margin-bottom: 15px;">
-                    <img src="` + data[i].headerimg + `" alt=""/>
-                    <div class="bubble you">` + data[i].content + `</div>
-                </div>`;
+                        <img src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble you">` + data[i].content + `</div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    }
+                }else if(data[i].content.indexOf("data:image") !== -1){
+                    if (data[i].nomContact === this.responseText) {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble me"><embed src='` + data[i].content + `' width=150 height=100></div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    } else {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble you"><embed src='` + data[i].content + `' width=150 height=100></div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    }
+                }else if (data[i].content.indexOf("data:audio") !== -1){
+                    if (data[i].nomContact === this.responseText) {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img class="me-header" src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble me"><video controls src='` + data[i].content + `'></div>
+                    </div>`;
+                        let active_chat = document.querySelector('div.active-chat');
+                        let oldHtml = active_chat.innerHTML;
+                        active_chat.innerHTML = oldHtml + html;
+                        active_chat.scrollTop = active_chat.scrollHeight;
+                    } else {
+                        html = `
+                    <span class="preview" style="text-align: center;">${data[i].tempsEnvoi}</span>
+                    <div class="message" style="margin-bottom: 15px;">
+                        <img src="` + data[i].headerimg + `" alt=""/>
+                        <div class="bubble you"><video controls src='` + data[i].content + `'></div>
+                    </div>`;
                         let active_chat = document.querySelector('div.active-chat');
                         let oldHtml = active_chat.innerHTML;
                         active_chat.innerHTML = oldHtml + html;
@@ -176,6 +225,38 @@ function messageList(data) {
 }
 
 
+
+function upload() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
+            //console.log(this.responseText)
+            setContactor(JSON.parse(contactInfo))
+            messageList(JSON.parse(contactInfo))
+            getContact()
+        }
+    }
+
+    let fd = new FormData();
+    let reads = new FileReader();
+    let f = document.getElementById('file').files[0];
+    reads.readAsDataURL(f);
+    reads.onload = function() {
+        document.querySelectorAll(".exbtn").forEach(div => {
+            div.onclick = () => {
+                idGroup = div.dataset.idgroup
+            }
+        })
+        fd.append("blob", this.result);
+        fd.append("idGroup", idGroup);
+        xhr.open('POST', 'public/web/script/sendGrpFichier.php', false);
+        xhr.send(fd);
+    };
+}
+upload()
+
+
 function sendMessage() {
     let msg = document.querySelector("#input-value").value;
     if (msg.length === 0){
@@ -183,7 +264,7 @@ function sendMessage() {
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4) {
-                console.log(this.responseText.split("}"))
+                //console.log(this.responseText.split("}"))
                 let contactInfo = this.responseText.split("{\"error\":\"Not found.\"}")[1]
                 setContactor(JSON.parse(contactInfo))
                 messageList(JSON.parse(contactInfo))
