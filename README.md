@@ -30,7 +30,7 @@
         Les groupes disposent d’un panneau d’annonce permettant uploader afficher télécharger supprimer des fichiers (Tous types de fichiers). 
     </li>
     <li>
-        Dans l’interface de localisation, je le réalisé en utilisant API Google Map, il permet de repérer les personnes contaminées dans un rayon donné (km).
+        Dans l’interface de localisation, je le réalise en utilisant API Google Map, il permet de repérer les personnes contaminées dans un rayon donné (km).
     </li>
     <li>Une fois déconnexion effectuée, vous retournerez à l'interface de connexion et vous vous connectez avec vos identifiants.</li>
     <li>L'application utilise la sécurité CSRF (Cross-site request forgery). Le mot de passe de l'utilisateur est crypté et stocké dans la base de données.</li>
