@@ -6,7 +6,7 @@
   <li>Lancez service docker</li>
   <li>Tapez la commande <code>docker-compose up --build</code> sur terminal</li>
   <li>
-    Mettre en place le script de base de donnée ( webServeur/PWeb.sql )
+    Mettre en place le script de base de donnée <code>webServeur/PWeb.sql</code>
     sur phpmyadmin <code>http://localhost:8002</code> avec des variables correspondant aux paramètres suivants :<br>
     <ul>Utilisateur: PWeb</ul>
     <ul>Mot de passe: 1Zhongguo</ul>
@@ -37,9 +37,10 @@
 </ol>
 
 <h1>Choix esthétiques</h1>
+<strong>Vous pouvez voir des captures d'écran de l'interface dans <code>webServeur/screenshot</code></strong>
 <ol>
-    <li>Interface dynamique (différents états ont des interfaces différentes avec des fonctionnalités différentes)</li>
-    <li>Menu roll</li>
+    <li>L'interface dynamique (différents états ont des interfaces différentes avec des fonctionnalités différentes)</li>
+    <li>Le menu roll</li>
     <li>Les constrastes textes et fonds</li>
     <li>Le clic et hover sont réactifs</li>
 </ol>
