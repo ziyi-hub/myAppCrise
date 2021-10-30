@@ -18,21 +18,16 @@ $contact->idUtilisateur = $_SESSION['profile']['id'];
 $contact->idMessage = $messages->idMessage;
 $contact->save();
 
-$contact = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
-    ->join("Utilisateurs", "Utilisateurs.idUtilisateur", "=", "Contact.idUtilisateur")
-    ->where("ami", "=", "oui")
-    ->where("idGroupContact", "=", null)
-    ->where("Contact.idUtilisateur", "=", $idUtilisateur)
-    ->orderBy('tempsEnvoi','ASC')
-    ->get();
-
-$moi = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
-    ->join("Utilisateurs", "Utilisateurs.idUtilisateur", "=", "Contact.idUtilisateur")
-    ->where("ami", "=", "oui")
-    ->where("idGroupContact", "=", null)
-    ->where("Contact.idUtilisateur", "=", $_SESSION['profile']['id'])
+$msgMien = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idUtilisateur", "=", $_SESSION['profile']['id'])
     ->where("individuel", "=", $idUtilisateur)
     ->orderBy('tempsEnvoi','ASC')
     ->get();
 
-echo $contact->merge($moi);
+$msgSien = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idUtilisateur", "=", $idUtilisateur)
+    ->where("individuel", "=", $_SESSION['profile']['id'])
+    ->orderBy('tempsEnvoi','ASC')
+    ->get();
+
+echo $msgSien->merge($msgMien);

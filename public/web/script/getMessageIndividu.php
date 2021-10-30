@@ -4,22 +4,18 @@ require_once '../../index.php';
 use crise\models\Contact;
 
 
-$id = $_GET['idUser'];
-$contact = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
-    ->join("Utilisateurs", "Utilisateurs.idUtilisateur", "=", "Contact.idUtilisateur")
-    ->where("ami", "=", "oui")
-    ->where("idGroupContact", "=", null)
-    ->where("Contact.idUtilisateur", "=", $id)
+$idUtilisateur = $_GET['idUser'];
+
+$msgMien = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idUtilisateur", "=", $_SESSION['profile']['id'])
+    ->where("individuel", "=", $idUtilisateur)
     ->orderBy('tempsEnvoi','ASC')
     ->get();
 
-$moi = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
-    ->join("Utilisateurs", "Utilisateurs.idUtilisateur", "=", "Contact.idUtilisateur")
-    ->where("ami", "=", "oui")
-    ->where("idGroupContact", "=", null)
-    ->where("Contact.idUtilisateur", "=", $_SESSION['profile']['id'])
-    ->where("individuel", "=", $id)
+$msgSien = Contact::join('Messages','Messages.idMessage','=','Contact.idMessage')
+    ->where("idUtilisateur", "=", $idUtilisateur)
+    ->where("individuel", "=", $_SESSION['profile']['id'])
     ->orderBy('tempsEnvoi','ASC')
     ->get();
 
-echo $contact->merge($moi);
+echo $msgSien->merge($msgMien);
