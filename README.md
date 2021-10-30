@@ -27,7 +27,7 @@
         Le système de messagerie s’adaptera pour fonctionner au travers des groupes. Des utilisateeurs peuvent partager des fichiers (type: images, audios).
     </li>
     <li>
-        Les groupes disposent d’un panneau d’annonce permettant uploader afficher télécharger supprimer des fichiers (Tous types de fichiers). 
+        Les groupes disposent d’un panneau d’annonce permettant uploader afficher télécharger supprimer des fichiers (type: docx, xlsx). 
     </li>
     <li>
         Dans l’interface de localisation, je le réalise en utilisant API Google Map, il permet de repérer les personnes contaminées dans un rayon donné (km).
