@@ -126,7 +126,7 @@ END;
                        onchange="uploadFile('upload-new')">
                 <span class="icon-upload"></span>&nbsp;
                 <span style="color:#325ce1;">
-                    Cliquez pour uploader 
+                    Cliquez pour uploader (*.docx, *.xlsx)
                 </span>
             </div>
             <!-- Partie déjà uploader -->
