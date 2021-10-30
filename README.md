@@ -33,10 +33,21 @@
         Dans l’interface de localisation, je le réalisé en utilisant API Google Map, il permet de repérer les personnes contaminées dans un rayon donné (km).
     </li>
     <li>Une fois déconnexion effectuée, vous retournerez à l'interface de connexion et vous vous connectez avec vos identifiants.</li>
-    <li>L'application utilise la sécurité CSRF (Cross-site request forgery). Le mot de passe de l'utilisateur est crypté dans la base de données.</li>
+    <li>L'application utilise la sécurité CSRF (Cross-site request forgery). Le mot de passe de l'utilisateur est crypté et stocké dans la base de données.</li>
 </ol>
 
-<h1>Lien utiles:</h1>
+<h1>Choix esthétiques</h1>
+<ol>
+    <li>Interface dynamique (différents états ont des interfaces différentes avec des fonctionnalités différentes)</li>
+    <li>Menu roll</li>
+    <li>Les constrastes textes et fonds</li>
+    <li>Le clic et hover sont réactifs</li>
+</ol>
+
+<h1>Compatibilité</h1>
+L'application est compatible sur le navigateur Safari, Opera et Google Chrome.
+
+<h1>Lien utiles</h1>
 <address>
     Toutes les images sont libres de droits d'auteur qui viennent
     <a href="https://unsplash.com">Unsplash</a> 
